@@ -1,0 +1,14 @@
+<%= form_for @user, method: :patch do |f| %>
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+	<% if current_admin %>
+	<p>
+		<%= f.label :is_admin %>
+		<%= f.check_box :is_admin %>
+	</p>
+	<% end %>
+	<br/>
+	<p><%= f.submit %></p>
+<% end %>
