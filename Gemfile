@@ -25,6 +25,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #Foundation Gem
 gem 'foundation-rails'
 
+#D3
+gem "d3-rails"
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
