@@ -6,11 +6,7 @@ describe Bill do
   end
 
   it "is invalid without a title" do
-    expect(build(:bill, title: nil)).to be_invalid
-  end
-
-  it "is invalid without a congress_url" do
-    expect(build(:bill, congress_url: nil)).to be_invalid
+    expect(build(:bill, official_title: nil)).to be_invalid
   end
 end
 
