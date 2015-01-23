@@ -1,12 +1,12 @@
 class CreateBills < ActiveRecord::Migration
   def change
     create_table :bills do |t|
-      t.string :title, null: false
-      t.string :summary
-      t.string :official_title
-      t.string :short_title
+      t.string :official_title, null: false
       t.string :popular_title
-      t.string :congress_url, null: false
+      t.string :short_title
+      t.string :summary
+      t.string :summary_short
+      t.string :congress_url
     end
   end
 end
