@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(version: 20150123001103) do
   end
 
   create_table "bills", force: :cascade do |t|
-    t.string "title",          null: false
-    t.string "summary"
-    t.string "official_title"
-    t.string "short_title"
+    t.string "official_title", null: false
     t.string "popular_title"
-    t.string "congress_url",   null: false
+    t.string "short_title"
+    t.string "summary"
+    t.string "summary_short"
+    t.string "congress_url"
   end
 
   create_table "issues", force: :cascade do |t|
@@ -46,12 +46,12 @@ ActiveRecord::Schema.define(version: 20150123001103) do
     t.string "middle_name"
     t.string "nickname"
     t.string "name_suffix"
-    t.string "party",                null: false
-    t.string "phone",                null: false
-    t.string "website",              null: false
-    t.string "office",               null: false
-    t.string "contact_form",         null: false
-    t.string "fax",                  null: false
+    t.string "party"
+    t.string "phone"
+    t.string "website"
+    t.string "office"
+    t.string "contact_form"
+    t.string "fax"
     t.string "twitter_id"
     t.string "campaign_twitter_ids"
     t.string "youtube_id"
