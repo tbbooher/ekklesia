@@ -72,7 +72,7 @@ end
 
 def insert_basic_legislators
   get_basic_legislators_info_in(API, API_KEY).each do |l|
-    legis = Legislator.create!(
+    legislator = Legislator.create!(
       bioguide_id: l["bioguide_id"],
       first_name: l["first_name"],
       last_name: l["last_name"],
@@ -86,7 +86,7 @@ def insert_basic_legislators
       contact_form: l["contact_form"],
       fax: l["fax"]
     )
-    legis
+    legislator
   end
 end
 
