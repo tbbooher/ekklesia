@@ -17,6 +17,7 @@ FactoryGirl.define do
   end
 
   factory :politician do
+    id { 1 }
     bioguide_id { Faker::Lorem.word }
     first_name { Faker::Lorem.word }
     last_name { Faker::Lorem.word }
@@ -34,6 +35,7 @@ FactoryGirl.define do
   end
 
   factory :position do
+    id 1
     issue_id 1
     description { Faker::Lorem.sentence }
   end
@@ -49,6 +51,7 @@ FactoryGirl.define do
   end
 
   factory :user do
+    id 1
     first_name { Faker::Lorem.word }
     middle_name { Faker::Lorem.word }
     last_name { Faker::Lorem.word }
