@@ -8,4 +8,8 @@ class Politician < ActiveRecord::Base
 
   validates_uniqueness_of :bioguide_id
   validates_presence_of :bioguide_id, :first_name, :last_name
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

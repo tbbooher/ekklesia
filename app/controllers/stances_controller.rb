@@ -8,6 +8,7 @@ class StancesController < ApplicationController
   def new
     @issues = Issue.all
     @positions = Position.all
+    @policitians = Politician.all
     @stance = Stance.new
   end
 
