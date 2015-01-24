@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/legislator/:id', to: 'legislators#show'
 
-  get '/search', to: 'welcome#search'
+  get '/search', to: 'stances#search'
 
   resources :users
   resources :stances
