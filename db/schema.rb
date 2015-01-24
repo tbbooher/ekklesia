@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20150123221959) do
     t.string   "first_name",                   null: false
     t.string   "last_name",                    null: false
     t.string   "middle_name",     default: ""
+    t.string   "username",                     null: false
     t.string   "city"
     t.text     "about"
     t.string   "password_digest",              null: false
