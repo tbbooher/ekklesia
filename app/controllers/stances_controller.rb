@@ -33,6 +33,10 @@ class StancesController < ApplicationController
     redirect_to :stances
   end
 
+  def search
+    @stances = Stance.search(params[:search][:words]).map { |stance| stance.info }
+  end
+
   private
     def stances_params
       params.require(:stance).permit(:position_id)
