@@ -194,11 +194,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
-=======
   bcrypt (~> 3.1.7)
-  byebug
->>>>>>> Delete devise residue.
   capybara
   coffee-rails (~> 4.1.0)
   database_cleaner

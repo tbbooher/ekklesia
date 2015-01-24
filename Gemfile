@@ -51,12 +51,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem "selenium-webdriver"
-<<<<<<< HEAD
 end
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
-=======
-  gem 'dotenv-rails', :groups => [:development, :test]
-end
->>>>>>> Delete devise residue.
