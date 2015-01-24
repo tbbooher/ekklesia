@@ -19,15 +19,19 @@ class StancesController < ApplicationController
   end
 
   def create
-    p params
-      @stance = current_user.stances.new(stances_params)
-      if @stance.save
-        redirect_to stance_path(@stance)
-      else
-        flash[:alert] = "ERROR: #{@stances.errors.full_messages.join("; ")}"
-        render :new
-      end
+    @stance = current_user.stances.new(stances_params)
+    if @stance.save
+      redirect_to stance_path(@stance)
+    else
+      flash[:alert] = "ERROR: #{@stances.errors.full_messages.join("; ")}"
+      render :new
     end
+  end
+
+  def destroy
+    @stance = Stance.find(params[:id]).destroy
+    redirect_to :stances
+  end
 
   private
     def stances_params
