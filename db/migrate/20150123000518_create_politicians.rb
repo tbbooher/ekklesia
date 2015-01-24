@@ -17,6 +17,7 @@ class CreatePoliticians < ActiveRecord::Migration
       t.string :campaign_twitter_ids
       t.string :youtube_id
       t.string :facebook_id
+      t.string :district
     end
   end
 end
