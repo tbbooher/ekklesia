@@ -5,7 +5,7 @@ describe LegislatorStance do
     expect(build(:legislator_stance)).to be_valid
   end
 
-  it "is invalid without a politician" do
+  it "is invalid without a legislator" do
     expect(build(:legislator_stance, legislator_id: nil)).to be_invalid
   end
 
