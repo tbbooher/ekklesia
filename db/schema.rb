@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150124014217) do
+ActiveRecord::Schema.define(version: 20150124020006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aliases", force: :cascade do |t|
+    t.integer "politician_id", null: false
+    t.string  "alias1"
+    t.string  "alias2"
+    t.string  "alias3"
+    t.string  "alias4"
+    t.string  "alias5"
+    t.string  "alias6"
+  end
 
   create_table "bill_votes", force: :cascade do |t|
     t.integer "bill_id",       null: false
@@ -56,6 +66,7 @@ ActiveRecord::Schema.define(version: 20150124014217) do
     t.string "campaign_twitter_ids"
     t.string "youtube_id"
     t.string "facebook_id"
+    t.string "district"
   end
 
   create_table "positions", force: :cascade do |t|
@@ -66,6 +77,17 @@ ActiveRecord::Schema.define(version: 20150124014217) do
   create_table "stances", force: :cascade do |t|
     t.integer "user_id",     null: false
     t.integer "position_id", null: false
+  end
+
+  create_table "terms", force: :cascade do |t|
+    t.integer "politician_id", null: false
+    t.string  "start_date"
+    t.string  "end_date"
+    t.string  "state"
+    t.string  "party"
+    t.string  "senate_class"
+    t.string  "title"
+    t.string  "chamber"
   end
 
   create_table "upvotes", force: :cascade do |t|
