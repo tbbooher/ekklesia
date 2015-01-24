@@ -1,26 +1,65 @@
-<%= form_tag( :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Campaign Finance" %>
-  <%= submit_tag "Search" %>
-<% end %>
+  <div class="row">
+        <div class="large-12 columns">
+     
+          <!-- Header Content -->
+     
+            <div class="row">
+     
+              <div class="large-3 columns">
+                <img src="http://placehold.it/200x200&text=Image"><br>
+              </div>
+     
+     
+              <div class="large-8 columns">
+                <div class="panel">
+                  <h3><%=@user.username%></h3>
+                  <h4><%=@user.city%>, @user.state</h4>
+                  <p><%=@user.about%></p>
+                </div>
+              </div>
 
-<h1><%= @user.first_name %> <%= @user.middle_name %> <%= @user.last_name %></h1>
-<h2><%= @user.username %></h2>
+              <div class="large-2 columns">
+              </div>
+     
+            </div>
+     
+          <!-- End Header Content -->
 
-<p><%= @user.city %></p>
+          <!-- Stances Users Taken Title -->
 
-<p><%= @user.about %></p>
+          <div class="row">
+            <div class="large-12 columns center-text">
+              <h2>Stances You've Taken</h2>
+            </div>
+          </div>
+     
+     
+          <!-- Search Buttons -->
+          <div class="row">
+            <div class="medium-8 columns">
+              <dl class="sub-nav">
+                <dt>Sort:</dt>
+                <dd class="active"><a href="#">Recent</a></dd>
+                <dd><a href="#">Popular</a></dd>
+                <dd><a href="#">Alphabetical</a></dd>
+              </dl>
+            </div>
+          </div>
+          <!-- End Search Buttons -->
 
-<h3>Stances I've taken:</h3>
-<div id='stance_container'>
-	sort:
-	<ul>
-		<li> <a href="">a - z</a> </li>
-		<li> <a href="">popular</a> </li>
-		<li> <a href="">recent</a> </li>
-	</ul>
-</div>
-
-<% if logged_in? %>
-  <%= button_to "Edit", edit_user_path(@user), {method: "get"} %>
-  <%= button_to "Delete", @user, {method: "delete", confirm: "Are you sure you want to delete this user?"} %>
-<% end %>
+          <!-- Stances -->
+     
+            <div class="row">
+              <% @user.stances.each do |stance| %>
+                <%= render partial: "stances/details", locals: {stance: stance} %>
+              <% end %>
+            </div>
+     
+          <!-- End Stance -->
+     
+     
+     
+     
+        </div>
+      </div>
+    
