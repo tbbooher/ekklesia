@@ -1,20 +1,20 @@
 require 'rails_helper'
 
-describe Politician do
+describe Legislator do
   it 'has a valid factory' do
-    expect(build(:politician)).to be_valid
+    expect(build(:legislator)).to be_valid
   end
 
   it "is invalid without a bioguide_id" do
-    expect(build(:politician, bioguide_id: nil)).to be_invalid
+    expect(build(:legislator, bioguide_id: nil)).to be_invalid
   end
 
   it "is invalid without a first_name" do
-    expect(build(:politician, first_name: nil)).to be_invalid
+    expect(build(:legislator, first_name: nil)).to be_invalid
   end
 
   it "is invalid without a last_name" do
-    expect(build(:politician, last_name: nil)).to be_invalid
+    expect(build(:legislator, last_name: nil)).to be_invalid
   end
 
 end
