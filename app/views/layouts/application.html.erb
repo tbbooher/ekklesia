@@ -30,6 +30,7 @@
       <% else %>
         <li><%= link_to "#{current_user.first_name}'s Profile", user_path(current_user) %></li>
         <li><%= link_to 'Logout', logout_path, method: :get %></li>
+        <li><%= link_to 'Take a Stance', new_stance_path, method: :get %></li>
       <% end %>
       </ul>
 
