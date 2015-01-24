@@ -1,14 +1,25 @@
 <%= form_for @user, method: :patch do |f| %>
-	<p>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-	</p>
+	<%= f.text_field :first_name, placeholder: "First name" %>
+	<%= f.text_field :middle_name, placeholder: "Middle name" %>
+	<%= f.text_field :last_name, placeholder: "Last name" %>
+	<br/>
+	<%= f.text_field :username, placeholder: "Username" %>
+	<br/>
+	<%= f.text_field :city, placeholder: "City"%>
+	<br/>
+	<%= f.text_area :about, placeholder: "Say something about you." %>
+	<br/>
+	<%= f.email_field :email, placeholder: "Email" %>
+
+	<br/>
+	<%= f.password_field :password, placeholder: "Password" %>
+	<br/>
+	<%= f.password_field :password_confirmation, placeholder: "Confirm password" %>
+	<br/>
+
 	<% if current_admin %>
-	<p>
 		<%= f.label :is_admin %>
 		<%= f.check_box :is_admin %>
-	</p>
 	<% end %>
-	<br/>
-	<p><%= f.submit %></p>
+	<%= f.submit %>
 <% end %>
