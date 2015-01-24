@@ -9,14 +9,14 @@ FactoryGirl.define do
 
   factory :bill_vote do
     bill_id 1
-    politician_id 1
+    legislator_id 1
   end
 
   factory :issue do
     description { Faker::Lorem.sentence }
   end
 
-  factory :politician do
+  factory :legislator do
     id { 1 }
     bioguide_id { Faker::Lorem.word }
     first_name { Faker::Lorem.word }
@@ -29,8 +29,8 @@ FactoryGirl.define do
     fax { Faker::Lorem.word }
   end
 
-  factory :politician_stance do
-    politician_id 1
+  factory :legislator_stance do
+    legislator_id 1
     stance_id 1
   end
 

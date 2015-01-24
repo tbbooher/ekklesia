@@ -1,4 +1,4 @@
 class Term < ActiveRecord::Base
-  belongs_to :politician
-  validates_presence_of :politician_id
+  belongs_to :legislator
+  validates_presence_of :legislator_id
 end

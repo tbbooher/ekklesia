@@ -1,6 +1,6 @@
-class CreatePoliticians < ActiveRecord::Migration
+class CreateLegislators < ActiveRecord::Migration
   def change
-    create_table :politicians do |t|
+    create_table :legislators do |t|
       t.string :bioguide_id, null: false
       t.string :first_name, null: false
       t.string :last_name, null: false

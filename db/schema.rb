@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150124020006) do
   enable_extension "plpgsql"
 
   create_table "aliases", force: :cascade do |t|
-    t.integer "politician_id", null: false
+    t.integer "legislator_id", null: false
     t.string  "alias1"
     t.string  "alias2"
     t.string  "alias3"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150124020006) do
 
   create_table "bill_votes", force: :cascade do |t|
     t.integer "bill_id",       null: false
-    t.integer "politician_id", null: false
+    t.integer "legislator_id", null: false
   end
 
   create_table "bills", force: :cascade do |t|
@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 20150124020006) do
     t.text "description", null: false
   end
 
-  create_table "politician_stances", force: :cascade do |t|
-    t.integer "politician_id", null: false
+  create_table "legislator_stances", force: :cascade do |t|
+    t.integer "legislator_id", null: false
     t.integer "stance_id",     null: false
   end
 
-  create_table "politicians", force: :cascade do |t|
+  create_table "legislators", force: :cascade do |t|
     t.string "bioguide_id",          null: false
     t.string "first_name",           null: false
     t.string "last_name",            null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150124020006) do
   end
 
   create_table "terms", force: :cascade do |t|
-    t.integer "politician_id", null: false
+    t.integer "legislator_id", null: false
     t.string  "start_date"
     t.string  "end_date"
     t.string  "state"

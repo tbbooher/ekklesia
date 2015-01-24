@@ -9,8 +9,8 @@ describe BillVote do
     expect(build(:bill_vote, bill_id: nil)).to be_invalid
   end
 
-  it "is invalid without a politician_id" do
-    expect(build(:bill_vote, politician_id: nil)).to be_invalid
+  it "is invalid without a legislator_id" do
+    expect(build(:bill_vote, legislator_id: nil)).to be_invalid
   end
 end
 
