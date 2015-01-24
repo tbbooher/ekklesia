@@ -148,6 +148,6 @@ issue_positions.each do |issue, position_array|
 end
 
 Position.all.each do |position|
-  position.stances.create(user_id: rand(User.all.count + 1))
+  position.stances.create(user_id: rand(User.all.count) + 1)
 end
 
