@@ -1,7 +1,7 @@
 class CreateAlias < ActiveRecord::Migration
   def change
     create_table :aliases do |t|
-      t.references :politician, null: false
+      t.references :legislator, null: false
 			t.string :alias1
 			t.string :alias2
 			t.string :alias3
