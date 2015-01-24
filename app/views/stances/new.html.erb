@@ -7,4 +7,4 @@
   <%= f.submit "Take a stance" %>
 <% end %>
 
-<%= select :politician_stances, :politician_id, @policitians.collect {|p| [ p.name, p.id ] }, { prompt: "Please select"}, { multiple: true } %>
+<%= select :legislator_stances, :legislator_id, @legislators.collect {|p| [ p.name, p.id ] }, { prompt: "Please select"}, { multiple: true } %>
