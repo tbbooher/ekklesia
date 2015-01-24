@@ -1,23 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>OpenPAC</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <header>
-    <% if logged_in? %>
-      <h2>Hello, <%= link_to current_user.first_name, user_path(current_user) %>! </h2>
-      <%= button_to 'Logout', logout_path, method: :get %>
-    <% else %>
-      <%= button_to 'Login', login_path, method: :get %>
-      <%= button_to 'Signup', signup_path, method: :get %>
-    <% end %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  </header>
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">openPAC</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Take a Stance</a></li>
+      </ul>
+
+    
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <!-- Search Bar -->
+        <li class="has-form">
+          <div class="row collapse">
+            <div class="large-12 small-9 columns">
+              <input type="text" placeholder="Search">
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
