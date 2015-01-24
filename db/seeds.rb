@@ -14,10 +14,10 @@ def get_basic_legislators_info_in(url, key)
   in_office_counter = 1
   all_legislators = []
   (LEGISLATORS_IN_OFFICE[0]/50+1).times do
-    p "loading basic in"
+    "loading basic in"
     call = JSON.parse(open(url + "/legislators?apikey=#{key}&page=#{in_office_counter}&per_page=50&in_office=#{LEGISLATORS_IN_OFFICE[1]}").read)["results"]
     call.each do |legi|
-      p legi["first_name"]
+      legi["first_name"]
       all_legislators << legi
     end
     sleep 1
@@ -29,10 +29,10 @@ end
 def get_basic_legislators_info_out(url, key)
   out_office_counter = 1
   (LEGISLATORS_OUT_OF_OFFICE[0]/50+1).times do
-    p "loading basic out"
+    "loading basic out"
     call = JSON.parse(open(url + "/legislators?apikey=#{key}&page=#{out_office_counter}&per_page=50&in_office=#{LEGISLATORS_OUT_OF_OFFICE[1]}").read)["results"]
     call.each do |legi|
-      p legi["first_name"]
+      legi["first_name"]
       all_legislators << legi
     end
     sleep 1
@@ -45,7 +45,7 @@ def get_more_legislators_info_in(url, key, fields)
   in_office_counter = 1
   all_legislators = []
   (LEGISLATORS_IN_OFFICE[0]/50+1).times do
-    p "loading detail in"
+    "loading detail in"
     call = JSON.parse(open(url + "/legislators?apikey=#{key}&page=#{in_office_counter}&per_page=50&in_office=#{LEGISLATORS_IN_OFFICE[1]}&fields=#{fields}").read)["results"]
     call.each do |legi|
       all_legislators << legi
@@ -59,7 +59,7 @@ end
 def get_more_legislators_info_out(url, key, fields)
   out_office_counter = 1
   (LEGISLATORS_OUT_OF_OFFICE[0]/50+1).times do
-    p "loading detail out"
+    "loading detail out"
     call = JSON.parse(open(url + "/legislators?apikey=#{key}&page=#{out_office_counter}&per_page=50&in_office=#{LEGISLATORS_OUT_OF_OFFICE[1]}&fields=#{fields}").read)["results"]
     call.each do |legi|
       all_legislators << legi
@@ -70,9 +70,9 @@ def get_more_legislators_info_out(url, key, fields)
   return all_legislators
 end
 
-def insert_basic_politicians
+def insert_basic_legislators
   get_basic_legislators_info_in(API, API_KEY).each do |l|
-    legis = Politician.create!(
+    legis = Legislator.create!(
       bioguide_id: l["bioguide_id"],
       first_name: l["first_name"],
       last_name: l["last_name"],
@@ -86,13 +86,13 @@ def insert_basic_politicians
       contact_form: l["contact_form"],
       fax: l["fax"]
     )
-    p legis
+    legis
   end
 end
 
 def insert_details
   get_more_legislators_info_in(API, API_KEY, LEGISLATOR_FIELDS).each do |l|
-    politcian = Politician.find_by bioguide_id: l["bioguide_id"]
+    politcian = Legislator.find_by bioguide_id: l["bioguide_id"]
     politcian.update(
       twitter_id: l["twitter_id"],
       campaign_twitter_ids: l["campaign_twitter_ids"],
@@ -102,8 +102,8 @@ def insert_details
     )
     a = l["aliases"]
     if a
-      p Alias.create!(
-        politician_id: politcian.id,
+      Alias.create!(
+        legislator_id: politcian.id,
         alias1: a[0],
         alias2: a[1],
         alias3: a[2],
@@ -113,8 +113,8 @@ def insert_details
       )
     end
     l["terms"].each do |term|
-      p Term.create!(
-        politician_id: politcian.id,
+      Term.create!(
+        legislator_id: politcian.id,
         start_date: term["start"],
         end_date: term["end"],
         state: term["state"],
@@ -126,7 +126,7 @@ def insert_details
     end
   end
 end
-insert_basic_politicians
+insert_basic_legislators
 insert_details
 
 50.times do
