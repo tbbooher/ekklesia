@@ -1,7 +1,7 @@
 class CreateTerm < ActiveRecord::Migration
   def change
     create_table :terms do |t|
-      t.references :politician, null: false
+      t.references :legislator, null: false
 			t.string :start_date
 	    t.string :end_date
 	    t.string :state
