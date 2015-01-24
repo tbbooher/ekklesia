@@ -1,7 +1,7 @@
-class CreatePoliticianStances < ActiveRecord::Migration
+class CreateLegislatorStances < ActiveRecord::Migration
   def change
-    create_table :politician_stances do |t|
-      t.references :politician, null: false
+    create_table :legislator_stances do |t|
+      t.references :legislator, null: false
       t.references :stance, null: false
     end
   end
