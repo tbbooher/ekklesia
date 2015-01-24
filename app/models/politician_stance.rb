@@ -1,6 +1,6 @@
-class PoliticianStance < ActiveRecord::Base
-  belongs_to :politician
+class LegislatorStance < ActiveRecord::Base
+  belongs_to :legislator
   belongs_to :stance
 
-  validates_presence_of :politician_id, :stance_id
+  validates_presence_of :legislator_id, :stance_id
 end
