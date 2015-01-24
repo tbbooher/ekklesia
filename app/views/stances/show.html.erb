@@ -1,6 +1,44 @@
-<%= @author.username %>
-<%= @position.description %>
+<div class="row">
+  <div class="large-6 columns">
+    <h4><%= @author.username %> believes in <%= @position.description %></h4>
+    <h6><%= @position.issue.description %></h6>
+  </div>
+</div>
 
-<% if @author == current_user %>
-  <%= button_to "Delete", @stance, method: :delete %>
-<% end %>
+<div class="row">
+  <div class="large-7 columns">
+    <div class="panel">
+      <ul class="clearing-thumbs small-block-grid-4" data-clearing>
+        <li><a href="path/to/your/img"><img src="http://placehold.it/100x100&text=Thumbnail"></li>
+        <li><a href="path/to/your/img"><img src="http://placehold.it/100x100&text=Thumbnail"></li>
+        <li><a href="path/to/your/img"><img src="http://placehold.it/100x100&text=Thumbnail"></li>
+        <li><a href="path/to/your/img"><img src="http://placehold.it/100x100&text=Thumbnail"></li>
+        <li><a href="path/to/your/img"><img src="http://placehold.it/100x100&text=Thumbnail"></li>
+        <li><a href="path/to/your/img"><img src="http://placehold.it/100x100&text=Thumbnail"></li>
+        <li><a href="path/to/your/img"><img src="http://placehold.it/100x100&text=Thumbnail"></li>
+        <li><a href="path/to/your/img"><img src="http://placehold.it/100x100&text=Thumbnail"></li>
+      </ul>
+    </div>
+      <% if @author == current_user %>
+        <%= button_to "Delete", @stance, method: :delete, class: "button radius" %>
+      <% end %>
+  </div>
+  <!-- Sidebar -->
+  <div class="large-5 columns">
+    <ul class="side-nav">
+      <li><h3><%= @stance.legislators.count %></h3></li>
+      <li><h6>Supporting legislators</h6></li>
+      <li><h3><%= @stance.upvotes.count %></h3></li>
+      <li><h6>Upvotes</h6></li>
+      <li>
+        <div class="panel">
+          <p><%= @stance.user.username %> believes that <%= @stance.legislators.count %> legislators support <%= @stance.position.description %></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- End Sidebar -->
+</div>
+
+
+
