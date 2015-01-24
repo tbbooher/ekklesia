@@ -6,4 +6,9 @@ class Stance < ActiveRecord::Base
   has_many :politicians, through: :politician_stances
 
   validates_presence_of :user_id, :position_id
+
+  def info
+    { position_description: Position.find(position_id).description,
+    author: User.find(user_id) }
+  end
 end

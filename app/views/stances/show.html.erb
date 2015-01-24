@@ -1,0 +1,6 @@
+<%= @author.username %>
+<%= @position.description %>
+
+<% if @author == current_user %>
+  <%= button_to "Delete", @stance, method: :delete %>
+<% end %>

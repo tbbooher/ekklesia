@@ -1,0 +1,10 @@
+  When it comes to
+  <%= collection_select :position, :issue_id, @issues,:id,:description, :include_blank => "Issue" %>
+
+<%= form_for @stance do |f| %>
+  I believe in
+  <%= f.collection_select :position_id, @positions,:id,:description, include_blank: "Position" %>
+  <%= f.submit "Take a stance" %>
+<% end %>
+
+<%= select :politician_stances, :politician_id, @policitians.collect {|p| [ p.name, p.id ] }, { prompt: "Please select"}, { multiple: true } %>

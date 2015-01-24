@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
 
   resources :users
+  resources :stances
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
