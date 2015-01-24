@@ -70,9 +70,9 @@ def get_more_legislators_info_out(url, key, fields)
   return all_legislators
 end
 
-def insert_basic_politicians
+def insert_basic_legislators
   get_basic_legislators_info_in(API, API_KEY).each do |l|
-    legis = Politician.create!(
+    legis = Legislator.create!(
       bioguide_id: l["bioguide_id"],
       first_name: l["first_name"],
       last_name: l["last_name"],
@@ -92,7 +92,7 @@ end
 
 def insert_details
   get_more_legislators_info_in(API, API_KEY, LEGISLATOR_FIELDS).each do |l|
-    politcian = Politician.find_by bioguide_id: l["bioguide_id"]
+    politcian = Legislator.find_by bioguide_id: l["bioguide_id"]
     politcian.update(
       twitter_id: l["twitter_id"],
       campaign_twitter_ids: l["campaign_twitter_ids"],
@@ -103,7 +103,7 @@ def insert_details
     a = l["aliases"]
     if a
       p Alias.create!(
-        politician_id: politcian.id,
+        legislator_id: politcian.id,
         alias1: a[0],
         alias2: a[1],
         alias3: a[2],
@@ -114,7 +114,7 @@ def insert_details
     end
     l["terms"].each do |term|
       p Term.create!(
-        politician_id: politcian.id,
+        legislator_id: politcian.id,
         start_date: term["start"],
         end_date: term["end"],
         state: term["state"],
@@ -126,7 +126,7 @@ def insert_details
     end
   end
 end
-insert_basic_politicians
+insert_basic_legislators
 insert_details
 
 50.times do
