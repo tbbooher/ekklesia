@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#logout'
   get '/signup', to: 'users#new'
   get '/legislators/:id', to: 'legislators#show'
-
   get '/search', to: 'stances#search'
+  post '/upvotes/create', to: 'upvotes#create'
 
   resources :users
   resources :stances
