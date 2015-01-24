@@ -1,0 +1,13 @@
+<%= form_for @stance do |f| %>
+  When it comes to
+  <%= collection_select :stance, @issues,:id,:description, placeholder: "Issue" %>
+  I believe in
+  <%= f.collection_select :position_id, @positions,:id,:description, placeholder: "Issue" %>
+  <%=  %>
+<% end %>
+
+
+<%= form_tag( :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "which legislators support my cause?" %>
+  <%= submit_tag "Add to supporters" %>
+<% end %>
