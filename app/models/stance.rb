@@ -11,4 +11,14 @@ class Stance < ActiveRecord::Base
     { position_description: Position.find(position_id).description,
     author: User.find(user_id) }
   end
+
+  def self.search(words)
+    words.split(' ').map do |word|
+      Stance.all.select do |s|
+        position = Position.find(s.position_id)
+        issue = Issue.find(position.issue_id)
+        position.description.downcase.include?(word.downcase) || issue.description.downcase.include?(word.downcase)
+      end
+    end.flatten.uniq
+  end
 end
