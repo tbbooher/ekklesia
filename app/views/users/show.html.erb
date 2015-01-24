@@ -1,0 +1,26 @@
+<%= form_tag( :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Campaign Finance" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<h1><%= @user.first_name %> <%= @user.middle_name %> <%= @user.last_name %></h1>
+<h2><%= @user.username %></h2>
+
+<p><%= @user.city %></p>
+
+<p><%= @user.about %></p>
+
+<h3>Stances I've taken:</h3>
+<div id='stance_container'>
+	sort:
+	<ul>
+		<li> <a href="">a - z</a> </li>
+		<li> <a href="">popular</a> </li>
+		<li> <a href="">recent</a> </li>
+	</ul>
+</div>
+
+<% if logged_in? %>
+  <%= button_to "Edit", edit_user_path(@user), {method: "get"} %>
+  <%= button_to "Delete", @user, {method: "delete", confirm: "Are you sure you want to delete this user?"} %>
+<% end %>

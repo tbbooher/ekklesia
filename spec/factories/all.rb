@@ -50,8 +50,12 @@ FactoryGirl.define do
 
   factory :user do
     first_name { Faker::Lorem.word }
+    middle_name { Faker::Lorem.word }
     last_name { Faker::Lorem.word }
+    username { Faker::Lorem.word }
+    city { Faker::Lorem.word }
     email { Faker::Internet.email }
     password { "12345678" }
+    password_confirmation { "12345678" }
   end
 end
