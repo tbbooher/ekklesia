@@ -1,6 +1,7 @@
 class UpvotesController < ApplicationController
   def create
-    upvote = Upvote.new(upvote_params)
+    existing_upvote = Upvote.find_by(upvote_params)
+    Upvote.new(upvote_params)
     if upvote.save
       redirect_to root_path
     else
