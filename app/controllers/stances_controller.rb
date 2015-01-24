@@ -2,7 +2,7 @@ class StancesController < ApplicationController
   include AuthsHelper
 
   def index
-    @stances = Stance.all.order('created_at DESC')
+    @stances = Stance.all.map { |stance| stance.info }
   end
 
   def new
