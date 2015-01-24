@@ -35,16 +35,22 @@
       </ul>
 
       <!-- Right Nav Section -->
-      <ul class="right">
-        <!-- Search Bar -->
-        <li class="has-form">
-          <div class="row collapse">
-            <div class="large-12 small-9 columns">
-              <input type="text" placeholder="Search">
+        <ul class="right">
+          <!-- Search Bar -->
+            <li class="has-form">
+              <div class="row collapse">
+                <div class="large-8 small-9 columns">
+                  <%= form_tag "/search", method: :get do %>
+                  <%= text_field :words, {}, placeholder: "Search for stances, issues, positions" %>
+                </div>
+                <div class="large-4 small-3 columns">
+                  <%= submit_tag "Search", class: "alert button expand" %>
+                </div>
+                <% end %>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
     </section>
   </nav>
 
