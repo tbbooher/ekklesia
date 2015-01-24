@@ -1,3 +1,4 @@
+require 'faker'
 require 'open-uri'
 require 'json'
 
