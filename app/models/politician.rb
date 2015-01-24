@@ -1,6 +1,6 @@
-class Politician < ActiveRecord::Base
-  has_many :politician_stances
-  has_many :stances, through: :politician_stances
+class Legislator < ActiveRecord::Base
+  has_many :legislator_stances
+  has_many :stances, through: :legislator_stances
   has_many :bill_votes
   has_many :bills, through: :bill_votes
   has_many :terms
