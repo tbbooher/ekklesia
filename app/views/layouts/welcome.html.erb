@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <script src="http://listjs.com/no-cdn/list.js"></script>
+    <script src="http://listjs.com/no-cdn/list.fuzzysearch.js"></script>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to 'openPAC', root_path, method: :get %></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Left Nav Section -->
+      <ul class="left">
+      <% if !logged_in? %>
+        <li><%= link_to 'Login', login_path, method: :get %></li>
+        <li><%= link_to 'Signup', signup_path, method: :get %></li>
+        <li><%= link_to 'Take a Stance', login_path, method: :get %></li>
+      <% else %>
+        <li><%= link_to "#{current_user.first_name}'s Profile", user_path(current_user) %></li>
+        <li><%= link_to 'Logout', logout_path, method: :get %></li>
+        <li><%= link_to 'Take a Stance', new_stance_path, method: :get %></li>
+      <% end %>
+      </ul>
+    </section>
+  </nav>
+  <section role='main' class='scoll-container'>
+    <%= yield %>
+  </section>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>
+
+
+
