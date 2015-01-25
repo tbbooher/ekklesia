@@ -1,0 +1,5 @@
+<%= form_for upvote, url: '/upvotes/create' do |f| %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :stance_id, :value => @stance.id %>
+  <%= f.submit "Upvote Stance", class: "button small radius" %>
+<% end %>
