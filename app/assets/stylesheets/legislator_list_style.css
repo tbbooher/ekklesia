@@ -5,3 +5,12 @@
 #stance-create-search {
   font-size: 1.75em;
 }
+
+.zero-margin {
+  margin: 0 !important;
+}
+
+.legislator-pic {
+  height: 100px;
+  width: 100px;
+}
