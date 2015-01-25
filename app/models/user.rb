@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :stances
   has_many :upvotes
+  has_many :donations
 
   validates_uniqueness_of :username
   validates_presence_of :first_name, :last_name
