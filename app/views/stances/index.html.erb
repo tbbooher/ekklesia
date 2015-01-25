@@ -3,11 +3,6 @@
     <div class="sidebar">
       <nav>
         <ul class="side-nav">
-          <li class="heading">Sort</li>
-          <li><a href="/stances/recent">Recent</a></li>
-          <li><a href="/stances/popular">Popular</a></li>
-          <li class="divider"></li>
-          <li class="divider"></li>
           <li class="heading">Issues</li>
           <% @issues.each do |issue| %>
             <li><a href="/stances/<%= issue.description %>" data-search> <%= issue.description %> </a></li>

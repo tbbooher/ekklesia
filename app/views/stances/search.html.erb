@@ -3,12 +3,6 @@
       <div class="sidebar">
         <nav>
           <ul class="side-nav">
-            <li class="heading">Sort</li>
-            <li><a href="#" data-search>Recent</a></li>
-            <li><a href="#" data-search>Popular</a></li>
-            <li><a href="#" data-search>Alphabetical</a></li>
-            <li class="divider"></li>
-            <li class="divider"></li>
             <li class="heading">Issues</li>
             <% @issues.each do |issue| %>
               <li><a href="/search" paramIval="search[:<%= issue.description %>]"> <%= issue.description %> </a></li>

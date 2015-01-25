@@ -35,6 +35,7 @@ class StancesController < ApplicationController
   end
 
   def search
+    @issues = Issue.all
     @stances = Stance.search(params[:search][:words])
   end
 
