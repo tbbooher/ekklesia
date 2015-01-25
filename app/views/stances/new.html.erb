@@ -1,19 +1,25 @@
 <%= form_for @stance do |f| %>
   <div class="row">
-    <div class="large-6 columns">
-      When it comes to<%= collection_select :position, :issue_id, @issues,:id,:description, :include_blank => "Issue" %>
+    <div class="large-2 columns">
+      <h4>When it comes to</h4>
+    </div>
+    <div class="large-4 columns">
+      <%= collection_select :position, :issue_id, @issues,:id,:description, :include_blank => "Issue" %>
     </div>
 
-    <div class="large-6 columns">
-      I believe in<%= f.collection_select :position_id, @positions,:id,:description, include_blank: "Position" %>
+    <div class="large-2 columns">
+      <h4>I believe in</h4>
     </div>
+    <div class="large-4 columns">
+      <%= f.collection_select :position_id, @positions,:id,:description, include_blank: "Position" %>
+    </div>
+  </div>
 
-    <div class="row center-text">
-      <div class="large-5 small-centered columns">
-        <p><%= f.submit "Take a stance", class: "button small radius" %></p>
-      </div>
+  <div class="row center-text">
+    <div class="large-5 small-centered columns">
+      <p><%= f.submit "Take a stance", class: "button small radius" %></p>
     </div>
-  </div> 
+  </div>
 
   <div class="row">
     <div class="large-12 columns">
