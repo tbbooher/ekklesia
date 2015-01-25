@@ -1,3 +1,8 @@
 .center-text {
   text-align: center;
 }
+
+#no-stances-logo {
+  color: grey;
+  font-style: italic;
+}
