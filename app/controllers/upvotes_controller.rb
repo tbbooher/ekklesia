@@ -1,11 +1,17 @@
 class UpvotesController < ApplicationController
-
+  include AuthsHelper
+  include ErrorsHelper
   def create
+
     existing_upvote = Upvote.find_by(upvote_params)
+    
     upvote = Upvote.new(upvote_params)
-    if upvote.save
-      redirect_to stance_path(upvote.stance.id)
-    else
+    
+    if existing_upvote
+      redirect_to :back
+    elsif upvote.save
+      redirect_to stance_path(upvote.stance)
+    elsif !logged_in?
       set_error('Login to upvote.')
       redirect_to '/login'
     end

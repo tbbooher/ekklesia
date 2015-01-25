@@ -46,8 +46,8 @@ FactoryGirl.define do
   end
 
   factory :upvote do
-    user_id 1
-    stance_id 1
+    user_id { 1 + rand(User.count) }
+    stance_id { 1 + rand(Stance.count) }
   end
 
   factory :user do
