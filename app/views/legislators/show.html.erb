@@ -2,29 +2,30 @@
 
   <div class="row">
     <div class="large-6 columns">
-      <h1><img src="http://placehold.it/600x600&text=Image" /></h1>
+
+      <h1><img src="<%= @legislator.img_url %>" /></h1>
     </div>
 
     <div class="large-6 columns">
       <div class="panel">
         <ul class="no-bullet">
-          <li>@legislator.title</li>
-          <li>@legislator.first_name @legislator.last_name</li>
-          <li>@legislator.party</li>
-          <li>@legislator.district</li>
+          <li><%= @legislator.first_name  %></li>
+          <li><%= @legislator.last_name %></li>
+          <li><%= @legislator.party %></li>
+          <li><%= @legislator.district %></li>
         </ul>
       </div>
 
       <div class="panel">
-        <p>This is where a bio would go if we could find a better way of seeding our database with said information. I am really looking forward to getting all these parts of the project to start working in unison.</p>
+        <p>Legislator bio goes here</p>
       </div>
 
       <div class="panel">
         <ul class="no-bullet">
-          <li>@legislator.website</li>
-          <li>@legislator.phone</li>
-          <li>@legislator.fax</li>
-          <li>@legislator.party</li>
+          <li><%= @legislator.website %></li>
+          <li><%= @legislator.phone %></li>
+          <li><%= @legislator.fax %></li>
+          <li><%= @legislator.party %></li>
         </ul>
       </div>
 
