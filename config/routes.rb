@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/legislators/:id', to: 'legislators#show'
   get '/search', to: 'stances#search'
   post '/upvotes/create', to: 'upvotes#create'
+  get '/:select', to: 'stances#select'
 
   resources :users
   resources :stances
