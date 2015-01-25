@@ -20,7 +20,6 @@ class StancesController < ApplicationController
   end
 
   def create
-    legislator_ids = params[:legislator_id].select{ |k,v| v == "true" }.keys.map(&:to_i)
     @stance = current_user.stances.new(stances_params)
     if @stance.save
       redirect_to stance_path(@stance)
@@ -28,7 +27,10 @@ class StancesController < ApplicationController
       flash[:alert] = "ERROR: #{@stances.errors.full_messages.join("; ")}"
       render :new
     end
-    legislator_ids.each { |l_id| @stance.legislator_stances.create(legislator_id: l_id) }
+    if params[:legislator_id]
+      legislator_ids = params[:legislator_id].select{ |k,v| v == "true" }.keys.map(&:to_i)
+      legislator_ids.each { |l_id| @stance.legislator_stances.create(legislator_id: l_id) }
+    end
   end
 
   def destroy
