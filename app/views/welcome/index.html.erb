@@ -6,8 +6,15 @@
 </div>
 
 <div class="row">
-  <div class="large-8 columns large-centered">
-    <input id="homepage-search" type="text" placeholder="Find Stuff">
+  <div class="panel large-centered">
+    <div class="large-6 columns">
+      <%= form_tag "/search", method: :get do %>
+      <%= text_field :search, :words, placeholder: "Search for stances" %>
+    </div>
+    <div class="large-6 columns">
+      <%= submit_tag "Submit", class: "button small radius" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
