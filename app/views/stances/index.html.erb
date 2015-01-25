@@ -1,4 +1,22 @@
-<% @stances.each do |stance| %>
-  <%= stance[:author].first_name %>
-  <%= stance[:position_description] %>
-<% end %>
+<div class="row">
+  <div class="large-3 medium-4 columns">
+    <div class="sidebar">
+      <nav>
+        <ul class="side-nav">
+          <li class="heading">Issues</li>
+          <% @issues.each do |issue| %>
+            <li><a href="/stances/<%= issue.description %>" data-search> <%= issue.description %> </a></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="large-9 medium-8 columns">
+    <div class="small-block-grid-3">
+      <% @stances.each do |stance| %>
+        <%= render partial: "stances/details", locals: {stance: stance} %>
+      <% end %>
+    </div>
+  </div>
+</div>

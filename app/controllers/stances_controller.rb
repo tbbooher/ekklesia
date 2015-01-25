@@ -2,7 +2,8 @@ class StancesController < ApplicationController
   include AuthsHelper
 
   def index
-    @stances = Stance.all.map { |stance| stance.info }
+    @stances = Stance.all
+    @issues = Issue.all
   end
 
   def new
@@ -34,7 +35,14 @@ class StancesController < ApplicationController
   end
 
   def search
-    @stances = Stance.search(params[:search][:words]).map { |stance| stance.info }
+    @issues = Issue.all
+    @stances = Stance.search(params[:search][:words])
+  end
+
+  def select
+    @issues = Issue.all
+    @stances = Stance.search(params[:select])
+    render :index
   end
 
   private

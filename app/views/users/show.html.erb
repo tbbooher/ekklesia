@@ -1,65 +1,52 @@
-  <div class="row">
-        <div class="large-12 columns">
+<div class="row">
+  <div class="large-12 columns">
+    <!-- Header Content -->
+    <div class="row">
+      <div class="large-3 columns">
+        <img src="http://placehold.it/200x200&text=Image"><br>
+      </div>
 
-          <!-- Header Content -->
-
-            <div class="row">
-
-              <div class="large-3 columns">
-                <img src="http://placehold.it/200x200&text=Image"><br>
-              </div>
-
-
-              <div class="large-8 columns">
-                <div class="panel">
-                  <h3><%=@user.username%></h3>
-                  <h4><%=@user.city%>, @user.state</h4>
-                  <p><%=@user.about%></p>
-                </div>
-              </div>
-
-              <div class="large-2 columns">
-              </div>
-
-            </div>
-
-          <!-- End Header Content -->
-
-          <!-- Stances Users Taken Title -->
-
-          <div class="row">
-            <div class="large-12 columns center-text">
-              <h2>Stances You've Taken</h2>
-            </div>
-          </div>
-
-
-          <!-- Search Buttons -->
-          <div class="row">
-            <div class="medium-8 columns">
-              <dl class="sub-nav">
-                <dt>Sort:</dt>
-                <dd class="active"><a href="#">Recent</a></dd>
-                <dd><a href="#">Popular</a></dd>
-                <dd><a href="#">Alphabetical</a></dd>
-              </dl>
-            </div>
-          </div>
-          <!-- End Search Buttons -->
-
-          <!-- Stances -->
-
-            <div class="row">
-              <% @user.stances.each do |stance| %>
-                <%= render partial: "stances/details", locals: {stance: stance} %>
-              <% end %>
-            </div>
-
-          <!-- End Stance -->
-
-
-
-
+      <div class="large-8 columns">
+        <div class="panel">
+          <h3><%=@user.username%></h3>
+          <h4><%=@user.city%>, @user.state</h4>
+          <p><%=@user.about%></p>
         </div>
       </div>
+
+      <div class="large-2 columns">
+      </div>
+
+    </div>
+    <!-- End Header Content -->
+
+    <!-- Stances Users Taken Title -->
+    <div class="row">
+      <div class="large-12 columns center-text">
+        <h2>Stances You've Taken</h2>
+      </div>
+    </div>
+
+    <!-- Search Buttons -->
+    <div class="row">
+      <div class="medium-8 columns">
+        <dl class="sub-nav">
+          <dt>Sort:</dt>
+          <dd class="active"><a href="#">Recent</a></dd>
+          <dd><a href="#">Popular</a></dd>
+          <dd><a href="#">Alphabetical</a></dd>
+        </dl>
+      </div>
+    </div>
+    <!-- End Search Buttons -->
+
+    <!-- Stances -->
+    <div class="row">
+      <% @user.stances.each do |stance| %>
+        <%= render partial: "stances/details", locals: {stance: stance} %>
+      <% end %>
+    </div>
+    <!-- End Stance -->
+  </div>
+</div>
 
