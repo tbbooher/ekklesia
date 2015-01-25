@@ -17,6 +17,7 @@ class StancesController < ApplicationController
     @stance = Stance.find(params[:id])
     @position = Position.find(@stance.position_id)
     @author = User.find(@stance.user_id)
+    @upvote = Upvote.new
   end
 
   def create
