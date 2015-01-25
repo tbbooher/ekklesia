@@ -1,10 +1,48 @@
-  When it comes to
-  <%= collection_select :position, :issue_id, @issues,:id,:description, :include_blank => "Issue" %>
-
 <%= form_for @stance do |f| %>
-  I believe in
-  <%= f.collection_select :position_id, @positions,:id,:description, include_blank: "Position" %>
-  <%= f.submit "Take a stance" %>
+  <div class="row">
+    <div class="large-6 columns">
+      When it comes to<%= collection_select :position, :issue_id, @issues,:id,:description, :include_blank => "Issue" %>
+    </div>
+
+    <div class="large-6 columns">
+      I believe in<%= f.collection_select :position_id, @positions,:id,:description, include_blank: "Position" %>
+    </div>
+
+    <div class="row center-text">
+      <div class="large-5 small-centered columns">
+        <p><%= f.submit "Take a stance", class: "button small radius" %></p>
+      </div>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div id="legislator-list">
+        <div class="row">
+          <div class="large-12 columns">
+            <div class="radius panel center-text">
+              <form>
+                <input id="stance-create-search" class="large-10 small-8 fuzzy-search" placeholder='Search'/>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+          <div class="panel" id="legislator-list-panel">
+            <ul class="small-block-grid-8 list">  
+              <% @legislators.each do |legislator| %>
+              <li>
+                <img title="<%= legislator.name %>" id="<%= legislator.id %>" src="http://placehold.it/100x100&text=Thumbnail" class="legislator-pic" />
+                <p class="name"><%= legislator.name %></p>
+
+                <%= check_box "legislator_id", legislator.id, {class: "legislator-checkbox"}, 'true', 'false' %>
+              
+              </li>
+              <% end %>
+            </ul>
+          </div>  
+      </div>
+    </div>
+  </div>
 <% end %>
 
-<%= select :legislator_stances, :legislator_id, @legislators.collect {|p| [ p.name, p.id ] }, { prompt: "Please select"}, { multiple: true } %>
