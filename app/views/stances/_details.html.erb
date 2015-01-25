@@ -1,9 +1,10 @@
 <div class="large-4 small-6 columns">
-  <div class="panel">
-    <img src="http://placehold.it/50x50&text=Thumbnail">
-    <img src="http://placehold.it/50x50&text=Thumbnail">
+  <a href="/stances/<%= stance.id %>">
+    <div class="stance-detail panel">
+      <p><%= stance.user.first_name %> <%= stance.user.last_name %> (<%= stance.user.username %>) believes that <%= stance.legislators.count %> legislators support <%= stance.position.description %></p>
 
-    <p><%= stance.user.username %> believes that <%= stance.legislators.count %> legislators support <%= stance.position.description %></p>
-
-  </div>
+      <img src="http://placehold.it/50x50&text=Thumbnail">
+      <img src="http://placehold.it/50x50&text=Thumbnail">
+    </div>
+  </a>
 </div>
