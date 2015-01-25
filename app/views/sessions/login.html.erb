@@ -1,11 +1,24 @@
-<div class='container'>
-  <h2>Log in</h2>
+<div class="center-text">  
+  <h2>Login</h2>
   <%= display_error %>
-  <%= form_for :user, url: '/login'  do |f| %>
-    <p><%= f.email_field :email, placeholder: "Email" %></p>
-    <p><%= f.password_field :password, placeholder: "Password" %></p>
-    <p><%= f.submit "Log in" %></p>
-
-  <% end %>
 </div>
+
+<%= form_for :user, url: '/login'  do |f| %>
+<div class="row">
+  <div class="large-5 large-centered columns">
+    <p><%= f.email_field :email, placeholder: "Email" %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="large-5 large-centered columns">
+    <p><%= f.password_field :password, placeholder: "Password" %></p>
+  </div>
+</div>
+<div class="row center-text">
+  <div class="large-5 small-centered columns">
+    <p><%= f.submit "Log in", class: "button small radius" %></p>
+  </div>
+</div>
+<% end %>
+
 
