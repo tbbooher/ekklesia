@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
-
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
+    <%= stripe_javascript_tag %>
     <script src="http://listjs.com/no-cdn/list.js"></script>
     <script src="http://listjs.com/no-cdn/list.fuzzysearch.js"></script>
     <%= csrf_meta_tags %>
