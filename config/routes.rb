@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   get '/search', to: 'stances#search'
-  get '/stances/:select', to: 'stances#select'
+  get '/stances/issues/:select', to: 'stances#select'
 
   resources :users
 end
