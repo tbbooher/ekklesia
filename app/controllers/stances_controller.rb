@@ -2,7 +2,8 @@ class StancesController < ApplicationController
   include AuthsHelper
 
   def index
-    @stances = Stance.all.map { |stance| stance.info }
+    @stances = Stance.all.sort_by("created_at DESC")
+    @issues = Issue.all
   end
 
   def new
