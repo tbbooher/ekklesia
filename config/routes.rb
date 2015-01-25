@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   post '/upvotes/create', to: 'upvotes#create'
 
   get '/search', to: 'stances#search'
-  resources :stances
+  resources :stances do
+    get '/donations', to: 'donations#show'
+    post '/donations/create', to: 'donations#create'
+  end
   get '/stances/:select', to: 'stances#select'
+  get '/stances/:id/donation', to: 'stances#donation'
 
   resources :users
 end
