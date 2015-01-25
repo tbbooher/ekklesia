@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150125175747) do
     t.string "youtube_id"
     t.string "facebook_id"
     t.string "district"
+    t.string "img_url"
   end
 
   create_table "positions", force: :cascade do |t|

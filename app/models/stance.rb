@@ -7,6 +7,8 @@ class Stance < ActiveRecord::Base
 
   validates_presence_of :user_id, :position_id
 
+  scope :sort_by_upvote, -> { joins(:upvote).order("count DESC") }
+
   def info
     { position_description: Position.find(position_id).description,
     author: User.find(user_id) }
