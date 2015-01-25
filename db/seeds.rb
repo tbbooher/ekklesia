@@ -126,8 +126,18 @@ def insert_details
     end
   end
 end
+
+def insert_image_url
+  Legislator.all.each do |legislator|
+    legislator.update(
+      img_url: "http://theunitedstates.io/images/congress/original/#{legislator.bioguide_id}.jpg"
+      )
+  end
+end
 insert_basic_legislators
 insert_details
+insert_image_url
+
 
 50.times do
   User.create(first_name: Faker::Name.name, last_name: Faker::Name.name, email: Faker::Internet.safe_email, username: Faker::Internet.user_name, password:'a')
