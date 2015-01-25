@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   get '/legislators/:id', to: 'legislators#show'
   post '/upvotes/create', to: 'upvotes#create'
 
-  get '/search', to: 'stances#search'
   resources :stances do
     get '/donations', to: 'donations#show'
-    post '/donations/create', to: 'donations#create'
+    post '/donations', to: 'donations#create'
   end
+
+  get '/search', to: 'stances#search'
   get '/stances/:select', to: 'stances#select'
-  get '/stances/:id/donation', to: 'stances#donation'
 
   resources :users
 end

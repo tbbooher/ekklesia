@@ -40,6 +40,11 @@
 
   <%= render partial: "upvotes/new", locals: {upvote: @upvote} %>
   <!-- End Sidebar -->
+
+  <%= form_tag stance_donations_path(@stance), method: :get do %>
+    <%= submit_tag "Donate", class: "button radius" %>
+  <% end %>
+
 </div>
 
 
