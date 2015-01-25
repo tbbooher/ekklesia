@@ -18,6 +18,7 @@ class CreateLegislators < ActiveRecord::Migration
       t.string :youtube_id
       t.string :facebook_id
       t.string :district
+      t.string :img_url
     end
   end
 end
