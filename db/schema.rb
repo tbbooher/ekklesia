@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125151117) do
+ActiveRecord::Schema.define(version: 20150125175747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20150125151117) do
     t.string "youtube_id"
     t.string "facebook_id"
     t.string "district"
-    t.string "img_url"
   end
 
   create_table "positions", force: :cascade do |t|
