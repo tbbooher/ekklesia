@@ -4,6 +4,7 @@ class Stance < ActiveRecord::Base
   has_many :upvotes
   has_many :legislator_stances
   has_many :legislators, through: :legislator_stances
+  has_many :donations
 
   validates_presence_of :user_id, :position_id
 
