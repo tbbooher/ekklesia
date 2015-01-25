@@ -164,3 +164,7 @@ end
 Stance.all.each do |stance|
   (1 + rand(10)).times { stance.legislators << Legislator.find(1 + rand(Legislator.count)) }
 end
+
+500.times do
+  Upvote.create(user_id: (1 + rand(User.count)), stance_id: (1 + rand(Stance.count)))
+end
