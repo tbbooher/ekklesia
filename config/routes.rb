@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   post '/upvotes/create', to: 'upvotes#create'
 
   get '/search', to: 'stances#search'
+  resources :stances
   get '/stances/:select', to: 'stances#select'
-  get '/stances/:sort', to: 'stances#sort'
 
   resources :users
-  resources :stances
 end
