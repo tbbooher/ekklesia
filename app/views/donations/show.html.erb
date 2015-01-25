@@ -1,0 +1,14 @@
+<ul>
+  <% @legislators.each do |legislator| %>
+    <%= legislator.first_name %> <%= legislator.last_name %>
+  <% end %>
+</ul>
+<%= form_for :donation, html: {class: "donate-form"} do |f|%>
+  <% @legislators.each do |legislator| %>
+    <%= f.hidden_field :legislator_ids, :multiple => true, :value => legislator.id %>
+  <% end %>
+  <%= f.text_field :amount, placeholder: "Amount" %>
+  <%= f.submit "Donate"%>
+<% end %>
+
+
