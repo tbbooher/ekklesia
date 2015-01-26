@@ -8,6 +8,14 @@ class DonationsController < ApplicationController
   end
 
   def create
+    token = params[:stripeToken]
+    total = params[:donation]["amount"].to_i * 100
+    @charge = Stripe::Charge.create(
+      :amount => total,
+      :currency => "usd",
+      :card => token,
+      :description => "something about your customer"
+    )
   end
 
   private
