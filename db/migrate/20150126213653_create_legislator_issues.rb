@@ -3,7 +3,7 @@ class CreateLegislatorIssues < ActiveRecord::Migration
     create_table :legislator_issues do |t|
       t.references :legislator
       t.references :issue
-      t.decimal :issue_score
+      t.float :issue_score
     end
   end
 end
