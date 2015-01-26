@@ -8,6 +8,13 @@
     <%= f.hidden_field :legislator_ids, :multiple => true, :value => legislator.id %>
   <% end %>
   <%= f.text_field :amount, placeholder: "Amount" %>
+    <input data-stripe="number"/>
+    cvc
+    <input data-stripe="cvc"/>
+    exp-month
+    <input data-stripe="exp-month"/>
+    exp-year
+    <input data-stripe="exp-year"/>
   <%= f.submit "Donate"%>
 <% end %>
 
