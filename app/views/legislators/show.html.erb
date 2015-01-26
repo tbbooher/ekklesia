@@ -9,10 +9,7 @@
     <div class="large-6 columns">
       <div class="panel">
         <ul class="no-bullet">
-          <li><%= @legislator.first_name  %></li>
-          <li><%= @legislator.last_name %></li>
-          <li><%= @legislator.party %></li>
-          <li><%= @legislator.district %></li>
+          <h3><%= @legislator.name  %> - <%= @legislator.party %></h3>
         </ul>
       </div>
 
@@ -22,10 +19,10 @@
 
       <div class="panel">
         <ul class="no-bullet">
-          <li><%= @legislator.website %></li>
-          <li><%= @legislator.phone %></li>
-          <li><%= @legislator.fax %></li>
-          <li><%= @legislator.party %></li>
+          <li>Website: <%= @legislator.website %></li>
+          <li>Phone: <%= @legislator.phone %></li>
+          <li>Fax: <%= @legislator.fax %></li>
+          <li>Party: <%= @legislator.party %></li>
         </ul>
       </div>
 
