@@ -15,6 +15,51 @@
  *= require foundation_and_overrides
 
  */
-.centered {
-  text-align: center;
+.container {
+  margin-top: 2em;
+}
+
+.top-bar {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+font-family: "Roboto Slab", sans-serif;
+font-weight: bold;
+}
+
+body {
+font-family: 'Roboto'
+}
+
+body{
+  font-family: 'Montserrat', sans-serif;
+  background: black url(3.jpg) no-repeat;
+  background-size: 100vw 100vh;
+}
+
+#slogan {
+  color: #2D4372;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  color: #ADBE6C;
+}
+
+#text-red {
+  color: #B15234;
+}
+
+#text-blue {
+  color: #2D4372;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+#nav-search {
+
 }

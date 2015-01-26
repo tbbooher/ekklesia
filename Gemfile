@@ -37,6 +37,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'google-webfonts-rails'
+
 group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views

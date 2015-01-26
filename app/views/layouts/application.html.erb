@@ -10,6 +10,7 @@
     <script src="http://listjs.com/no-cdn/list.js"></script>
     <script src="http://listjs.com/no-cdn/list.fuzzysearch.js"></script>
     <%= csrf_meta_tags %>
+    <%= google_webfonts_init({google: ['Roboto Slab', 'Roboto']}) %>
   </head>
 
   <body>
@@ -39,13 +40,13 @@
         <ul class="right">
           <!-- Search Bar -->
             <li class="has-form">
-              <div class="row collapse">
+              <div class="row collapse ">
                 <div class="large-8 small-9 columns">
                   <%= form_tag "/search", method: :get do %>
-                  <%= text_field :search, :words, placeholder: "Search for stances" %>
+                  <%= text_field :search, :words, size: 60, placeholder: "Search for stances" %>
                 </div>
                 <div class="large-4 small-3 columns">
-                  <%= submit_tag "Search", class: "alert button expand" %>
+                  <%= submit_tag "Search", class: "alert button" %>
                 </div>
                 <% end %>
               </div>
@@ -55,7 +56,9 @@
     </section>
   </nav>
   <section role='main' class='scoll-container'>
-    <%= yield %>
+    <div class='container'>
+      <%= yield %>
+    </div>
   </section>
     <%= javascript_include_tag "application" %>
   </body>
