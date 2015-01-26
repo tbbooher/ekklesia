@@ -1,25 +1,31 @@
 <div class="row">
   <div class="large-12 columns center-text">
-      <h1>openPAC</h1>
-      <h4>State your position. Take a stance.</h4>
+    <h1><span class='text-blue'>open</span><span class='text-red'>PAC</span></h1>
+    <p id='slogan'>Find legislators who support your position. <br><span id='text-red'></span>.</p>
   </div>
 </div>
-
 <div class="row">
-  <div class="panel large-centered">
-    <div class="large-6 columns">
+  <div class="large-7 large-centered columns">
+    <div class="large-11 columns inline">
       <%= form_tag "/search", method: :get do %>
-      <%= text_field :search, :words, placeholder: "Search for stances" %>
+      <%= text_field :search, :words, placeholder: "Taxation, Immigration..", class: "radius" %>
     </div>
-    <div class="large-6 columns">
-      <%= submit_tag "Submit", class: "button small radius" %>
+    <div class="large-1 columns inline">
+      <%= submit_tag "Submit", class: "button tiny radius" %>
       <% end %>
     </div>
   </div>
 </div>
-
 <div class="row">
-  <div class="large-10 columns large-centered">
-    <%= image_tag("mapbydistrict.png") %>
+  <div class="large-12 columns center-text">
+    <% @issues.each do |issue| %>
+    <em><a href="/stances/issues/<%= issue.description %>" data-search> <%= issue.description %></a></em>&nbsp&nbsp
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-6 large-centered columns">
+    <hr>
+    <div class="large-centered"><%= render partial: 'welcome/map' %></div>
   </div>
 </div>
