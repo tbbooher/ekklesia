@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_presence_of :first_name, :last_name
   validates :email, presence: true, uniqueness: true, format: email_format
+
+  def fetch_stances(num)
+    stances.shuffle.slice(0..num)
+  end
 end
