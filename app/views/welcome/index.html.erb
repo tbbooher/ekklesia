@@ -1,16 +1,16 @@
 <div class="row">
   <div class="large-12 columns center-text">
-    <h1><span id='text-blue'>open</span><span id='text-red'>PAC</span></h1>
-    <p id='slogan'>State your position. <span id='text-red'>Take a stance</span>.</p>
+    <h1><span class='text-blue'>open</span><span class='text-red'>PAC</span></h1>
+    <p id='slogan'>Find legislators who support your position. <br><span id='text-red'></span>.</p>
   </div>
 </div>
 <div class="row">
-  <div class="large-6 large-centered columns">
-    <div class="large-10 columns inline">
+  <div class="large-7 large-centered columns">
+    <div class="large-11 columns inline">
       <%= form_tag "/search", method: :get do %>
-      <%= text_field :search, :words, placeholder: "search your issue", class: "radius" %>
+      <%= text_field :search, :words, placeholder: "Taxation, Immigration..", class: "radius" %>
     </div>
-    <div class="large-2 columns inline">
+    <div class="large-1 columns inline">
       <%= submit_tag "Submit", class: "button tiny radius" %>
       <% end %>
     </div>
@@ -19,12 +19,11 @@
 <div class="row">
   <div class="large-12 columns center-text">
     <% @issues.each do |issue| %>
-    <em><a {href="/stances/issues/<%= issue.description %>" data-search> <%= issue.description %></a></em>&nbsp&nbsp
+    <em><a href="/stances/issues/<%= issue.description %>" data-search> <%= issue.description %></a></em>&nbsp&nbsp
     <% end %>
   </div>
 </div>
 <div class="row">
-  <br>
   <div class="large-6 large-centered columns">
     <hr>
     <div class="large-centered"><%= render partial: 'welcome/map' %></div>

@@ -18,11 +18,11 @@
 
     </div>
     <!-- End Header Content -->
-
+    <hr>
     <!-- Stances Users Taken Title -->
     <div class="row">
       <div class="large-12 columns center-text">
-        <h2>Stances You've Taken</h2>
+        <h2><%=@user.first_name%>'s Stances</h2>
       </div>
     </div>
 
@@ -37,22 +37,21 @@
         </dl>
       </div>
     </div>
-    <!-- End Search Buttons -->
-
-    <% if @user.stances.count == 0 %>
-      <div class="row center-text">
-        <h1 id="no-stances-logo"><%=@user.username%> hasn't taken any stances.</h1>
-      </div>
-
-    <% else %>
-
-    <% end %>
 
     <!-- Stances -->
     <div class="row">
-      <% @user.stances.each do |stance| %>
-        <%= render partial: "stances/details", locals: {stance: stance} %>
+      <% if @user.stances.count == 0 %>
+        <div class="row center-text">
+          <h3 id="no-stances-logo"><%=@user.username%> hasn't taken any stances.</h3>
+        </div>
       <% end %>
+
+      <div class="row">
+        <% @user.fetch_stances(2).each do |stance| %>
+          <div class="large-6 columns radius"
+          <%= render partial: "stances/details", locals: {stance: stance} %>
+        <% end %>
+      </div>
     </div>
     <!-- End Stance -->
   </div>

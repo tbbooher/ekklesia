@@ -3,9 +3,9 @@
       <div class="sidebar">
         <nav>
           <ul class="side-nav">
-            <li class="heading">Issues</li>
+            <h3 class="heading">Some Issues</h3>
             <% @issues.each do |issue| %>
-              <li><a href="/search" paramIval="search[:<%= issue.description %>]"> <%= issue.description %> </a></li>
+              <li><a href="#" paramIval="search[:<%= issue.description %>]"> <%= issue.description %> </a></li>
             <% end %>
           </ul>
         </nav>

@@ -10,7 +10,7 @@
     <script src="http://listjs.com/no-cdn/list.js"></script>
     <script src="http://listjs.com/no-cdn/list.fuzzysearch.js"></script>
     <%= csrf_meta_tags %>
-    <%= google_webfonts_init({google: ['Roboto Slab', 'Roboto']}) %>
+    <%= google_webfonts_init({google: ['Montserrat', 'Roboto Slab', 'Roboto']}) %>
   </head>
 
   <body>
@@ -43,10 +43,10 @@
               <div class="row collapse ">
                 <div class="large-8 small-9 columns">
                   <%= form_tag "/search", method: :get do %>
-                  <%= text_field :search, :words, size: 60, placeholder: "Search for stances" %>
+                  <%= text_field :search, :words, size: 60, class:"radius", placeholder: "search your issue" %>
                 </div>
                 <div class="large-4 small-3 columns">
-                  <%= submit_tag "Search", class: "alert button" %>
+                  <%= submit_tag "Search", class: "button radius success" %>
                 </div>
                 <% end %>
               </div>

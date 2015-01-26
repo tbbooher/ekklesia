@@ -19,13 +19,17 @@
   margin-top: 2em;
 }
 
-.top-bar {
+.panel {
+  background-color: white;
+}
+p {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
-font-family: "Roboto Slab", sans-serif;
-font-weight: bold;
+h1, h2, h3, h4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: #A9BC64;
 }
 
 body {
@@ -34,26 +38,39 @@ font-family: 'Roboto'
 
 body{
   font-family: 'Montserrat', sans-serif;
-  background: black url(3.jpg) no-repeat;
+  background-color: #FDF8F2;
   background-size: 100vw 100vh;
 }
 
+.card {
+
+}
+
 #slogan {
-  color: #2D4372;
+  color: #A9BC64;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
 }
 
 a {
-  color: #ADBE6C;
+  color: #2D4372;
+  font-family: "Roboto Slab", sans-serif;
 }
 
-#text-red {
+a:hover {
   color: #B15234;
 }
 
-#text-blue {
+.text-red {
+  color: #B15234;
+}
+
+.text-blue {
   color: #2D4372;
+}
+
+.text-green {
+  color: #A9BC64;
 }
 
 h1 {
