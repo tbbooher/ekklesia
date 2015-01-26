@@ -6,6 +6,8 @@ class Legislator < ActiveRecord::Base
   has_many :terms
   has_one :alias
   has_many :donations
+  has_many :legislator_issues
+  has_many :issues, through: :legislator_issues
 
   validates_uniqueness_of :bioguide_id
   validates_presence_of :bioguide_id, :first_name, :last_name
