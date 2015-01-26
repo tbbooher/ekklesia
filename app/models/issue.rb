@@ -1,5 +1,7 @@
 class Issue < ActiveRecord::Base
   has_many :positions
+  has_many :legislator_issues
+  has_many :legislators, through: :legislator_positions
 
   validates_presence_of :description
 
