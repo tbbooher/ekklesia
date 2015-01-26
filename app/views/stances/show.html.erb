@@ -29,8 +29,12 @@
     </ul>
   </div>
 
-  <%= render partial: "upvotes/new", locals: {upvote: @upvote} %>
-  <!-- End Sidebar -->
+  <% if logged_in? %>
+    <%= render partial: "upvotes/new", locals: {upvote: @upvote} %>
+  <% else %>
+    <h4>Sign in to upvote.</h4>
+  <% end %>
+    <!-- End Sidebar -->
 
   <%= form_tag stance_donations_path(@stance), method: :get do %>
     <%= submit_tag "Donate", class: "button radius" %>
