@@ -12,6 +12,7 @@
       </div>
     </div>
     <div class="large-9 medium-8 columns">
+      <h3>Stances other users have taken on the issue of <span class='text-red'><%= params[:search][:words] %></span>:</h3>
     <div class="small-block-grid-3">
       <% @stances.each do |stance| %>
         <%= render partial: "stances/details", locals: {stance: stance} %>

@@ -8,10 +8,10 @@
 <div class="row">
   <div class="large-7 columns">
     <div class="panel">
-      <ul class="clearing-thumbs small-block-grid-4" data-clearing>
+      <ul class="small-block-grid-4">
         <% @stance.legislators.each do |legislator| %>
-        <%= legislator.name %><br>
-          <li><img src="<%= legislator.img_url %>" /></li>
+
+          <li><img src="<%= legislator.img_url %>"><a href="/legislators/<%= legislator.id %>"><%= legislator.name %></a><br></img></li>
         <% end %>
       </ul>
     </div>
