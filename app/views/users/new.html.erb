@@ -1,59 +1,16 @@
-<div class="center-text">  
-  <h2>Signup</h2>
+<div class="center-text">
+  <h2>openPAC</h2>
   <%= display_error %>
 </div>
-
 <div class="panel large-4 large-centered columns">
-	<%= form_for @user do |f| %>
-		<div class="row">
-	    <div class="large-6 columns">
-	      <label>First name
-	        <%= f.text_field :first_name, placeholder: "John" %>
-	      </label>
-	    </div>
-
-	    <div class="large-6 columns">
-	      <label>Last name
-	        <%= f.text_field :last_name, placeholder: "Doe" %>
-	      </label>
-	    </div>
-  	</div>
-
-  	<div class="row">
-  		<div class="large-6 columns">
-	      <label>Email
-	        <%= f.email_field :email, placeholder: "johndoe@email.com" %>
-	      </label>
-	    </div>
-
-	    <div class="large-6 columns">
-	      <label>Username
-	      	<%= f.text_field :username, placeholder: "johndoe44" %>
-	      </label>
-	    </div>
-  	</div>
-
-  	<div class="row">
-  	
-			<div class="large-6 columns">
-	      <label>Password
-	        <%= f.password_field :password, placeholder: "Password" %>
-	      </label>
-    	</div>
-    
-			<div class="large-6 columns">
-	      <label>Confirm Password
-	        <%= f.password_field :password, placeholder: "Confirm Password" %>
-	      </label>
-    	</div>
-  	</div>
-
-		
+  <div class="large-centered columns">
+    <%= form_for @user do |f| %>
+    <%= f.text_field :username, placeholder: "Username" %>
+    <%= f.password_field :password, placeholder: "Password" %>
+    <%= f.password_field :password, placeholder: "Confirm Password" %>
+  </div>
+  <div class="large-centered columns">
+    <%= f.submit "Signup", class: "button expand" %>
+  </div>
 </div>
-
-		<div class="row center-text">
-  		<div class="large-5 small-centered columns">
-    		<%= f.submit "Signup", class: "button small radius" %>
-  		</div>
-		</div>
-	<% end %>
+<% end %>
