@@ -1,7 +1,7 @@
 <div class="row">
   <div class="large-6 columns">
     <h2><span class='text-blue'><a href="/users/<%=@author.id%>"><%= @author.username %></a></span> believes in <br><span class='text-red'><%= @position.description %></span></h2>
-    <h6><%= link_to @position.issue.description %></h6>
+    <h6><a href="/stances/issues/<%= @position.issue.description %> "><%= @position.issue.description %></a></h6>
   </div>
 </div>
 
