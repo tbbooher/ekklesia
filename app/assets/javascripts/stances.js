@@ -1,6 +1,8 @@
-$('.side-nav').on("click", "a", updateStanceView);
-$('#donation_amount').on('keyup', distribute)
-$('.each_amount').on('keyup', updateTotal)
+$(document).ready(function(){
+  $('.side-nav').on("click", "a", updateStanceView);
+  $('#donation_amount').on('keyup', distribute)
+  $('.each_amount').on('keyup', updateTotal)
+})
 
 var distribute = function(event){
     var totalAmount = $(event.target).val()
