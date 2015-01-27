@@ -1,0 +1,26 @@
+  <div class="row">
+    <div class="large-12 columns">
+      <div id="legislator-list">
+        <div class="row">
+          <div class="large-12 columns">
+            <div class="radius panel center-text">
+              <form>
+                <input id="stance-create-search" class="large-10 small-8 fuzzy-search" placeholder='search legislators by name'/>
+              </form>
+            </div>
+          </div>
+        </div>
+
+          <div class="panel" id="">
+            <ul class="small-block-grid-8 list">
+              <% @legislators.each do |legislator| %>
+              <li>
+                <img title="<%= legislator.name %>" id="<%= legislator.id %>" src="<%= legislator.img_url %>" class="legislator-pic" />
+                <a href="/legislators/<%= legislator.id %>"><p class="name"><%= legislator.name %></p></a>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+      </div>
+    </div>
+  </div>
