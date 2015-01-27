@@ -11,12 +11,5 @@
       </nav>
     </div>
   </div>
-
-  <div class="large-9 medium-8 columns">
-    <div class="small-block-grid-3">
-      <% @stances.each do |stance| %>
-        <%= render partial: "stances/details", locals: {stance: stance} %>
-      <% end %>
-    </div>
-  </div>
+  <%= render partial: "stances/search_results", locals: {stances: @stances} %>
 </div>
