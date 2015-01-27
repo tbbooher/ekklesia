@@ -8,6 +8,7 @@ class CreateBills < ActiveRecord::Migration
       t.string :summary
       t.string :summary_short
       t.string :congress_url
+      t.references :issue
     end
   end
 end
