@@ -2,7 +2,7 @@ class StancesController < ApplicationController
   include AuthsHelper
 
   def index
-    @stances = Stance.all
+    @stances = Stance.all.order("created_at DESC")[0..20]
     @issues = Issue.all
   end
 
