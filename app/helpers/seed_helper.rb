@@ -215,7 +215,8 @@ module SeedHelper
 			Bill.all.each do |bill|
 	      self.get_votes_by_bill_id(bill.bill_id).each do |roll|
 	      	if bill.breakdowns.count < 1
-		       	vote_breakdown = self.get_voter_breakdown(roll["roll_id"])	       
+	      		bill.update(roll_id: roll["roll_id"])
+		       	vote_breakdown = self.get_voter_breakdown(bill.roll_id)	       
 		       	Breakdown.create(r_yea: vote_breakdown[0]["breakdown"]["party"]["R"]["Yea"], r_nay: vote_breakdown[0]["breakdown"]["party"]["R"]["Nay"], d_yea: vote_breakdown[0]["breakdown"]["party"]["D"]["Yea"], d_nay: vote_breakdown[0]["breakdown"]["party"]["D"]["Nay"], bill_id: bill.id)
 	      	end
 		    end
@@ -223,16 +224,14 @@ module SeedHelper
 		end
 
 		def self.fetch_legislator_votes_for_each_bill		
-	    Bill.all.each do |bill|
-	      self.get_votes_by_bill_id(bill.bill_id).each do |roll|
-    			Legislator.all.each do |legislator|
-    				result = self.get_voter_results(roll["roll_id"])[0]["voters"][legislator.bioguide_id]
-	        	if result != nil && result["vote"] != "Not Voting"
-	        		p BillVote.create(bill_id: bill.id, legislator_id: legislator.id, result: result["vote"])
-	        	else
-	        		p "Voting Record Not Found"
-	        	end
-		      end
+	    Bill.all.each do |bill| 
+  			Legislator.all.each do |legislator|
+  				result = self.get_voter_results(bill.roll_id)[0]["voters"][legislator.bioguide_id]
+        	if result != nil && result["vote"] != "Not Voting"
+        		p BillVote.create(bill_id: bill.id, legislator_id: legislator.id, result: result["vote"])
+        	else
+        		p "Voting Record Not Found"
+        	end    
 	      end
 	    end
 		end
