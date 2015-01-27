@@ -1,24 +1,45 @@
-<%= render :partial => 'stripe/js' %>
-<%= form_for :donation, html: {class: "donate-form"} do |f|%>
-<div class="large-7 medium-8 columns">
-  <div class="large-7 medium-8 columns">
-    <h2>Total amount</h2>
+<div class="row">
+  <%= render :partial => 'stripe/js' %>
+  <%= form_for :donation, html: {class: "donate-form"} do |f|%>
+  <div class="large-7 medium-7 columns" align="right">
+    <div class="row">
+      <div class="large-5 medium-5 columns">
+        <h2>Total amount $</h2>
+      </div>
+      <div class="large-4 medium-4 columns end">
+      <%= f.text_field :amount, id: "total_amount" %>
+      </div>
+    </div>
+    <% @legislators.each do |legislator| %>
+    <div class="row">
+      <div class="large-5 medium-5 columns">
+        <h3><%= legislator.first_name %> <%= legislator.last_name %></h3>
+      </div>
+      <%= f.hidden_field :legislator_ids, :multiple => true, :value => legislator.id %>
+      <% if logged_in? %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      <% else %>
+        <%= f.hidden_field :user_id, :value => nil %>
+      <% end %>
+      <div class="large-4 medium-4 columns end">
+      <%= f.text_field :amounts, :multiple => true, class: "each_amount" %>
+      </div>
+    </div>
+    <% end %>
   </div>
-  <%= f.text_field :amount, placeholder: "Total amount" %>
-  <% @legislators.each do |legislator| %>
-    <h3><%= legislator.first_name %> <%= legislator.last_name %></h3>
-    <%= f.hidden_field :legislator_ids, :multiple => true, :value => legislator.id %>
-    <%= f.text_field :amounts, :multiple => true, class: "each_amount" %>
+  <div class="large-4 medium-4 columns">
+    <div class="row">
+      <input data-stripe="number" placeholder="Card number" class="large-9 medium-9 columns"/>
+      <input data-stripe="cvc" placeholder="CVC" class="large-3 medium-3 columns" />
+    </div>
+    <div class="row">
+      <h4 class="large-6 medium-6 columns">Expiration date</h4>
+      <input data-stripe="exp-month" placeholder="month" class="large-3 medium-3 columns"/>
+      <input data-stripe="exp-year" placeholder="year" class="large-3 medium-3 columns" />
+    </div>
+  </div>
+  <div class="row centered">
+    <%= f.submit "Donate", class: "button radius"%>
+  </div>
   <% end %>
 </div>
-<div class="large-3 medium-4 columns">
-  <input data-stripe="number"/>
-  cvc
-  <input data-stripe="cvc"/>
-  exp-month
-  <input data-stripe="exp-month"/>
-  exp-year
-  <input data-stripe="exp-year"/>
-</div>
-  <%= f.submit "Donate"%>
-<% end %>
