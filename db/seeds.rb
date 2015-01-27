@@ -36,7 +36,6 @@ User.all.each do |user|
   50.times { user.stances.create(position_id: rand(Position.count) + 1) }
 end
 
-
 Stance.all.each do |stance|
   rand(50).times do
     stance.legislator_stances.create(legislator_id: (1 + rand(Legislator.count)))
