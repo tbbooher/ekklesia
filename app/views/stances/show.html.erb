@@ -15,7 +15,7 @@
         <% end %>
       </ul>
     </div>
-      <% if @author == current_user %>
+      <% if logged_in? && (@author == current_user) %>
         <%= button_to "Delete", @stance, method: :delete, class: "button radius" %>
       <% end %>
   </div>
