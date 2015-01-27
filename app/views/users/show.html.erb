@@ -7,7 +7,7 @@
           <h3><%=@user.username%></h3>
           <h4><%=@user.city%>, <%= @user.state %></h4>
           <p><%=@user.about%></p>
-          <% if current_user.id == @user.id %>
+          <% if logged_in? && (current_user.id == @user.id) %>
             <h6><%= link_to 'Edit Profile', edit_user_path, method: :get %></h6>
           <% end %>
         </div>
