@@ -169,17 +169,6 @@ module SeedHelper
 
 	end
 
-	module Bills
-
-	end
-
-	module Votes
-
-	end
-
-	module Commities
-
-	end
 
 	module AlgorithmData
 		def self.get_list_of_bills_by_keyword(keyword)
@@ -214,33 +203,35 @@ module SeedHelper
 	        issue.bills.create(bill_id: bill["bill_id"], official_title: bill["official_title"], congress_url: bill["urls"]["congress"], popular_title: ["popular_title"])  
 	    	end
 			end
+			fp = Issue.find_by(description: "foreign%20policy")
+			gc = Issue.find_by(description: "gun%20control")
+			ge = Issue.find_by(description: "gender%20equality")
+			fp.update(description: "foreign policy")
+			gc.update(description: "gun control")
+			ge.update(description: "gender equality")
 		end
 
 		def self.fetch_votes_for_each_bill
-			Issue.all.each do |issue|
-				issue.bills.all.each do |bill|
-		      self.get_votes_by_bill_id(bill.bill_id).each do |roll|
-		      	if bill.breakdowns.count < 1
-			       	vote_breakdown = self.get_voter_breakdown(roll["roll_id"])	       
-			       	Breakdown.create(r_yea: vote_breakdown[0]["breakdown"]["party"]["R"]["Yea"], r_nay: vote_breakdown[0]["breakdown"]["party"]["R"]["Nay"], d_yea: vote_breakdown[0]["breakdown"]["party"]["D"]["Yea"], d_nay: vote_breakdown[0]["breakdown"]["party"]["D"]["Nay"], bill_id: bill.id)
-		      	end
-		      end
+			Bill.all.each do |bill|
+	      self.get_votes_by_bill_id(bill.bill_id).each do |roll|
+	      	if bill.breakdowns.count < 1
+		       	vote_breakdown = self.get_voter_breakdown(roll["roll_id"])	       
+		       	Breakdown.create(r_yea: vote_breakdown[0]["breakdown"]["party"]["R"]["Yea"], r_nay: vote_breakdown[0]["breakdown"]["party"]["R"]["Nay"], d_yea: vote_breakdown[0]["breakdown"]["party"]["D"]["Yea"], d_nay: vote_breakdown[0]["breakdown"]["party"]["D"]["Nay"], bill_id: bill.id)
+	      	end
 		    end
 			end
 		end
 
 		def self.fetch_legislator_votes_for_each_bill		
-	    Issue.all.each do |issue|
-	      issue.bills.all.each do |bill|
-		      self.get_votes_by_bill_id(bill.bill_id).each do |roll|
-	    			Legislator.all.each do |legislator|
-	    				result = self.get_voter_results(roll["roll_id"])[0]["voters"][legislator.bioguide_id]
-		        	if result != nil && result["vote"] != "Not Voting"
-		        		p BillVote.create(bill_id: bill.id, legislator_id: legislator.id, result: result["vote"])
-		        	else
-		        		p "Voting Record Not Found"
-		        	end
-		        end
+	    Bill.all.each do |bill|
+	      self.get_votes_by_bill_id(bill.bill_id).each do |roll|
+    			Legislator.all.each do |legislator|
+    				result = self.get_voter_results(roll["roll_id"])[0]["voters"][legislator.bioguide_id]
+	        	if result != nil && result["vote"] != "Not Voting"
+	        		p BillVote.create(bill_id: bill.id, legislator_id: legislator.id, result: result["vote"])
+	        	else
+	        		p "Voting Record Not Found"
+	        	end
 		      end
 	      end
 	    end
