@@ -47,7 +47,12 @@ class StancesController < ApplicationController
   def select
     @issues = Issue.all
     @stances = Stance.search(params[:select])
-    render :index
+
+    if request.xhr?
+      render :_search_results, layout: false, collection: @stances
+    else
+      render :index
+    end
   end
 
   private

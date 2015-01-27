@@ -1,0 +1,10 @@
+<div class="stances">
+  <div class="large-9 medium-8 columns">
+    <div class="small-block-grid-3">
+      <% stances = @stances %>
+      <% stances.each do |stance| %>
+        <%= render partial: "stances/details", locals: {stance: stance} %>
+      <% end %>
+    </div>
+  </div>
+</div>
