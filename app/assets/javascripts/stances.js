@@ -2,6 +2,7 @@ $(document).ready(function(){
   $('.side-nav').on("click", "a", updateStanceView);
   $('#total_amount').on('keyup', distribute)
   $('.each_amount').on('keyup', updateTotal)
+  $('.new_upvote').on('submit', updateVoteCount)
 })
 
 var distribute = function(event){
@@ -31,3 +32,16 @@ var updateStanceView = function(event){
     $('.stances').replaceWith(response);
   });
 };
+
+var updateVoteCount = function(event){
+  event.preventDefault();
+  $target = $(event.target);
+  $.ajax({
+    url: $target.attr('action'),
+    type: $target.attr('method'),
+    data: {stance_id: $target.children('#upvote_stance_id').val()}
+  }).done(function(response){
+    $('#upvote_count').text(response)
+    $('.upvote_button').val("Voted")
+  });
+}
