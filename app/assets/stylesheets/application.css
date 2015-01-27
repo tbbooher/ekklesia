@@ -19,6 +19,14 @@
   margin-top: 2em;
 }
 
+.legislator-img {
+  margin: .2em;
+}
+
+.bgimg {
+  background-image: url(bgimg.png);
+  max-width: 50%;
+}
 .panel {
   background-color: white;
 }

@@ -12,7 +12,7 @@ SeedHelper::LegislatorSeed::insert_image_url
 
 # seed users
 50.times do
-  User.create(first_name: Faker::Name.name, last_name: Faker::Name.name, email: Faker::Internet.safe_email, username: Faker::Internet.user_name, password:'a', about: Faker::Company.catch_phrase, city: Faker::Address.city, state: Faker::Address.state )
+  User.create(first_name: Faker::Name.name, last_name: Faker::Name.name, email: Faker::Internet.safe_email, username: Faker::Internet.user_name, password:'a', about: Faker::Company.catch_phrase, city: Faker::Address.city, state: Faker::Address.state)
 end
 
 # define universe of issues and positions
@@ -49,6 +49,6 @@ User.all.each do |user|
 end
 
 # seed legislator_issues
-1000.times do
+100.times do
   LegislatorIssue.create(issue_id: (1 + rand(Issue.count)),legislator_id: (1 + rand(Legislator.count)), issue_score: 0.5)
 end
