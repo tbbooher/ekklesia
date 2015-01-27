@@ -21,12 +21,8 @@
   </div>
   <!-- Sidebar -->
   <div class="large-5 columns">
-    <ul class="side-nav">
-      <li><h3><%= @stance.legislators.count %></h3></li>
-      <li><h6>Supporting legislators</h6></li>
-      <li><h3><%= @stance.upvotes.count %></h3></li>
-      <li><h6>Upvotes</h6></li>
-    </ul>
+    <h2 id="legislators_count"><%= @stance.legislators.count %> <small>Supporting legislators</small></h2>
+    <h2><span id="upvote_count"><%= @stance.upvotes.count %></span> <small>Upvotes</small></h2>
   </div>
 
   <% if logged_in? %>
