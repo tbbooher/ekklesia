@@ -141,6 +141,33 @@ module SeedHelper
 
 	end
 
+	module BioScraper
+
+		def self.get_all_biographies
+			Legislator.all.each do |legislator|
+				p legislator.name
+				legislator.update(biography: clean_text(legislator.bioguide_id))
+			end
+		end
+
+		def self.clean_text bioguide_id
+			scrape_biography(bioguide_id).gsub("\r\n\r\n", "").split(";").map { |sentence| "<p>" + sentence + "</p>"  }.join
+		end
+
+		def self.scrape_biography bioguide_id
+			get_html(bioguide_id).css('table')[1].css('td')[1].css('p').text
+		end
+
+		def self.get_html bioguide_id
+			Nokogiri::HTML(open(set_up_url(bioguide_id)))
+		end
+
+		def self.set_up_url bioguide_id
+			"http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + bioguide_id
+		end
+
+	end
+
 	module Bills
 
 	end
