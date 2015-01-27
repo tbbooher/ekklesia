@@ -8,6 +8,10 @@ class Stance < ActiveRecord::Base
 
   validates_presence_of :user_id, :position_id
 
+  def self.sort_by_upvote
+    Upvote.group(:stance_id).count.sort_by{|_,v|v}.reverse.map{|pair| Stance.find(pair[0])}
+  end
+
   def info
     { position_description: Position.find(position_id).description,
     author: User.find(user_id) }
