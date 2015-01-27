@@ -2,22 +2,18 @@ class UpvotesController < ApplicationController
   include AuthsHelper
   include ErrorsHelper
   def create
+    existing_upvote = Upvote.find_by(user_id: current_user.id, stance_id: params[:id])
 
-    existing_upvote = Upvote.find_by(upvote_params)
-    
-    upvote = Upvote.new(upvote_params)
-    
+    upvote = current_user.upvotes.new(stance_id: params[:stance_id])
+
     if existing_upvote
       redirect_to :back
     elsif upvote.save
-      redirect_to stance_path(upvote.stance)
+      render json: Stance.find(params[:stance_id]).upvotes.count
     elsif !logged_in?
       set_error('Login to upvote.')
       redirect_to '/login'
     end
   end
 
-  def upvote_params
-    params.require(:upvote).permit(:user_id, :stance_id)
-  end
 end
