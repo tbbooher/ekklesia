@@ -1,5 +1,5 @@
 include SeedHelper
-
+User.create(first_name: 'a', last_name: 'a', last_name: 'a@a.com', username: 'a', password_digest: 'a')
 # seed real legislators
 SeedHelper::LegislatorSeed::insert_basic_legislators
 SeedHelper::LegislatorSeed::insert_details
@@ -31,18 +31,16 @@ issue_positions.each do |issue, position_array|
   position_array.each { |position| new_issue.positions.create(description: position) }
 end
 
-# seed stances
+# seed stances, upvotes
 User.all.each do |user|
   50.times { user.stances.create(position_id: rand(Position.count) + 1) }
 end
 
 Stance.all.each do |stance|
-  stance.legislator_stances.create(legislator_id: (1 + rand(Legislator.count)))
-end
-
-# seed upvotes
-500.times do
-  Upvote.create(user_id: (1 + rand(User.count)), stance_id: (1 + rand(Stance.count)))
+  rand(50).times do
+    stance.legislator_stances.create(legislator_id: (1 + rand(Legislator.count)))
+    stance.upvotes.create(user_id: (1 + rand(User.count))
+  end
 end
 
 # seed donations
