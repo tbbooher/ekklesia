@@ -15,4 +15,9 @@ class Legislator < ActiveRecord::Base
   def name
     "#{first_name} #{last_name}"
   end
+
+  def current_state
+    self.terms.first.state
+  end
+
 end
