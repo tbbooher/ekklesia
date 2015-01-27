@@ -6,6 +6,7 @@ module SeedHelper
 
 	API = "https://congress.api.sunlightfoundation.com"
 	API_KEY = ENV["CONGRESS_API"]
+	KEYWORDS = ["energy","abortion","healthcare","immigration","enviroment","economy","foreign%20policy","education","finance","gun%20control","gender%20equality"]
 
 	module LegislatorSeed
 
@@ -180,4 +181,56 @@ module SeedHelper
 
 	end
 
+	module Algorithm
+		def self.get_list_of_bills_by_keyword(keyword)
+  		response = open(API + "/bills/search?query=" + keyword + "&apikey="+ API_KEY)
+  		JSON.parse(response.read)["results"]
+		end
+
+		def self.get_bill_by_id(bill_id)
+  		response = open(API + "/bills?bill_id=" + bill_id + "&apikey="+ API_KEY)
+  		JSON.parse(response.read)["results"]
+		end
+
+		def self.get_voter_breakdown(roll_id)
+  		response = open(API + "/votes?" + "&apikey=" + API_KEY + "&roll_id=" + roll_id + "&fields=breakdown")
+  		JSON.parse(response.read)["results"]
+		end
+
+		def self.get_voter_results(roll_id)
+  		response = open(API + "/votes?" + "&apikey=" + API_KEY + "&roll_id=" + roll_id + "&fields=voters")
+  		JSON.parse(response.read)["results"]
+		end
+
+		def self.create_issues(keywords)
+			keywords.each do |keyword|
+				Issue.create(description: keyword)
+			end
+		end
+
+		def self.seed_algorithm_data
+			p "Loading Algorithm Data...this may take awhile...in the meantime do a little dance!"
+  		Issue.all.each do |issue|
+	    	self.get_list_of_bills_by_keyword(issue.description).each do |bill|
+	      	issue.bills.create(bill_id: bill["bill_id"], official_title: bill["official_title"], congress_url: bill["urls"]["congress"], popular_title: ["popular_title"])  
+	    	end
+	    	sleep 1
+		    issue.bills.all.each do |bill|
+		      self.get_votes_by_bill_id(bill.bill_id).each do |roll|
+		        sleep 1
+		        vote_breakdown = self.get_voter_breakdown(roll["roll_id"])
+		        Breakdown.create(r_yea: vote_breakdown["party"]["R"]["Yea"], r_nay: vote_breakdown["party"]["R"]["Nay"], d_yea: vote_breakdown["party"]["D"]["Yea"], d_nay: vote_breakdown["party"]["D"]["Nay"], bill_id: bill.id)
+		      end
+		    end
+		    Legislator.all.each do |legislator|
+		      issue.bills.all.each do |bill|
+		        self.get_votes_by_bill_id(bill.bill_id).each do |roll|   
+		        BillVote.create(bill_id: bill.id, legislator_id: legislator.id, result: self.get_voter_results(roll["roll_id"])[legislator.bioguide_id]["vote"])
+		        sleep 1
+		        end
+		      end
+		    end
+	 	 	end
+		end
+	end
 end
