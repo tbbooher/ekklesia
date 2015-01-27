@@ -6,6 +6,6 @@ $('.side-nav').on("click", "a", function(event){
     type: "GET",
     data: {select: $target.text()}
   }).done(function(response){
-    $('.small-block-grid-3').replaceWith(response);
+    $('.stances').replaceWith(response);
   });
 });
