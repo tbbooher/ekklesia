@@ -5,10 +5,10 @@ var showList = new List('legislator-list', {
 
 $("#legislator-list-panel").on( "click", ".legislator-pic", function() {
   if ($(this).siblings().attr('checked')) {
-    $(this).css('border', 'none');
+    $(this).css('outline', 'none');
     $(this).siblings().removeAttr('checked');
   } else {
-    $(this).css('border', '5px solid #008CBA');
+    $(this).css('outline', '5px solid #A9BC64');
     $(this).siblings().attr('checked', 'checked');
   }
 });
