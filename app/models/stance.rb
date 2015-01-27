@@ -13,6 +13,10 @@ class Stance < ActiveRecord::Base
     author: User.find(user_id) }
   end
 
+  def voted(user_id)
+    self.upvotes.find_by(user_id: user_id) ? true : false
+  end
+
   def self.search(words)
     case words
     when "Popular"
