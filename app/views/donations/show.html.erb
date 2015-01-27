@@ -1,6 +1,9 @@
 <%= render :partial => 'stripe/js' %>
 <%= form_for :donation, html: {class: "donate-form"} do |f|%>
-<div class="large-3 medium-4 columns">
+<div class="large-7 medium-8 columns">
+  <div class="large-7 medium-8 columns">
+    <h2>Total amount</h2>
+  </div>
   <%= f.text_field :amount, placeholder: "Total amount" %>
   <% @legislators.each do |legislator| %>
     <h3><%= legislator.first_name %> <%= legislator.last_name %></h3>
