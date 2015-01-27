@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#logout'
   get '/signup', to: 'users#new'
+
+  get '/legislators', to: 'legislators#index'
   get '/legislators/:id', to: 'legislators#show'
   post '/upvotes/create', to: 'upvotes#create'
 
