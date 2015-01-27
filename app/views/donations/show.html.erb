@@ -1,13 +1,17 @@
 <%= render :partial => 'stripe/js' %>
 <%= form_for :donation, html: {class: "donate-form"} do |f|%>
-
+<div class="large-7 medium-8 columns">
+  <div class="large-7 medium-8 columns">
+    <h2>Total amount</h2>
+  </div>
   <%= f.text_field :amount, placeholder: "Total amount" %>
   <% @legislators.each do |legislator| %>
     <h3><%= legislator.first_name %> <%= legislator.last_name %></h3>
     <%= f.hidden_field :legislator_ids, :multiple => true, :value => legislator.id %>
     <%= f.text_field :amounts, :multiple => true, class: "each_amount" %>
   <% end %>
-
+</div>
+<div class="large-3 medium-4 columns">
   <input data-stripe="number"/>
   cvc
   <input data-stripe="cvc"/>
@@ -15,5 +19,6 @@
   <input data-stripe="exp-month"/>
   exp-year
   <input data-stripe="exp-year"/>
+</div>
   <%= f.submit "Donate"%>
 <% end %>
