@@ -39,7 +39,7 @@ end
 Stance.all.each do |stance|
   rand(50).times do
     stance.legislator_stances.create(legislator_id: (1 + rand(Legislator.count)))
-    stance.upvotes.create(user_id: (1 + rand(User.count))
+    stance.upvotes.create(user_id: (1 + rand(User.count)))
   end
 end
 

@@ -2,7 +2,7 @@ class StancesController < ApplicationController
   include AuthsHelper
 
   def index
-    @stances = Stance.all
+    @stances = Stance.all.order("created_at DESC")[0..20]
     @issues = Issue.all
   end
 
@@ -46,7 +46,7 @@ class StancesController < ApplicationController
 
   def select
     @issues = Issue.all
-    @stances = Stance.search(params[:select])
+    @stances = Stance.search(params[:select])[0..30]
 
     if request.xhr?
       render :_search_results, layout: false, collection: @stances
