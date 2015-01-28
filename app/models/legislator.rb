@@ -32,4 +32,18 @@ class Legislator < ActiveRecord::Base
     end
   end
 
+  def get_issue_score(issue)
+    if self.legislator_issues.for_issue(issue) != []
+      return self.legislator_issues.for_issue(issue).first.issue_score
+    end
+  end
+
+  def self.filter_legislators_by_vote_count(issue_id)
+    array = []
+    BillVote.where(issue_id: issue_id).group(:legislator_id).count.sort_by {|k,v| v}.reverse.slice(0,300).to_h.each do |k,v|
+      array << Legislator.find(k)
+    end
+    array.sample(80)
+  end
 end
+
