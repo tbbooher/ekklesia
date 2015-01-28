@@ -152,7 +152,7 @@ module SeedHelper
 		end
 
 		def self.clean_text bioguide_id
-			scrape_biography(bioguide_id).gsub("\r\n\r\n", "").split(";").map { |sentence| "<p>" + sentence + "</p>"  }.join
+			scrape_biography(bioguide_id).gsub("\r\n\r\n", "").split(";").map { |sentence| sentence }.join(';')
 		end
 
 		def self.scrape_biography bioguide_id
