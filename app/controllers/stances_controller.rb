@@ -7,8 +7,7 @@ class StancesController < ApplicationController
   end
 
   def new
-    @issues = Issue.all
-    @positions = Position.all
+    @grouped_positions = Position.group_by_issues
     @legislators = Legislator.all
     @stance = Stance.new
   end
