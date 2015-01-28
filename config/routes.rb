@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#logout'
   get '/signup', to: 'users#new'
 
-  get '/legislators', to: 'legislators#index'
-  get '/legislators/:id', to: 'legislators#show'
+  resources :legislators, only: [:index, :show]
+  
   post '/upvotes/create', to: 'upvotes#create'
 
   resources :stances do
