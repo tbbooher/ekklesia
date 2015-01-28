@@ -3,7 +3,7 @@
       <div class="sidebar">
         <nav>
           <ul class="side-nav">
-            <h3 class="heading">Some Issues</h3>
+            <h3 class="heading">Issues</h3>
             <% @issues.each do |issue| %>
               <li><a href="#" paramIval="search[:<%= issue.description %>]"> <%= issue.description %> </a></li>
             <% end %>
