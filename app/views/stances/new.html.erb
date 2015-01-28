@@ -2,20 +2,19 @@
   <div class="row">
     <div class="large-6 columns">
       <h2>When it comes to</h2>
-
-        <% @grouped_positions.each_with_index do |positions, i| %>
-          <a href="#" data-options="align:right" data-dropdown="rightDrop" class="button open" style="width: 25em;">
-            <%= positions.first.issue.description %> &raquo;
-          </a>
-          <ul id="rightDrop" class="[tiny small medium large content]f-dropdown small-block-grid-2 list" data-dropdown-content>
-            <li class="header"><h2>I believe in</h2></li>
-            <% positions.each do |position| %>
-              <li>
-                <%= position.description %>
-              </li>
-            <% end %>
-          </ul>
+      <ul>
+        <% @issues.each do |issue| %>
+          <li>
+            <a href="/issues/positions" class="issue_select button small radius zero-margin" value="<%= issue.id %>"><%= issue.description %></a>
+          </li>
         <% end %>
+      </ul>
+    </div>
+    <div class="large-6 columns">
+      <h2>I believe in</h2>
+      <div class="position_select_box">
+        <ul></ul>
+      </div>
     </div>
 
 
