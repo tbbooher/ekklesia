@@ -12,7 +12,7 @@
           <span class="prefix">Donate What you Want</span>
         </div>
         <div class="small-9 columns">
-          <%= f.text_field :amount, id: "total_amount", value: 25 %>
+          <%= f.text_field :amount, id: "total_amount", value: 25%>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
           <%= f.hidden_field :user_id, :value => nil %>
           <% end %>
           <div class="small-9 columns">
-            <%= f.text_field :amounts, :multiple => true, class: "each_amount", value: 5 %>
+            <%= f.text_field :amounts, :multiple => true, class: "each_amount", value: (25.00 / @legislators.count).round(2) %>
           </div>
         </div>
       </div>
