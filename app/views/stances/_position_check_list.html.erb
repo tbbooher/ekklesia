@@ -1,0 +1,9 @@
+<ul>
+  <% positions.each do |p| %>
+    <li>
+      <p id="<%= p.id %>"><%= p.description %></p>
+      <%= check_box "position_id", p.id, {class: "legislator-checkbox"}, 'true', 'false' %>
+    </li>
+
+  <% end %>
+</ul>
