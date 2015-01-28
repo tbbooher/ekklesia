@@ -1,10 +1,11 @@
-<div class="large-4 small-6 columns">
+<div class="stance-detail-container">
   <a href="/stances/<%= stance.id %>">
     <div class="stance-detail panel text-right">
-        <span class='text-blue'><%= stance.user.first_name %> <%= stance.user.last_name %> (<%= stance.user.username %>)</span><br><br>
+        <span class='text-blue'></span><br><br>
         <em></em> <span class='text-green'><%= stance.legislators.count %></span> <em>legislators support</em><br><br>
         <span class='text-red'><%= stance.position.description %></span><br><br>
       <%= stance.position.issue.description %><br>
+      <%= stance.created_at %> by <%= stance.user.username %>
     </div>
   </a>
 </div>
