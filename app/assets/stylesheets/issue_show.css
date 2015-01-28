@@ -1,0 +1,25 @@
+.issue-bar-div .range-slider{
+  height: 1em;
+  margin-top: 0;
+}
+
+.issue-bar-pic {
+  height: 2.4em;
+  width: 2.4em;
+  border-radius: 50%;
+  position: absolute;
+  top: -0.7rem !important;
+}
+
+#issue-header {
+  margin-bottom: 2em;
+}
+.poly-logo-bar {
+  height: 5em;
+  width: 5em;
+  padding: 0;
+}
+
+.issue-positions {
+  margin-top: 2em !important;
+}
