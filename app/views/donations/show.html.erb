@@ -1,45 +1,61 @@
-<div class="row">
-  <%= render :partial => 'stripe/js' %>
+<%= render :partial => 'stripe/js' %>
+<div class="panel large-9 large-centered columns">
+  <div class="row">
+    <h2><%= @stance.position.description.capitalize %>.</h2>
+  </div>
+  <!-- start of form -->
   <%= form_for :donation, html: {class: "donate-form"} do |f|%>
-  <div class="large-7 medium-7 columns" align="right">
-    <div class="row">
-      <div class="large-5 medium-5 columns">
-        <h2>Total amount $</h2>
-      </div>
-      <div class="large-4 medium-4 columns end">
-      <%= f.text_field :amount, id: "total_amount" %>
+  <div class="row">
+    <div class="large-12 columns" style="padding:0">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <span class="prefix">Donate What you Want</span>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :amount, id: "total_amount", value: 25 %>
+        </div>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <h4 id="more-info"> <span id="arrow" data-toggle="off">&#65515</span> Choose Where The Money Goes</h4>
     <% @legislators.each do |legislator| %>
-    <div class="row">
-      <div class="large-5 medium-5 columns">
-        <h3><%= legislator.first_name %> <%= legislator.last_name %></h3>
-      </div>
-      <%= f.hidden_field :legislator_ids, :multiple => true, :value => legislator.id %>
-      <% if logged_in? %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-      <% else %>
-        <%= f.hidden_field :user_id, :value => nil %>
-      <% end %>
-      <div class="large-4 medium-4 columns end">
-      <%= f.text_field :amounts, :multiple => true, class: "each_amount" %>
+    <div class="row legislator" style="display:none">
+      <div class="large-12 columns">
+        <div class="row collapse prefix-radius">
+          <div class="small-3 columns">
+            <span class="prefix"><%= legislator.first_name %> <%= legislator.last_name %></span>
+          </div>
+          <%= f.hidden_field :legislator_ids, :multiple => true, :value => legislator.id %>
+          <% if logged_in? %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <% else %>
+          <%= f.hidden_field :user_id, :value => nil %>
+          <% end %>
+          <div class="small-9 columns">
+            <%= f.text_field :amounts, :multiple => true, class: "each_amount", value: 5 %>
+          </div>
+        </div>
       </div>
     </div>
     <% end %>
   </div>
-  <div class="large-4 medium-4 columns">
-    <div class="row">
-      <input data-stripe="number" placeholder="Card number" class="large-9 medium-9 columns"/>
-      <input data-stripe="cvc" placeholder="CVC" class="large-3 medium-3 columns" />
-    </div>
-    <div class="row">
-      <h4 class="large-6 medium-6 columns">Expiration date</h4>
-      <input data-stripe="exp-month" placeholder="month" class="large-3 medium-3 columns"/>
-      <input data-stripe="exp-year" placeholder="year" class="large-3 medium-3 columns" />
-    </div>
-  </div>
-  <div class="row centered">
-    <%= f.submit "Donate", class: "button radius"%>
-  </div>
-  <% end %>
 </div>
+<!-- start cc section -->
+<div class="panel callout radius large-9 large-centered columns">
+  <div class="row large-8">
+    <input data-stripe="number" placeholder="Card number" class="large-9 medium-9 columns"/>
+    <input data-stripe="cvc" placeholder="CVC" class="large-3 medium-3 columns" />
+  </div>
+  <div class="row large-8">
+    <input data-stripe="exp-month" placeholder="month" class="large-6 medium-3 columns"/>
+    <input data-stripe="exp-year" placeholder="year" class="large-6 medium-3 columns" />
+  </div>
+  <!-- end cc section -->
+  <div class="row">
+    <%= f.submit "Donate", class: "button tiny"%>
+    <% end %>
+  </div>
+</div>
+
+
