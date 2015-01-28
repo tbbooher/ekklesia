@@ -1,14 +1,23 @@
 <%= form_for @stance do |f| %>
-  <div class="row">   
+  <div class="row">
     <div class="large-6 columns">
-      <h5>When it comes to</h5>  
-      <%= collection_select :position, :issue_id, @issues,:id,:description, :include_blank => "Issue" %>
+      <h2>When it comes to</h2>
+      <ul>
+        <% @issues.each do |issue| %>
+          <li>
+            <a href="/issues/positions" class="issue_select button small radius zero-margin" value="<%= issue.id %>"><%= issue.description %></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="large-6 columns">
+      <h2>I believe in</h2>
+      <div class="position_select_box">
+        <ul></ul>
+      </div>
     </div>
 
-    <div class="large-6 columns">
-    <h5>I believe in</h5>
-    <%= f.collection_select :position_id, @positions,:id,:description, include_blank: "Position" %>
-    </div>
+
   </div>
 
   <div class="row center-text">

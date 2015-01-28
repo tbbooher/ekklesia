@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   get '/search', to: 'stances#search'
   get '/stances/issues/:select', to: 'stances#select'
 
+  get '/issues/positions', to: 'stances#positions_by_issue'
+
   resources :users
 end

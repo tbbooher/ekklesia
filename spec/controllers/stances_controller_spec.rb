@@ -14,8 +14,8 @@ describe StancesController do
     let(:user) {FactoryGirl.create(:user)}
     it "redirects to #show" do
       session[:id] = user.id
-      @stance = { position_id: 1, user_id: 1}
-      post :create, {stance: @stance}
+      @stance = {1 => 'true'}
+      post :create, {position_id: @stance}
       expect(response).to redirect_to stance_path(Stance.last)
     end
 

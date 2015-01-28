@@ -3,6 +3,8 @@ $(document).ready(function(){
   $('#total_amount').on('keyup', distribute)
   $('.each_amount').on('keyup', updateTotal)
   $('.new_upvote').on('submit', updateVoteCount)
+  $('.issue_select').on('click', getPositions)
+  $('.position_select_box').on('click', 'li',highlightPositon)
 })
 
 var distribute = function(event){
@@ -44,4 +46,31 @@ var updateVoteCount = function(event){
     $('#upvote_count').text(response)
     $('.upvote_button').val("Voted")
   });
+}
+
+
+var getPositions = function(){
+  event.preventDefault();
+  $target = $(event.target);
+  $.ajax({
+    url: $target.attr('href'),
+    type: 'get',
+    data: {issue_id: $target.attr('value')}
+  }).done(function(response){
+    $('.position_select_box').children('ul').replaceWith(response)
+  });
+}
+
+var highlightPositon = function(){
+  if ($(this).children('.legislator-checkbox').attr('checked')) {
+    $(this).css('outline', 'none');
+    $(this).children('.legislator-checkbox').removeAttr('checked');
+  } else {
+    $('li', $(this).parent()).each(function(){
+      $(this).children('.legislator-checkbox').removeAttr('checked');
+      $(this).css('outline', 'none');
+    })
+    $(this).css('outline', '5px solid #A9BC64');
+    $(this).children('.legislator-checkbox').attr('checked', 'checked');
+  }
 }
