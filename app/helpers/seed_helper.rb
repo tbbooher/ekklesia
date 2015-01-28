@@ -6,6 +6,7 @@ module SeedHelper
 
 	API = "https://congress.api.sunlightfoundation.com"
 	API_KEY = ENV["CONGRESS_API"]
+	KEYWORDS = ["energy","abortion","healthcare","immigration","environment","economy","foreign%20policy", "welfare", "jobs","education","finance","gun%20control","gender%20equality"]
 
 	module LegislatorSeed
 
@@ -168,16 +169,96 @@ module SeedHelper
 
 	end
 
-	module Bills
 
+	module AlgorithmData
+		def self.get_bills_by_keyword_count(keyword)
+			response = open(API + "/bills/search?query=" + keyword + "&apikey="+ API_KEY)
+  		JSON.parse(response.read)["count"].to_i
+		end
+
+		def self.get_list_of_bills_by_keyword(keyword, page)
+  		response = open(API + "/bills/search?query=" + keyword + "&apikey="+ API_KEY + "&per_page=50&page=#{page}")
+  		JSON.parse(response.read)["results"]
+		end
+
+		def self.get_all_bills_by_keyword(issue)
+			page = 1
+			self.get_bills_by_keyword_count(issue.description)/50.times do
+				self.get_list_of_bills_by_keyword(issue.description, page).each do |bill|
+	        p issue.bills.create(bill_id: bill["bill_id"], official_title: bill["official_title"], congress_url: bill["urls"]["congress"], popular_title: ["popular_title"])
+	    	end
+				page += 1
+			end
+		end
+
+		def self.get_votes_by_bill_id(bill_id)
+  		response = open(API + "/votes?bill_id=" + bill_id + "&apikey="+ API_KEY)
+  		JSON.parse(response.read)["results"]
+		end
+
+		def self.get_voter_breakdown(roll_id)
+  		response = open(API + "/votes?" + "&apikey=" + API_KEY + "&roll_id=" + roll_id + "&fields=breakdown")
+  		JSON.parse(response.read)["results"]
+		end
+
+		def self.get_voter_results(roll_id)
+  		response = open(API + "/votes?" + "&apikey=" + API_KEY + "&roll_id=" + roll_id + "&fields=voters")
+  		JSON.parse(response.read)["results"]
+		end
+
+		def self.create_issues(keywords)
+			keywords.each do |keyword|
+				Issue.create(description: keyword)
+			end
+		end
+
+		def self.create_bills_for_issue
+			Issue.all.each do |issue|
+				self.get_all_bills_by_keyword(issue)
+			end
+			fp = Issue.find_by(description: "foreign%20policy")
+			gc = Issue.find_by(description: "gun%20control")
+			ge = Issue.find_by(description: "gender%20equality")
+			fp.update(description: "foreign policy")
+			gc.update(description: "gun control")
+			ge.update(description: "gender equality")
+		end
+
+		def self.fetch_votes_for_each_bill
+			Bill.all.each do |bill|
+	      self.get_votes_by_bill_id(bill.bill_id).each do |roll|
+		      if bill.roll_id == nil
+		      	bill.update(roll_id: roll["roll_id"])
+		      end
+	      	if bill.breakdowns.count < 1
+		       	vote_breakdown = self.get_voter_breakdown(bill.roll_id)
+		       	p Breakdown.create(r_yea: vote_breakdown[0]["breakdown"]["party"]["R"]["Yea"], r_nay: vote_breakdown[0]["breakdown"]["party"]["R"]["Nay"], d_yea: vote_breakdown[0]["breakdown"]["party"]["D"]["Yea"], d_nay: vote_breakdown[0]["breakdown"]["party"]["D"]["Nay"], bill_id: bill.id)
+	      	end
+		    end
+			end
+		end
+
+		def self.fetch_legislator_votes_for_each_bill
+	    Bill.all.each do |bill|
+	    	if bill.roll_id
+	    		result = self.get_voter_results(bill.roll_id)[0]["voters"]
+	  			Legislator.all.each do |legislator|
+	  				l_result = result[legislator.bioguide_id]
+	        	if l_result != nil && l_result["vote"] != "Not Voting"
+	        		p BillVote.create(bill_id: bill.id, issue_id: bill.issue.id, legislator_id: legislator.id, result: l_result["vote"])
+	        	else
+	        		p "Voting Record Not Found"
+	        	end
+        	end
+	      end
+	    end
+		end
+
+		def self.seed_algorithm_data
+			p "Loading Algorithm Data...this may take awhile...in the meantime do a little dance!"
+			self.create_bills_for_issue
+    	self.fetch_votes_for_each_bill
+    	self.fetch_legislator_votes_for_each_bill
+		end
 	end
-
-	module Votes
-
-	end
-
-	module Commities
-
-	end
-
 end
