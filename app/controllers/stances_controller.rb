@@ -7,7 +7,7 @@ class StancesController < ApplicationController
   end
 
   def new
-    @grouped_positions = Position.group_by_issues
+    @issues = Issue.all
     @legislators = Legislator.all
     @stance = Stance.new
   end
@@ -20,7 +20,8 @@ class StancesController < ApplicationController
   end
 
   def create
-    @stance = current_user.stances.new(stances_params)
+    position_id = params[:position_id].select{ |k,v| v == "true" }.keys.map(&:to_i)[0]
+    @stance = current_user.stances.new(position_id: position_id)
     if @stance.save
       redirect_to stance_path(@stance)
     else
@@ -53,6 +54,12 @@ class StancesController < ApplicationController
       render :index
     end
   end
+
+  def positions_by_issue
+    @positions = Position.where(issue_id: params[:issue_id])
+    render partial: "/stances/position_check_list", locals: {positions: @positions}
+  end
+
 
   private
     def stances_params
