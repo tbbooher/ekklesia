@@ -6,7 +6,7 @@ module SeedHelper
 
 	API = "https://congress.api.sunlightfoundation.com"
 	API_KEY = ENV["CONGRESS_API"]
-	KEYWORDS = ["energy","abortion","healthcare","immigration","environment","economy","foreign%20policy", "welfare", "jobs","education","finance","gun%20control","gender%20equality"]
+	KEYWORDS = ["energy","abortion","healthcare","immigration","environment","economy","foreign%20policy", "welfare", "jobs","education","finance","gun%20control"]
 
 	module LegislatorSeed
 
