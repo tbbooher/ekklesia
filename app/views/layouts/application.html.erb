@@ -30,7 +30,7 @@
         <li><%= link_to 'Signup', signup_path, method: :get %></li>
 
       <% else %>
-        <li><%= link_to "#{current_user.first_name}'s Profile", user_path(current_user) %></li>
+        <li><%= link_to "Profile", user_path(current_user) %></li>
         <li><%= link_to 'Logout', logout_path, method: :get %></li>
 
       <% end %>
