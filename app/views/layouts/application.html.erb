@@ -30,9 +30,13 @@
         <li><%= link_to 'Signup', signup_path, method: :get %></li>
 
       <% else %>
-        <li><%= link_to "Profile", user_path(current_user) %></li>
-        <li><%= link_to 'Logout', logout_path, method: :get %></li>
-
+      <li>
+      <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" data-options="is_hover: true"><%= current_user.username %></a>
+        <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+          <li><%= link_to "Profile", user_path(current_user) %></li>
+          <li><%= link_to 'Logout', logout_path, method: :get %></li>
+        </ul>
+      </li>
       <% end %>
       <li>
       <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" data-options="is_hover: true">Stances</a>
