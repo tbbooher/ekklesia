@@ -6,7 +6,7 @@ module SeedHelper
 
 	API = "https://congress.api.sunlightfoundation.com"
 	API_KEY = ENV["CONGRESS_API"]
-	KEYWORDS = ["energy","abortion","healthcare","immigration","enviroment","economy","foreign%20policy","education","finance","gun%20control","gender%20equality"]
+	KEYWORDS = ["energy","abortion","healthcare","immigration","environment","economy","foreign%20policy","education","finance","gun%20control","gender%20equality"]
 
 	module LegislatorSeed
 
@@ -171,9 +171,24 @@ module SeedHelper
 
 
 	module AlgorithmData
-		def self.get_list_of_bills_by_keyword(keyword)
-  		response = open(API + "/bills/search?query=" + keyword + "&apikey="+ API_KEY)
+		def self.get_bills_by_keyword_count(keyword)
+			response = open(API + "/bills/search?query=" + keyword + "&apikey="+ API_KEY)
+  		JSON.parse(response.read)["count"].to_i
+		end
+
+		def self.get_list_of_bills_by_keyword(keyword, page)
+  		response = open(API + "/bills/search?query=" + keyword + "&apikey="+ API_KEY + "&per_page=50&page=#{page}")
   		JSON.parse(response.read)["results"]
+		end
+
+		def self.get_all_bills_by_keyword(issue)
+			page = 1
+			self.get_bills_by_keyword_count(issue.description)/50.times do
+				self.get_list_of_bills_by_keyword(issue.description, page).each do |bill|
+	        p issue.bills.create(bill_id: bill["bill_id"], official_title: bill["official_title"], congress_url: bill["urls"]["congress"], popular_title: ["popular_title"])
+	    	end
+				page += 1
+			end
 		end
 
 		def self.get_votes_by_bill_id(bill_id)
@@ -199,9 +214,7 @@ module SeedHelper
 
 		def self.create_bills_for_issue
 			Issue.all.each do |issue|
-				self.get_list_of_bills_by_keyword(issue.description).each do |bill|
-	        issue.bills.create(bill_id: bill["bill_id"], official_title: bill["official_title"], congress_url: bill["urls"]["congress"], popular_title: ["popular_title"])  
-	    	end
+				self.get_all_bills_by_keyword(issue)
 			end
 			fp = Issue.find_by(description: "foreign%20policy")
 			gc = Issue.find_by(description: "gun%20control")
@@ -214,24 +227,29 @@ module SeedHelper
 		def self.fetch_votes_for_each_bill
 			Bill.all.each do |bill|
 	      self.get_votes_by_bill_id(bill.bill_id).each do |roll|
+		      if bill.roll_id == nil
+		      	bill.update(roll_id: roll["roll_id"])
+		      end
 	      	if bill.breakdowns.count < 1
-	      		bill.update(roll_id: roll["roll_id"])
-		       	vote_breakdown = self.get_voter_breakdown(bill.roll_id)	       
-		       	Breakdown.create(r_yea: vote_breakdown[0]["breakdown"]["party"]["R"]["Yea"], r_nay: vote_breakdown[0]["breakdown"]["party"]["R"]["Nay"], d_yea: vote_breakdown[0]["breakdown"]["party"]["D"]["Yea"], d_nay: vote_breakdown[0]["breakdown"]["party"]["D"]["Nay"], bill_id: bill.id)
+		       	vote_breakdown = self.get_voter_breakdown(bill.roll_id)
+		       	p Breakdown.create(r_yea: vote_breakdown[0]["breakdown"]["party"]["R"]["Yea"], r_nay: vote_breakdown[0]["breakdown"]["party"]["R"]["Nay"], d_yea: vote_breakdown[0]["breakdown"]["party"]["D"]["Yea"], d_nay: vote_breakdown[0]["breakdown"]["party"]["D"]["Nay"], bill_id: bill.id)
 	      	end
 		    end
 			end
 		end
 
-		def self.fetch_legislator_votes_for_each_bill		
-	    Bill.all.each do |bill| 
-  			Legislator.all.each do |legislator|
-  				result = self.get_voter_results(bill.roll_id)[0]["voters"][legislator.bioguide_id]
-        	if result != nil && result["vote"] != "Not Voting"
-        		p BillVote.create(bill_id: bill.id, legislator_id: legislator.id, result: result["vote"])
-        	else
-        		p "Voting Record Not Found"
-        	end    
+		def self.fetch_legislator_votes_for_each_bill
+	    Bill.all.each do |bill|
+	    	if bill.roll_id
+	    		result = self.get_voter_results(bill.roll_id)[0]["voters"]
+	  			Legislator.all.each do |legislator|
+	  				l_result = result[legislator.bioguide_id]
+	        	if l_result != nil && l_result["vote"] != "Not Voting"
+	        		p BillVote.create(bill_id: bill.id, issue_id: bill.issue.id, legislator_id: legislator.id, result: l_result["vote"])
+	        	else
+	        		p "Voting Record Not Found"
+	        	end
+        	end
 	      end
 	    end
 		end
@@ -240,7 +258,7 @@ module SeedHelper
 			p "Loading Algorithm Data...this may take awhile...in the meantime do a little dance!"
 			self.create_bills_for_issue
     	self.fetch_votes_for_each_bill
-    	self.fetch_legislator_votes_for_each_bill	
+    	self.fetch_legislator_votes_for_each_bill
 		end
 	end
 end
