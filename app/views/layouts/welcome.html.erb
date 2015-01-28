@@ -40,17 +40,17 @@
         </li>
       <% end %>
       <li>
-      <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" data-options="is_hover: true">Stances</a>
-        <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-          <li><%= link_to 'See all', stances_path, method: :get %></li>
-          <% if !logged_in? %>
-            <li><%= link_to 'Take a Stance', login_path, method: :get %></li>
-          <% else %>
-            <li><%= link_to 'Take a Stance', new_stance_path, method: :get %></li>
-          <% end %>
-        </ul>
-        </li>
-        <li><%= link_to 'Legislators', legislators_path, method: :get %></li>
+        <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" data-options="is_hover: true">Stances</a>
+          <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+            <li><%= link_to 'See all', stances_path, method: :get %></li>
+            <% if !logged_in? %>
+              <li><%= link_to 'Take a Stance', login_path, method: :get %></li>
+            <% else %>
+              <li><%= link_to 'Take a Stance', new_stance_path, method: :get %></li>
+            <% end %>
+          </ul>
+      </li>
+      <li><%= link_to 'Legislators', legislators_path, method: :get %></li>
       </ul>
     </section>
   </nav>
