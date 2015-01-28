@@ -25,3 +25,11 @@
   text-align: right;
   padding: 0;
 }
+
+.issue_title {
+  text-align: center;
+}
+
+#bio p {
+  margin-bottom: 3px;
+}
