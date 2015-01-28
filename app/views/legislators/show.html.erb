@@ -34,28 +34,29 @@
   </div>
 
 <!-- End Header and Nav -->
-
- <div class="row">
-  <div class="large-2 large-centered columns">
-    <h4 class="center-text">Issue</h4>
-  </div>
-  <div class="large-10 large-centered columns">
-    <div class="row">
-      <div class="large-2 columns" id="donkey-logo-div">
-        <%= image_tag("donkey.png", class: "poly-logo") %>
-      </div>
-
-      <div class="large-8 columns">
-        <div class="range-slider round" data-slider="22" data-options="start: 1; end: 100;">
-        <span class="range-slider-handle"><img class="bar-face" src="http://www.glaad.org/sites/default/files/president-barack-obama-2013-inauguration-537x442.jpg"></span>
+<% @legislator.legislator_issues.each do |issue_stance| %>
+   <div class="row">
+    <div class="large-2 large-centered columns">
+      <%= link_to issue_stance.issue.description, root_path, method: :get, class: "center-text" %>
+    </div>
+    <div class="large-10 large-centered columns">
+      <div class="row">
+        <div class="large-2 columns" id="donkey-logo-div">
+          <%= image_tag("donkey.png", class: "poly-logo") %>
         </div>
-      </div>
 
-      <div class="large-2 columns>">
-        <%= image_tag("elephant.png", class: "poly-logo") %>
+        <div class="large-8 columns">
+          <div class="range-slider round" data-slider="<%= issue_stance.issue_score %>" data-options="start: 1; end: 100;">
+          <span class="range-slider-handle"><img class="bar-face" src="<%= @legislator.img_url %>"></span>
+          </div>
+        </div>
+
+        <div class="large-2 columns>">
+          <%= image_tag("elephant.png", class: "poly-logo") %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 
 
