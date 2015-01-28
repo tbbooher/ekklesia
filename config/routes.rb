@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  get '/about', to: 'welcome#about'
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#logout'
