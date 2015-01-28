@@ -3,8 +3,11 @@ class Donation < ActiveRecord::Base
   belongs_to :stance
   belongs_to :legislator
 
+  validates_presence_of :stance_id
+  validates_presence_of :legislator_id
+  validates_presence_of :amount
+
   def self.create_records(params)
-    number_of_records = params[:donation]["legislator_ids"].length
     user_id = params[:donation]["user_id"].to_i
     stance_id = params[:stance_id].to_i
     legislator_ids = params[:donation]["legislator_ids"].map { |l| l.to_i }
