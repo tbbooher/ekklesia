@@ -23,6 +23,10 @@ class Stance < ActiveRecord::Base
     Upvote.where(stance_id: self.id).each{|upvote| upvote.destroy}
   end
 
+  def total_donated_amount
+    Donation.where(stance_id: self.id).inject(0) { |acc, donation| acc += donation.amount; acc }
+  end
+
   def self.search(words)
     case words
     when "Popular"

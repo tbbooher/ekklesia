@@ -1,11 +1,21 @@
 <div class="stance-detail-container">
   <a href="/stances/<%= stance.id %>">
-    <div class="stance-detail panel text-right">
-        <span class='text-blue'></span><br><br>
-        <em></em> <span class='text-green'><%= stance.legislators.count %></span> <em>legislators support</em><br><br>
-        <span class='text-red'><%= stance.position.description %></span><br><br>
-      <%= stance.position.issue.description %><br>
+    <div class="stance_detail row">
+      <div class="large-3 medium-3 small-3 columns detail_left">
+        <h4><%= stance.position.issue.description %></h4>
+        <h5><%= stance.upvotes.count %> upvotes</h5>
+        <% if stance.total_donated_amount > 0 %>
+          <h5>$ <%= stance.total_donated_amount %> contributed</h5>
+        <% else %>
+          <h6>Be the first to donate</h6>
+        <% end %>
+      </div>
+      <div class="large-9 medium-9 small-9 end columns text-right">
+        <span class='text-green' style="font-size: 2em;"><%= stance.legislators.count %></span> <em>legislators support</em><br><br>
+        <h4 class='text-red'><%= stance.position.description %></h4><br><br>
+      <br>
       <%= stance.created_at %> by <%= stance.user.username %>
+      </div>
     </div>
   </a>
 </div>
