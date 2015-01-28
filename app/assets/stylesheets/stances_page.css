@@ -2,7 +2,11 @@
   max-width: 80rem;
 }
 
-.stance-detail{
+.stance_detail{
+  margin: 0.3em !important;
+  background: white !important;
+  -webkit-border-radius: 2em !important;
+  -moz-border-radius: 2em !important;
 }
 
 .sidebar{
@@ -11,3 +15,11 @@
 
 }
 
+.detail_left{
+  text-align: left !important;
+  /*font-size: 0.7em !important;*/
+}
+
+.panel{
+
+}
