@@ -1,14 +1,24 @@
 <%= form_for @stance do |f| %>
-  <div class="row">   
+  <div class="row">
     <div class="large-6 columns">
-      <h5>When it comes to</h5>  
-      <%= collection_select :position, :issue_id, @issues,:id,:description, :include_blank => "Issue" %>
+      <h2>When it comes to</h2>
+
+        <% @grouped_positions.each_with_index do |positions, i| %>
+          <a href="#" data-options="align:right" data-dropdown="rightDrop" class="button open" style="width: 25em;">
+            <%= positions.first.issue.description %> &raquo;
+          </a>
+          <ul id="rightDrop" class="[tiny small medium large content]f-dropdown small-block-grid-2 list" data-dropdown-content>
+            <li class="header"><h2>I believe in</h2></li>
+            <% positions.each do |position| %>
+              <li>
+                <%= position.description %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
     </div>
 
-    <div class="large-6 columns">
-    <h5>I believe in</h5>
-    <%= f.collection_select :position_id, @positions,:id,:description, include_blank: "Position" %>
-    </div>
+
   </div>
 
   <div class="row center-text">
