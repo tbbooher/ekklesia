@@ -10,3 +10,4 @@ class Issue < ActiveRecord::Base
     Issue.all.shuffle.slice(0..num)
   end
 end
+

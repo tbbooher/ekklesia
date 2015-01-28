@@ -20,5 +20,6 @@ Rails.application.routes.draw do
 
   get '/issues/positions', to: 'stances#positions_by_issue'
 
+  resources :issues
   resources :users
 end
