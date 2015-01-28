@@ -1,7 +1,7 @@
 <div class="row">
   <div class="large-12 columns center-text">
     <h1><span class='text-blue'>open</span><span class='text-red'>PAC</span></h1>
-    <p id='slogan'>Find legislators who support your position. <br><span id='text-red'></span>.</p>
+    <p id='slogan'>Search by issue to find legislators who support your position. <br><span id='text-red'></span></p>
   </div>
 </div>
 <div class="row">
@@ -19,7 +19,7 @@
 <div class="row">
   <div class="large-12 columns center-text">
     <% @issues.each do |issue| %>
-    <em><a href="/stances/issues/<%= issue.description %>" data-search> <%= issue.description %></a></em>&nbsp&nbsp
+    <em><a href="/stances/issues/<%= issue.description %>" data-search> <%= issue.description %></a></em>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     <% end %>
   </div>
 </div>
