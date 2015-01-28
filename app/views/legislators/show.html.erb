@@ -19,7 +19,11 @@
     </div>
       <div class="panel" id="bio">
         <h4>Bio:</h4>
-        <%= @legislator.biography.html_safe %>
+          <ul>
+            <% @legislator.biography.split(';').each do |sentence| %>
+            <li><%= sentence %></li>
+            <% end %>
+          </ul>
       </div>
 
       <div class="panel">
@@ -46,7 +50,7 @@
           </div>
 
           <div class="large-8 columns">
-            <div class="range-slider round" data-slider="<%= issue_stance.issue_score %>" data-options="start: 1; end: 100;">
+            <div class="range-slider round" data-slider="25" data-options="start: 1; end: 100;">
             <span class="range-slider-handle"><img class="bar-face" src="<%= @legislator.img_url %>"></span>
             </div>
           </div>
