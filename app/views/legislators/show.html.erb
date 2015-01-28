@@ -17,7 +17,7 @@
       </div>
 
       <div class="panel">
-        <%= @legislator.biography.html_safe %>
+        <%= @legislator.biography %>
       </div>
 
       <div class="panel">
@@ -26,7 +26,7 @@
           <li>Phone: <%= @legislator.phone %></li>
           <li>Fax: <%= @legislator.fax %></li>
           <li>Party: <%= @legislator.party %></li>
-          <li>State: <%= @legislator.current_state %></li>
+          <li>State: State</li>
         </ul>
       </div>
 
@@ -35,55 +35,27 @@
 
 <!-- End Header and Nav -->
 
-  <div class="row">
-    <div class="large-2 columns">
-      <%= link_to 'Issue', root_path, method: :get %>
-    </div>
-    <div class="large-10 columns">
-      <div class="range-slider round" data-slider data-options="start: 1; end: 100;">
-        <span class="range-slider-handle" role="slider" tabindex="0"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
-      </div>
-    </div>
+ <div class="row">
+  <div class="large-2 large-centered columns">
+    <h4 class="center-text">Issue</h4>
   </div>
+  <div class="large-10 large-centered columns">
+    <div class="row">
+      <div class="large-2 columns" id="donkey-logo-div">
+        <%= image_tag("donkey.png", class: "poly-logo") %>
+      </div>
 
-   <div class="row">
-    <div class="large-2 columns">
-      <%= link_to 'Issue', root_path, method: :get %>
-    </div>
-    <div class="large-10 columns">
-      <div class="range-slider round" data-slider data-options="start: 1; end: 100;">
-        <span class="range-slider-handle" role="slider" tabindex="0"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
+      <div class="large-8 columns">
+        <div class="range-slider round" data-slider="22" data-options="start: 1; end: 100;">
+        <span class="range-slider-handle"><img class="bar-face" src="http://www.glaad.org/sites/default/files/president-barack-obama-2013-inauguration-537x442.jpg"></span>
+        </div>
       </div>
-    </div>
-  </div>
 
-   <div class="row">
-    <div class="large-2 columns">
-      <%= link_to 'Issue', root_path, method: :get %>
-    </div>
-    <div class="large-10 columns">
-      <div class="range-slider round" data-slider data-options="start: 1; end: 100;">
-        <span class="range-slider-handle" role="slider" tabindex="0"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
+      <div class="large-2 columns>">
+        <%= image_tag("elephant.png", class: "poly-logo") %>
       </div>
     </div>
   </div>
+</div>
 
-   <div class="row">
-    <div class="large-2 columns">
-      <%= link_to 'Issue', root_path, method: :get %>
-    </div>
-    <div class="large-10 columns">
-      <div class="range-slider round" data-slider data-options="start: 1; end: 100;">
-        <span class="range-slider-handle" role="slider" tabindex="0"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
-      </div>
-    </div>
-  </div>
 
