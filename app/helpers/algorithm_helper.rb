@@ -54,5 +54,4 @@ module VotingTendencyAlgorithm
       end
     end
   end
-
 end
