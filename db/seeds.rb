@@ -2,7 +2,7 @@ include SeedHelper
 include AlgorithmHelper
 
 User.create(first_name: 'a', last_name: 'a', last_name: 'a@a.com', username: 'a', password_digest: 'a')
-# seed real legislators
+# # seed real legislators
 SeedHelper::LegislatorSeed::insert_basic_legislators
 SeedHelper::LegislatorSeed::insert_details
 SeedHelper::LegislatorSeed::insert_image_url
@@ -10,13 +10,14 @@ SeedHelper::AlgorithmData::create_issues(KEYWORDS)
 SeedHelper::AlgorithmData::seed_algorithm_data
 AlgorithmHelper::set_stance_values_for_bills
 AlgorithmHelper::set_issue_score_for_legislators
+AlgorithmHelper::remove_incomplete_data_for_legislators
 
 # Uncomment if you would like fake content.
 
 # seed fake legislators
-100.times do
-  Legislator.create(bioguide_id: Faker::Company.ein, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-end
+# 100.times do
+#   Legislator.create(bioguide_id: Faker::Company.ein, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+# end
 
 # seed users
 
