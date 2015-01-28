@@ -1,4 +1,4 @@
-module VotingTendencyAlgorithm
+module AlgorithmHelper
   def self.set_stance_values_for_bills
     Bill.all.each do |bill|
       if bill.breakdowns.count == 1
