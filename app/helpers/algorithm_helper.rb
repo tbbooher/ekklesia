@@ -54,4 +54,21 @@ module AlgorithmHelper
       end
     end
   end
+
+  def self.remove_incomplete_data_for_legislators
+    Issue.all.each do |issue|
+      Legislator.all.each do |legislator|
+        if legislator.bill_votes.where(issue_id: issue.id).count == 0
+          li = LegislatorIssue.find_by(issue_id: issue.id, legislator_id: legislator.id)
+          li.destroy
+        end
+      end
+    end
+  end
 end
+
+
+
+
+
+
