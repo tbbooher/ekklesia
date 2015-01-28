@@ -40,22 +40,33 @@
     </div>
     <% end %>
   </div>
+  <div class="panel callout radius large-9 large-centered columns">
+    <div class="row large-8">
+      <%= image_tag("creditcards.png", class: "credit-card-image") %>
+    </div>
+    <div class="row large-8">
+      Card Number (no dashes or spaces)
+      <input data-stripe="number" placeholder="card number" class="large-12 columns"/>
+    </div>
+    <div class="row large-8">
+      Expiration Month
+      <input data-stripe="exp-month" placeholder="expiration month" class="large-12 columns"/>
+    </div>
+    <div class="row large-8">
+      Expiration Year
+      <input data-stripe="exp-year" placeholder="expiration year" class="large-12 columns" />
+    </div>
+    <div class="row large-8">
+      Security Code
+      <input data-stripe="cvc" placeholder="security code" class="large-12 columns" />
+    </div>
+    <!-- end cc section -->
+    <div class="row large-8">
+      <p class="donate-errors" style="color:red"></p>
+    </div>
+    <div class="row large-8">
+      <%= f.submit "Donate", class: "button tiny large-12 columns"%>
+      <% end %>
+    </div>
+  </div>
 </div>
-<!-- start cc section -->
-<div class="panel callout radius large-9 large-centered columns">
-  <div class="row large-8">
-    <input data-stripe="number" placeholder="Card number" class="large-9 medium-9 columns"/>
-    <input data-stripe="cvc" placeholder="CVC" class="large-3 medium-3 columns" />
-  </div>
-  <div class="row large-8">
-    <input data-stripe="exp-month" placeholder="month" class="large-6 medium-3 columns"/>
-    <input data-stripe="exp-year" placeholder="year" class="large-6 medium-3 columns" />
-  </div>
-  <!-- end cc section -->
-  <div class="row">
-    <%= f.submit "Donate", class: "button tiny"%>
-    <% end %>
-  </div>
-</div>
-
-
