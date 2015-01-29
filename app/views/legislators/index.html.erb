@@ -3,20 +3,21 @@
       <div id="legislator-list">
         <div class="row">
           <div class="large-12 columns">
-            <div class="radius panel center-text">
-              <form>
+            <div class="radius center-text">
+              <h2 style="font-size: 2.5em;">Legislators</h2>
+              <form style="margin-bottom: 2.5em;">
                 <input id="stance-create-search" class="large-10 small-8 fuzzy-search" placeholder='search legislators by name'/>
               </form>
             </div>
           </div>
         </div>
 
-          <div class="panel" id="">
+          <div>
             <ul class="small-block-grid-8 list">
               <% @legislators.each do |legislator| %>
               <li>
-                <img title="<%= legislator.name %>" id="<%= legislator.id %>" src="<%= legislator.img_url %>" class="legislator-pic" />
-                <a href="/legislators/<%= legislator.id %>"><p class="name"><%= legislator.name %></p></a>
+                <img title="<%= legislator.name %>" class="circle_face" src="<%= legislator.img_url %>" class="legislator-pic" />
+                <a href="/legislators/<%= legislator.id %>"><p class="name" align="center"><%= legislator.name %></p></a>
               </li>
               <% end %>
             </ul>

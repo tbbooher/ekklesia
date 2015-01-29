@@ -16,7 +16,8 @@
 
  */
 .container {
-  margin-top: 2em;
+  width: 90%;
+  margin: 2em auto;
 }
 
 .legislator-img {
