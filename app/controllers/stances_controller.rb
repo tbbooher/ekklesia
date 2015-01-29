@@ -69,7 +69,6 @@ class StancesController < ApplicationController
     render partial: "/stances/position_check_list", locals: {positions: @positions}
   end
 
-
   private
     def stances_params
       params.require(:stance).permit(:position_id, :legislator_id)

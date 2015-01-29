@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
 
   resources :legislators, only: [:index, :show]
-  
+
   post '/upvotes/create', to: 'upvotes#create'
 
+  get '/stances/load', to: 'stances#load'
   resources :stances do
     get '/donations', to: 'donations#show'
     post '/donations', to: 'donations#create'
