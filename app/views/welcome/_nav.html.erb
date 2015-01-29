@@ -7,18 +7,34 @@
 <section class="top-bar-section">
   <!-- Left Nav Section -->
   <ul class="left">
-    <% if !logged_in? %>
-    <li><%= link_to 'Login', login_path, method: :get %></li>
-    <li><%= link_to 'Signup', signup_path, method: :get %></li>
-    <% else %>
     <li>
-      <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" data-options="is_hover: true"><%= current_user.username %></a>
-      <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-        <li><%= link_to "Profile", user_path(current_user) %></li>
-        <li><%= link_to 'Logout', logout_path, method: :get %></li>
+      <a data-dropdown="drop3" aria-controls="drop3" aria-expanded="false" data-options="is_hover: true">Issues</a>
+      <ul id="drop3" class="f-dropdown" data-dropdown-content aria-hidden="true">
+        <li><%= link_to 'Energy', issue_path(1), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Abortion', issue_path(2), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Healthcare', issue_path(3), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Immigration', issue_path(4), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Environment', issue_path(5), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Economy', issue_path(6), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Foreign Policy', issue_path(7), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Welfare', issue_path(8), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Jobs', issue_path(9), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Education', issue_path(10), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Finance', issue_path(11), method: :get %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Gun Control', issue_path(12), method: :get %></li>
       </ul>
     </li>
-    <% end %>
     <li>
       <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" data-options="is_hover: true">Stances</a>
       <ul id="drop2" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
@@ -31,5 +47,18 @@
       </ul>
     </li>
     <li><%= link_to 'Legislators', legislators_path, method: :get %></li>
+    <% if !logged_in? %>
+    <li><%= link_to 'Login', login_path, method: :get %></li>
+    <li><%= link_to 'Signup', signup_path, method: :get %></li>
+    <% else %>
+    <li>
+      <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" data-options="is_hover: true"><%= current_user.username %></a>
+      <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+        <li><%= link_to "Profile", user_path(current_user) %></li>
+        <li><%= link_to 'Logout', logout_path, method: :get %></li>
+      </ul>
+    </li>
+    <% end %>
   </ul>
 </section>
+
