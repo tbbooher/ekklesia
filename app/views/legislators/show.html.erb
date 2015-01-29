@@ -20,7 +20,9 @@
       <div class="panel" id="bio">
         <h4>Bio:</h4>
           <ul>
-            <li><p><% @legislator.biography %></p></li>
+            <% @legislator.biography.split(';').each do |bullet| %>
+              <li class='bio'>- <%= bullet %></li>
+            <% end %>
           </ul>
       </div>
 

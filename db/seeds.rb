@@ -12,7 +12,7 @@ include AlgorithmHelper
 # AlgorithmHelper::set_issue_score_for_legislators
 # AlgorithmHelper::remove_incomplete_data_for_legislators
 
-# SeedHelper::BioScraper::get_all_biographies
+SeedHelper::BioScraper::get_all_biographies
 
 # seed users
 5.times do
