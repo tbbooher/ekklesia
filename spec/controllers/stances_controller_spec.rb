@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 describe StancesController do
+  let(:user) {FactoryGirl.create(:user)}
   describe 'GET #new' do
     it "renders the #new template" do
+      session[:id] = user.id
       get :new
       expect(response).to render_template :new
     end
@@ -10,8 +12,6 @@ describe StancesController do
   end
 
   describe 'POST #create' do
-
-    let(:user) {FactoryGirl.create(:user)}
     it "redirects to #show" do
       session[:id] = user.id
       @stance = {1 => 'true'}
