@@ -1,11 +1,11 @@
 class WelcomeController < ApplicationController
   def index
-    @issues = Issue.fetch(4)
+    @issues = Issue.all
     render layout: 'welcome'
   end
 
   def about
-    @issues = Issue.fetch(4)
+    @issues = Issue.all
     render layout: 'application'
   end
 end
