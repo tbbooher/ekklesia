@@ -4,7 +4,7 @@
       <h2>When it comes to</h2>
       <ul>
         <% @issues.each do |issue| %>
-          <li>
+          <li class="select_list">
             <a href="/issues/positions" class="issue_select button small radius zero-margin" value="<%= issue.id %>"><%= issue.description %></a>
           </li>
         <% end %>

@@ -2,11 +2,11 @@
   <div class="large-9 medium-8 columns">
     <div class="row">
       <% if params[:select] == "Popular" || params[:select] == "Recent" %>
-        <h3><span class='text-red'><%= params[:select] %></span> Stances</h3>
+        <h3 class="stance_index_title"><span class='text-red'><%= params[:select] %></span> Stances</h3>
       <% elsif params[:select] %>
-        <h3>Stances other users have taken on the issue of <span class='text-red'><%= params[:select] %></span>:</h3>
+        <h3 class="stance_index_title">Stances other users have taken on the issue of <span class='text-red'><%= params[:select] %></span>:</h3>
       <% else %>
-        <h3><span class='text-red'>All</span> Stances</h3>
+        <h3 class="stance_index_title"><span class='text-red'>All</span> Stances</h3>
       <% end %>
       <% stances = @stances %>
       <% stances.each do |stance| %>
