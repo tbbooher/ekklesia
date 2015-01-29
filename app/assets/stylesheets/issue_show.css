@@ -23,3 +23,9 @@
 .issue-positions {
   margin-top: 2em !important;
 }
+
+.modal-img {
+  height: 10em;
+  width: 10em;
+  border-radius: 50%;
+}
