@@ -38,6 +38,18 @@ class Legislator < ActiveRecord::Base
     end
   end
 
+  def get_spectrum_value(score)
+  case score
+      when 0..14 then return "Liberal"
+      when 15..29 then return "Democrat"
+      when 30..44 then return "Progressive"
+      when 45..55 then return "Independent"
+      when 56..70 then return "Moderate"
+      when 71..85 then return "Republican"
+      when 86..100 then return "Conservative"
+    end
+  end
+
   def self.filter_legislators_by_vote_count(issue_id)
     array = []
     BillVote.where(issue_id: issue_id).group(:legislator_id).count.sort_by {|k,v| v}.reverse.slice(0,300).to_h.each do |k,v|
