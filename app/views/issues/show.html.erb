@@ -19,10 +19,11 @@
           <a href="#" data-reveal-id="<%= legislator.bioguide_id %>"><img data-value="<%= legislator.get_issue_score(@issue.id) %>" src="<%= legislator.img_url %>" class="issue-bar-pic"></a>
 
           <div id="<%= legislator.bioguide_id %>" class="reveal-modal" data-reveal>
-            <a href="/legislators/<%= legislator.id %>"><h2><%= legislator.name %></h2></a>
+            <a href="/legislators/<%= legislator.id %>"><h2><%= legislator.offical_prefix %> <%= legislator.name %></h2></a>
             <h4>Issue Score: <%= legislator.get_issue_score(@issue.id) %></h4>
             <p class="lead"></p>
-            <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+            <p><%= legislator.biography %></p>
+            <h6><%= link_to 'More Info', legislator_path(legislator.id) %></h6>
             <a class="close-reveal-modal">&#215;</a>
           </div>
 
