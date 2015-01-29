@@ -16,6 +16,7 @@ class StancesController < ApplicationController
   end
 
   def new
+    redirect_to :login unless logged_in?
     @issues = Issue.all
     @legislators = Legislator.all
     @stance = Stance.new
@@ -29,6 +30,7 @@ class StancesController < ApplicationController
   end
 
   def create
+    redirect_to :login unless logged_in?
     position_id = params[:position_id].select{ |k,v| v == "true" }.keys.map(&:to_i)[0]
     @stance = current_user.stances.new(position_id: position_id)
     if @stance.save
