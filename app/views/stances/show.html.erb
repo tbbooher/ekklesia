@@ -1,29 +1,34 @@
-<div class="row">
-  <div class="large-6 columns">
+<div class="row" style="margin-bottom: 2em; border-bottom: 1.5px solid #F5E0DA;">
+  <div class="large-7 columns" style="text-align: right;">
     <h2><span class='text-blue'><a href="/users/<%=@author.id%>"><%= @author.username %></a></span> believes in <br><span class='text-red'><%= @position.description %></span></h2>
-    <h6><a href="/stances/issues/<%= @position.issue.description %> "><%= @position.issue.description %></a></h6>
+  </div>
+  <div class="large-5 columns">
+    <h2 align="center" style="margin-top: 0.5em;"><a href="/stances/issues/<%= @position.issue.description %> " style="text-shadow: 52px 32px 4px #CED3DE;"><%= @position.issue.description %></a></h2>
   </div>
 </div>
 
 <div class="row">
   <div class="large-7 columns">
-    <div class="panel">
-      <ul class="small-block-grid-4">
+    <!-- <div class="panel"> -->
+      <ul class="small-block-grid-3">
         <% @stance.legislators.each do |legislator| %>
 
-          <li><img src="<%= legislator.img_url %>"><a href="/legislators/<%= legislator.id %>"><%= legislator.name %></a><br></img></li>
+          <li>
+            <div style="background-color; #FAFAFA;" align="right">
+            <a href="/legislators/<%= legislator.id %>"><span><%= legislator.first_name %> <%= legislator.last_name %></span>  <img src="<%= legislator.img_url %>" class="circle_face"></a><br></img>
+            </div>
+          </li>
         <% end %>
       </ul>
-    </div>
+    <!-- </div> -->
       <% if logged_in? && (@author == current_user) %>
         <%= button_to "Delete", @stance, method: :delete, class: "button radius" %>
       <% end %>
   </div>
   <!-- Sidebar -->
-  <div class="large-5 columns">
+  <div class="large-5 columns" align="center">
     <h2 id="legislators_count"><%= @stance.legislators.count %> <small>Supporting legislators</small></h2>
     <h2><span id="upvote_count"><%= @stance.upvotes.count %></span> <small>Upvotes</small></h2>
-  </div>
 
   <% if logged_in? %>
     <%= render partial: "upvotes/new", locals: {upvote: @upvote} %>
@@ -36,6 +41,7 @@
     <%= submit_tag "Donate", class: "button radius" %>
   <% end %>
 
+  </div>
 </div>
 
 

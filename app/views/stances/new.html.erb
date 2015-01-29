@@ -31,7 +31,7 @@
       <div id="legislator-list">
         <div class="row">
           <div class="large-12 columns">
-            <div class="radius panel center-text">
+            <div class="radius center-text" style="margin-bottom: 2.5em;">
               <form>
                 <input id="stance-create-search" class="large-10 small-8 fuzzy-search" placeholder='search legislators by name'/>
               </form>
@@ -39,11 +39,11 @@
           </div>
         </div>
 
-          <div class="panel" id="legislator-list-panel">
+          <div id="legislator-list-panel">
             <ul class="small-block-grid-8 list">
               <% @legislators.each do |legislator| %>
               <li>
-                <img title="<%= legislator.name %>" id="<%= legislator.id %>" src="<%= legislator.img_url %>" class="legislator-pic" />
+                <img title="<%= legislator.name %>" id="<%= legislator.id %>" src="<%= legislator.img_url %>" class="circle_face legislator-pic" />
                 <p class="name"><%= legislator.name %></p>
 
                 <%= check_box "legislator_id", legislator.id, {class: "legislator-checkbox"}, 'true', 'false' %>

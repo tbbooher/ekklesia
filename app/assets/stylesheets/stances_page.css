@@ -53,3 +53,11 @@ ul{
   display: -webkit-inline-box !important;
   margin-bottom: .5em;
 }
+
+.circle_face{
+  border-radius: 50%;
+  max-width: 100%;
+  height: 5em;
+  width: 5em;
+  box-shadow: 2px 2px 7px #B59388;
+}
