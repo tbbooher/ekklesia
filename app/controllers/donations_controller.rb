@@ -2,10 +2,7 @@ class DonationsController < ApplicationController
   include AuthsHelper
 
   def show
-    redirect_to :login unless logged_in?
-    @stance = Stance.find(params[:stance_id])
-    @legislators = @stance.legislators
-    @legislator_ids = @stance.legislators.map{|l|l.id}
+    @donations = current_user.donations
   end
 
   def create
@@ -21,6 +18,13 @@ class DonationsController < ApplicationController
     )
 
     Donation.create_records(params)
+  end
+
+  def new
+    redirect_to :login unless logged_in?
+    @stance = Stance.find(params[:stance_id])
+    @legislators = @stance.legislators
+    @legislator_ids = @stance.legislators.map{|l|l.id}
   end
 
   private

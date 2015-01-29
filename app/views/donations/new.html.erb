@@ -1,0 +1,72 @@
+<%= render :partial => 'stripe/js' %>
+<div class="panel large-9 large-centered columns">
+  <div class="row">
+    <h2><%= @stance.position.description.capitalize %>.</h2>
+  </div>
+  <!-- start of form -->
+  <%= form_for :donation, html: {class: "donate-form"} do |f|%>
+  <div class="row">
+    <div class="large-12 columns" style="padding:0">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <span class="prefix">Donate What you Want</span>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :amount, id: "total_amount", value: 25%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h4 id="more-info"> <span id="arrow" data-toggle="off">&#65515</span> Choose Where The Money Goes</h4>
+    <% @legislators.each do |legislator| %>
+    <div class="row legislator" style="display:none">
+      <div class="large-12 columns">
+        <div class="row collapse prefix-radius">
+          <div class="small-3 columns">
+            <span class="prefix"><%= legislator.first_name %> <%= legislator.last_name %></span>
+          </div>
+          <%= f.hidden_field :legislator_ids, :multiple => true, :value => legislator.id %>
+          <% if logged_in? %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <% else %>
+          <%= f.hidden_field :user_id, :value => nil %>
+          <% end %>
+          <div class="small-9 columns">
+            <%= f.text_field :amounts, :multiple => true, class: "each_amount", value: (25.00 / @legislators.count).round(2) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="panel callout radius large-9 large-centered columns">
+    <div class="row large-8">
+      <%= image_tag("creditcards.png", class: "credit-card-image") %>
+    </div>
+    <div class="row large-8">
+      Card Number (no dashes or spaces)
+      <input data-stripe="number" placeholder="card number" class="large-12 columns"/>
+    </div>
+    <div class="row large-8">
+      Expiration Month
+      <input data-stripe="exp-month" placeholder="expiration month" class="large-12 columns"/>
+    </div>
+    <div class="row large-8">
+      Expiration Year
+      <input data-stripe="exp-year" placeholder="expiration year" class="large-12 columns" />
+    </div>
+    <div class="row large-8">
+      Security Code
+      <input data-stripe="cvc" placeholder="security code" class="large-12 columns" />
+    </div>
+    <!-- end cc section -->
+    <div class="row large-8">
+      <p class="donate-errors" style="color:red"></p>
+    </div>
+    <div class="row large-8">
+      <%= f.submit "Donate", class: "button tiny large-12 columns"%>
+      <% end %>
+    </div>
+  </div>
+</div>
