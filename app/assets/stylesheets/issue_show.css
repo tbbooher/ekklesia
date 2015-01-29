@@ -6,6 +6,7 @@
 .issue-bar-pic {
   height: 2.4em;
   width: 2.4em;
+  border: 5px solid black;
   border-radius: 50%;
   position: absolute;
   top: -0.7rem !important;
