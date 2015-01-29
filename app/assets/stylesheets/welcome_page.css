@@ -1,6 +1,5 @@
 .center-text {
   text-align: center;
-
 }
 
 #homepage-search {
@@ -9,4 +8,8 @@
 
 #about-footer {
   text-align: center;
+}
+
+#drop3 {
+  background-color: #333333;
 }
