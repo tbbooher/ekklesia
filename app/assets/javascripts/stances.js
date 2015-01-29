@@ -1,10 +1,11 @@
 $(document).ready(function(){
-  $('.side-nav').on("click", "a", updateStanceView);
+  $('.side-nav').on("click", "a", updateStanceList);
   $('#total_amount').on('keyup', distribute)
   $('.each_amount').on('keyup', updateTotal)
   $('.new_upvote').on('submit', updateVoteCount)
   $('.issue_select').on('click', getPositions)
   $('.position_select_box').on('click', 'li',highlightPositon)
+  $('#load_more_button').on('click', loadMoreStances)
 })
 
 var distribute = function(event){
@@ -16,24 +17,38 @@ var distribute = function(event){
 var updateTotal = function(event){
   var total = 0
   $('.each_amount').each(function(){
-      if(parseInt($(this).val()) > 0){
-          total += parseInt($(this).val())
-      }
+    if(parseInt($(this).val()) > 0){
+      total += parseInt($(this).val())
+    }
   })
   $('#total_amount').val(total.toFixed(2))
 };
 
-var updateStanceView = function(event){
+var updateStanceList = function(event){
   event.preventDefault();
   $target = $(event.target);
   $.ajax({
     url: $target.attr('href'),
     type: "GET",
-    data: {select: $target.text()}
+    data: {select: $target.text(), i: 1}
   }).done(function(response){
-    $('.stances').replaceWith(response);
+    $('.stance_detail_list').empty();
+    $('.stance_detail_list').append(response);
+    $('span','.stance_index_title').text($target.text());
   });
 };
+
+var loadMoreStances = function(event){
+  event.preventDefault();
+  $target = $(event.target);
+  $.ajax({
+    url: $target.attr('action'),
+    type: $target.attr('method'),
+    data: {i: $('.stance_detail').length, select: $('span','.stance_index_title').text()}
+  }).done(function(response){
+    $('.stance_detail_list').append(response)
+  });
+}
 
 var updateVoteCount = function(event){
   event.preventDefault();
@@ -49,7 +64,7 @@ var updateVoteCount = function(event){
 }
 
 
-var getPositions = function(){
+var getPositions = function(event){
   event.preventDefault();
   $target = $(event.target);
   $.ajax({
