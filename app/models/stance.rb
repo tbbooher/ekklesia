@@ -8,6 +8,8 @@ class Stance < ActiveRecord::Base
 
   validates_presence_of :user_id, :position_id
 
+  after_destroy :delete_upvotes
+
   def info
     { position_description: Position.find(position_id).description,
     author: User.find(user_id) }
@@ -15,6 +17,14 @@ class Stance < ActiveRecord::Base
 
   def voted(user_id)
     self.upvotes.find_by(user_id: user_id) ? true : false
+  end
+
+  def delete_upvotes
+    Upvote.where(stance_id: self.id).each{|upvote| upvote.destroy}
+  end
+
+  def total_donated_amount
+    Donation.where(stance_id: self.id).inject(0) { |acc, donation| acc += donation.amount; acc }
   end
 
   def self.search(words)

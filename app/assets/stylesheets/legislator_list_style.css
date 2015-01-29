@@ -3,7 +3,9 @@
 }
 
 #stance-create-search {
-  font-size: 1.75em;
+  padding: 0.4em;
+  font-weight: normal;
+  font-size: 1.05em;
 }
 
 .zero-margin {
