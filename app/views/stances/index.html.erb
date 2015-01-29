@@ -9,11 +9,28 @@
           <li class="divider"></li>
           <li class="heading"><h4>Issues</h4></li>
           <% @issues.each do |issue| %>
-            <li><a href="/stances/issues/<%= issue.description %>" data-search><%= issue.description %></a></li>
+          <li><a href="/stances/issues/<%= issue.description %>" data-search><%= issue.description %></a></li>
           <% end %>
         </ul>
       </nav>
     </div>
   </div>
-  <%= render partial: "stances/search_results", locals: {stances: @stances} %>
+  <div class="stances">
+    <div class="large-9 medium-8 columns">
+      <% if params[:select] == "Popular" || params[:select] == "Recent" %>
+      <h3 class="stance_index_title"><span class='text-red'><%= params[:select] %></span> Stances</h3>
+      <% elsif params[:select] %>
+      <h3 class="stance_index_title">Stances other users have taken on the issue of <span class='text-red'><%= params[:select] %></span>:</h3>
+      <% else %>
+      <h3 class="stance_index_title"><span class='text-red'>All</span> Stances</h3>
+      <% end %>
+      <div class="row stance_detail_list">
+      <%= render partial: "stances/stance_list", locals: {stances: @stances} %>
+      </div>
+    </div>
+  </div>
+  <div class="large-9 medium-8 columns">
+    <%= button_tag 'Load more',  method: :get, action: '/stances/load', id: 'load_more_button' %>
+  </div>
+</div>
 </div>
