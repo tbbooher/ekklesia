@@ -2,8 +2,17 @@ class StancesController < ApplicationController
   include AuthsHelper
 
   def index
-    @stances = Stance.all.order("created_at DESC")[0..20]
+    @stances = Stance.all.order("created_at DESC")[0..9]
     @issues = Issue.all
+  end
+
+  def load
+    if params[:select]
+      @stances = Stance.search(params[:select])[(params[:i].to_i+1)..(params[:i].to_i+10)]
+    else
+      @stances = Stance.all.order("created_at DESC")[(params[:i].to_i+1)..(params[:i].to_i+10)]
+    end
+    render partial: "stance_list", locals: {stances: @stances}
   end
 
   def new
@@ -46,10 +55,10 @@ class StancesController < ApplicationController
 
   def select
     @issues = Issue.all
-    @stances = Stance.search(params[:select])[0..20]
+    @stances = Stance.search(params[:select])[(params[:i].to_i+1)..(params[:i].to_i+10)]
 
     if request.xhr?
-      render :_search_results, layout: false, collection: @stances
+      render partial: "stance_list", locals: {stances: @stances}
     else
       render :index
     end
@@ -59,7 +68,6 @@ class StancesController < ApplicationController
     @positions = Position.where(issue_id: params[:issue_id])
     render partial: "/stances/position_check_list", locals: {positions: @positions}
   end
-
 
   private
     def stances_params
