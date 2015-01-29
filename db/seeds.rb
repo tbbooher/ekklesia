@@ -1,7 +1,7 @@
 include SeedHelper
 include AlgorithmHelper
 
-User.create(first_name: 'a', last_name: 'a', last_name: 'a@a.com', username: 'a', password_digest: 'a')
+# User.create(first_name: 'a', last_name: 'a', last_name: 'a@a.com', username: 'a', password_digest: 'a')
 # # seed real legislators
 # SeedHelper::LegislatorSeed::insert_basic_legislators
 # SeedHelper::LegislatorSeed::insert_details
@@ -12,12 +12,7 @@ User.create(first_name: 'a', last_name: 'a', last_name: 'a@a.com', username: 'a'
 # AlgorithmHelper::set_issue_score_for_legislators
 # AlgorithmHelper::remove_incomplete_data_for_legislators
 
-# Uncomment if you would like fake content.
-
-# seed fake legislators
-100.times do
-  Legislator.create(bioguide_id: Faker::Company.ein, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-end
+# SeedHelper::BioScraper::get_all_biographies
 
 # seed users
 5.times do
@@ -26,40 +21,42 @@ end
 
 # define universe of issues and positions
 issue_positions = {
-  "Immigration" => ["nativism", "open immigration", "more open borders", "more closed borders"],
-  "Healthcare" => ["universal health care", "publicly-funded health care", "two-tier health care"],
-  "Minimum Wage" => ["indexing to inflation", "raising the minimum wage", "lowering the minimum wage"],
-  "Personal Income Taxation" => ["progressive taxation", "regressive taxation", "proportional taxation"],
-  "Government Surveillance" => ["allowing collection of 'meta-data'", "allowing unrestricted surveillance so long as it's tied to the purpose of national security", "disallowing the government from collecting 'meta-data'", "disallowing all covert surveillance on any U.S. citizen"
-  ]
+  "abortion" => ["Pro-life", "Pro-choice", "Pro-life, except when woman's life is endangered", "Pro-life, except in the case of rape", "Pro-choice, through the first trimester", "Pro-choice, through the second trimester", "Pro-choice, through the third trimester"],
+  "economy" => ["Progressive taxation", "Regressive taxation", "Proportional taxation", "Indexing minimum wage to inflation", "Privatizing social security", "Cutting government spending", "Taxing wealthy Americans (the 'Buffet Rule')", "Cutting taxes", "Minimizing national debt as a priority"],
+  "education" => ["Standardized Testing", "Increasing standards for teacher training", "Instituting merit pay for teachers", "Private school vouchers"],
+  "energy" => ["Protecting Endangered Species", "Implementing emissions standards (e.g., carbon cap)", "Implementing Cap and Trade programs"],
+  "environment" => ["Protecting Endangered Species", "Implementing emissions standards (e.g., carbon cap)", "Implementing Cap and Trade programs"],
+  "finance" => ["Increasing banking regulation (e.g., Dodd-Frank)", "Relaxed financial sector regulations"],
+  "foreign policy" => ["Free trade", "Decreasing the defense budget", "Increasing the defense budget", "Increasing foreign aid", "Decreasing foreign aid"],
+  "gun control" => ["Required background checks for all firearm purchases", "Assault weapons ban", "Ammunication registration requirements", "High capacity magazine bans"],
+  "healthcare" => ["Expanding medicare expansion", "The Affordable Care Act", "Universal health care", "Publicly-funded health care", "Two-tiered health care", "Expanding medicaid"],
+  "immigration" => ["Providing amnesty for illegal immigrants under special cirumcstances", "Increasing Immigrants' Rights and Access to Services", "Strengthening US-Mexico border control", "The DREAM Act", "requiring employer E-verification", "establishing English as the official U.S. language"],
+  "jobs" => ["Granting job creation tax credits", "Increasing government infrastructure projects", "Cutting payroll taxes", "Increasing minimum wage", "Decreasing minimum wage"],
+  "welfare" => ["Increasing government welfare", "Decreasing government welfare"]
 }
 
 # seed issues and positions
-issue_positions.each do |issue, position_array|
-  new_issue = Issue.create!(description: issue)
-  position_array.each { |position| new_issue.positions.create!(description: position) }
+issue_positions.each do |issue_name, position_array|
+  issue = Issue.where(description: issue_name)[0]
+  position_array.each { |position_description| issue.positions.create!(description: position_description) }
 end
 
 # seed stances, upvotes
-User.all.each do |user|
-  50.times { user.stances.create!(position_id: rand(Position.count) + 1) }
+
+Position.all.each do |position|
+  position.stances.create!(user_id: (1 + rand(User.count)))
 end
 
-Stance.all.each do |stance|
-  rand(50).times do
-    stance.legislator_stances.create!(legislator_id: (1 + rand(Legislator.count)))
-  end
-  (1..rand(User.count)).each do |i|
-    stance.upvotes.create!(user_id: i)
+User.all.each do |user|
+  Stance.all.each do |stance|
+    rand(15).times do
+      stance.legislator_stances.create!(legislator_id: (1 + rand(Legislator.count)))
+    end
+    rand(2) == 0 ? stance.upvotes.create!(user_id: user.id) : nil
   end
 end
 
 # seed donations
-User.all.each do |user|
-  user.donations.create!(legislator_id: (1 + rand(Legislator.count)), stance_id: (1 + rand(Stance.count)), amount: rand(1000000))
-end
-
-# seed legislator_issues
-100.times do
-  LegislatorIssue.create!(issue_id: (1 + rand(Issue.count)),legislator_id: (1 + rand(Legislator.count)), issue_score: 0.5)
+Stance.all.each do |stance|
+  stance.donations.create!(legislator_id: (1 + rand(Legislator.count)), user_id: (1 + rand(User.count)), amount: rand(25..400))
 end
