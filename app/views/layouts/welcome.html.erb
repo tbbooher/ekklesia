@@ -13,41 +13,7 @@
   </head>
   <body>
     <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to 'openPAC', root_path, method: :get %></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
-      <section class="top-bar-section">
-        <!-- Left Nav Section -->
-        <ul class="left">
-          <% if !logged_in? %>
-          <li><%= link_to 'Login', login_path, method: :get %></li>
-          <li><%= link_to 'Signup', signup_path, method: :get %></li>
-          <% else %>
-          <li>
-            <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" data-options="is_hover: true"><%= current_user.username %></a>
-            <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-              <li><%= link_to "Profile", user_path(current_user) %></li>
-              <li><%= link_to 'Logout', logout_path, method: :get %></li>
-            </ul>
-          </li>
-          <% end %>
-          <li>
-            <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" data-options="is_hover: true">Stances</a>
-            <ul id="drop2" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-              <li><%= link_to 'See all', stances_path, method: :get %></li>
-              <% if !logged_in? %>
-              <li><%= link_to 'Take a Stance', login_path, method: :get %></li>
-              <% else %>
-              <li><%= link_to 'Take a Stance', new_stance_path, method: :get %></li>
-              <% end %>
-            </ul>
-          </li>
-          <li><%= link_to 'Legislators', legislators_path, method: :get %></li>
-        </ul>
-      </section>
+      <%= render partial: 'welcome/nav' %>
     </nav>
     <section role='main' class='scoll-container'>
       <div class='container'>
@@ -55,25 +21,7 @@
       </div>
     </section>
     <div class="footer">
-      <div class='row'>
-        <div id='about-footer'>
-          <a href="#" data-reveal-id="myModal">What is openPAC?</a>
-          <div id="myModal" class="reveal-modal" data-reveal>
-            <p class="lead">
-            openPAC is a mission to make the government dependent on the people alone. In short, we seek to remove legislators' dependence on big dollar donations by making a platform that makes it easy for citizens to determine where legislators stand on various issues.</p>
-            <p>We take two approaches to this end:</p>
-            <ol>
-              <li>
-              Using public data on legislator votes on bills, our data model determines how a legislator tends to vote on a given issue based on keywords. We display this tendency as a 'left-right' spectrum for each politician for a given issue.</li>
-              <li>
-              We allow users to take 'stances', whereby you present an issue, a position on that issue, and the legislators you believe support that position. Other users can then take action based on those stances, whether by supporting those legislators through our donation page (using the Stripe API), voting for those legislators, or just being more a more well-informed citizen in general.</li>
-            </ol>
-            "If the problem is members spending an extraordinary amount of time fundraising from the tiniest slice of America, the solution is to have them spend less time fundraising, but fundraise from a wider slice of America." <br>
-            - Lawrence Lessig
-            </p>
-          </div>
-        </div>
-      </div>
+      <%= render partial: 'welcome/footer' %>
     </div>
     <%= javascript_include_tag "application" %>
   </body>
