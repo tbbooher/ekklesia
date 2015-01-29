@@ -135,7 +135,7 @@ module SeedHelper
 		def self.insert_image_url
 		  Legislator.all.each do |legislator|
 		    legislator.update(
-		      img_url: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/#{legislator.bioguide_id}.jpg"
+		      img_url: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/225x275/#{legislator.bioguide_id}.jpg"
 		      )
 		  end
 		end
