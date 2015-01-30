@@ -35,7 +35,7 @@ p {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: #A9BC64;
@@ -110,4 +110,27 @@ h1 {
 
 .bio {
   font-size: .75em;
+}
+
+.right_nav {
+  float: right;
+}
+
+#top-bar-section {
+
+
+}
+
+#top-bar-section a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1em;
+}
+
+#site-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1em;
+}
+
+#drop2{
+  background-color: #333333
 }
