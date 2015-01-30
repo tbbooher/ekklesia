@@ -1,47 +1,17 @@
+<div class="panel large-9 large-centered columns">
+  user
+</div>
 <div class="row">
-  <div class="large-12 columns">
-    <!-- Header Content -->
-    <div class="row">
-      <div class="large-8 large-centered columns">
-        <div class="panel">
-          <h3><%=@user.username%></h3>
-          <h4><%=@user.city%>, <%= @user.state %></h4>
-          <p><%=@user.about%></p>
-          <% if logged_in? && (current_user.id == @user.id) %>
-            <h6><%= link_to 'Edit Profile', edit_user_path, method: :get %></h6>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="large-2 columns">
-      </div>
-
-    </div>
-    <!-- End Header Content -->
-    <hr>
-    <!-- Stances Users Taken Title -->
-    <div class="row">
-      <div class="large-12 columns center-text">
-        <h2><%=@user.first_name%>'s Stances</h2>
-      </div>
-    </div>
-
-    <!-- Stances -->
-    <div class="row">
-      <% if @user.stances.count == 0 %>
-        <div class="row center-text">
-          <h3 id="no-stances-logo"><%=@user.username%> hasn't taken any stances.</h3>
-        </div>
-      <% end %>
-
-      <div class="row">
-        <% @user.fetch_stances(2).each do |stance| %>
-          <div class="large-6 columns radius"
-          <%= render partial: "stances/details", locals: {stance: stance} %>
-        <% end %>
-      </div>
-    </div>
-    <!-- End Stance -->
+  <div class="small-3 small-centered columns">
+    <dl class="sub-nav">
+      <dd class="active"><a href="#">Donations</a></dd>
+      <dd><a href="#">Stances</a></dd>
+    </dl>
   </div>
 </div>
+<div class="panel large-9 large-centered columns">
+  <%= render partial: "donations/show", locals: {donations: @user.donations} %>
+</div>
+
+
 
