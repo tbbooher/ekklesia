@@ -1,0 +1,135 @@
+.ch-grid {
+    margin: 0 0 0 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.ch-grid:after,
+.ch-item:before {
+    content: '';
+    display: table;
+}
+
+.ch-grid:after {
+    clear: both;
+}
+
+.ch-grid li {
+    width: 10em;
+    height: 10em;
+    display: inline-block;
+    margin: 20px;
+}
+
+
+.ch-info:hover {
+    width: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    backface-visibility: hidden;
+}
+
+.ch-info h3 {
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 2px;
+    font-size: 17px;
+    margin: 0 30px;
+    padding: 45px 0 0 0;
+    height: 94px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    text-shadow:
+        0 0 1px #fff,
+        0 1px 2px rgba(0,0,0,0.3);
+}
+
+.ch-info:hover h3, .ch-info:hover p {
+    opacity: 0;
+}
+
+.ch-item .ch-info {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.ch-info p {
+    color: #fff;
+    padding: 10px 5px;
+    font-style: italic;
+    margin: 0 30px;
+    font-size: 25px;
+    border-top: 1px solid rgba(255,255,255,0.5);
+}
+
+.ch-info p a {
+    opacity: 0;
+    display: block;
+    color: rgba(255,255,255,0.7);
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding-top: 4px;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.ch-info p a:hover {
+    color: rgba(255,242,34, 0.8);
+}
+
+.d{
+box-shadow:
+        inset 0 0 0 110px rgba(45,67,114, 0.3),
+        /* for ring when hovered */
+        inset 0 0 0 7px rgba(45,67,114,0.5),
+        0 1px 2px rgba(0,0,0,0.1);
+}
+
+.r{
+   box-shadow:
+       inset 0 0 0 110px rgba(177,82,52, 0.3),
+       /* for ring when hovered */
+       inset 0 0 0 7px rgba(177,82,52,0.5),
+       0 1px 2px rgba(0,0,0,0.1);
+}
+
+.ch-item {
+    /*position: absolute;*/
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    cursor: default;
+
+    transition: all 0.4s ease-in-out;
+}
+
+.d:hover{
+box-shadow:
+        inset 0 0 0 0 rgba(45,67,114, 0.3),
+        /* for ring when hovered */
+        inset 0 0 0 7px rgba(45,67,114,0.5),
+        0 1px 2px rgba(0,0,0,0.1);
+}
+
+.r:hover{
+   box-shadow:
+        inset 0 0 0 0 rgba(177,82,52, 0.4),
+        /* for outer ring */
+        inset 0 0 0 7px rgba(177,82,52,0.6),
+        0 1px 2px rgba(0,0,0,0.1);
+}
+
+.ch-item:hover {
+/*    width: 100%;
+    height: 100%;*/
+    position: relative;
+    transition: all 0.4s ease-in-out;
+}
+

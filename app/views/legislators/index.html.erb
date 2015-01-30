@@ -13,11 +13,19 @@
         </div>
 
           <div>
-            <ul class="small-block-grid-8 list">
-              <% @legislators.each do |legislator| %>
+            <!-- <ul class="small-block-grid-8 list"> -->
+            <ul class="ch-grid">
+              <% @legislators.each_with_index do |legislator, i| %>
               <li>
-                <img title="<%= legislator.name %>" class="circle_face" src="<%= legislator.img_url %>" class="legislator-pic" />
-                <a href="/legislators/<%= legislator.id %>"><p class="name" align="center"><%= legislator.name %></p></a>
+
+                <div class="ch-item ch-img-<%= i+1 %> <%= legislator.party.downcase %>" style="background-image: url(<%= legislator.img_url %>); background-size: 10em 10em;">
+                  <div class="ch-info">
+                    <a href="/legislators/<%= legislator.id %>">
+                    <h3><%= legislator.name %></h3>
+                    <p><%= legislator.party %> </p></a>
+                  </div>
+                </div>
+
               </li>
               <% end %>
             </ul>

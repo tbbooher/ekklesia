@@ -16,7 +16,7 @@
 
  */
 .container {
-  width: 90%;
+  width: 85%;
   margin: 2em auto;
 }
 
@@ -42,7 +42,8 @@ h1, h2, h3, h4 {
 }
 
 body {
-font-family: 'Roboto'
+font-family: 'Roboto';
+overflow:
 }
 
 body{
@@ -92,7 +93,7 @@ h1 {
 
 .button{
   font-size: 0.9em !important;
-  background-color: #495200 !important;
+  background-color: #2D4372 !important;
   border: 1px solid #23241F !important;
 }
 
