@@ -25,9 +25,9 @@ class Legislator < ActiveRecord::Base
   end
 
   def offical_prefix
-    if self.terms.first.chamber == "house"
+    if self.terms.last.chamber == "house"
       return "Rep."
-    elsif self.terms.first.chamber == "senate"
+    elsif self.terms.last.chamber == "senate"
       return "Sen."
     end
   end
