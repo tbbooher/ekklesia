@@ -21,7 +21,7 @@ class Legislator < ActiveRecord::Base
   end
 
   def current_chamber
-    self.terms.first.chamber.capitalize
+    self.terms.last.chamber.capitalize
   end
 
   def offical_prefix
