@@ -5,6 +5,7 @@ $(document).ready(function() {
   $('.new_upvote').on('submit', updateVoteCount)
   $('.issue_select').on('click', getPositions)
   $('.position_select_box').on('click', 'li', highlightPositon)
+  $(".legislator-select").on("click", highlightPositon)
   $('#load_more_button').on('click', loadMoreStances)
 })
 
@@ -83,7 +84,8 @@ var getPositions = function(event) {
   });
 }
 
-$(".legislator-select").on("click", function() {
+
+var highlightPositon = function() {
   if ($(this).children('.legislator-checkbox').attr('checked')) {
     $(this).css('outline', 'none');
     $(this).children('.legislator-checkbox').removeAttr('checked');
@@ -95,4 +97,4 @@ $(".legislator-select").on("click", function() {
     $(this).css('outline', '5px solid #A9BC64');
     $(this).children('.legislator-checkbox').attr('checked', 'checked');
   }
-});
+}
