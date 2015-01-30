@@ -14,9 +14,15 @@
               <li>Website: <%= @legislator.website %></li>
               <li>Phone: <%= @legislator.phone %></li>
               <li>Fax: <%= @legislator.fax if @legislator.fax %></li>
+              <% if @legislator.twitter_id %>
               <li><a href="http://www.twitter.com/<%= @legislator.twitter_id %>" >Twitter</a></li>
+              <% end %>
+              <% if @legislator.facebook_id %>
               <li><a href="http://www.facebook.com/<%= @legislator.facebook_id %>" >Facebook</a></li>
+              <% end %>
+              <% if @legislator.youtube_id %>
               <li><a href="http://www.youtube.com/<%= @legislator.youtube_id %>" >Youtube</a></li>
+              <% end %>
             </ul>
           </div>
         </div>
