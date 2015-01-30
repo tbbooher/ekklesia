@@ -1,20 +1,21 @@
 <div class="stance_detail_container">
   <a href="/stances/<%= stance.id %>">
     <div class="stance_detail row">
-      <div class="large-3 medium-3 small-3 columns detail_left">
-        <h4><%= stance.position.issue.description %></h4>
-        <h5 class='text-blue'><%= stance.upvotes.count %> upvotes</h5>
+      <div class="large-9 medium-9 small-9 end columns detail_left">
+        <span class='text-green' style="font-size: 1.2em;"><%= stance.legislators.count %> </span><em class='text-blue'  style="font-size: 1em;">legislators support</em>
+        <br>
+        <h4 class='text-red'><%= stance.position.description %></h4>
+      <%= stance.created_at.strftime("%b %d %Y") %> by <%= stance.user.username %>
+      </div>
+      <div class="large-3 medium-3 small-3 columns text-right">
+        <h4 class="text-blue" style="text-shadow: 2px 2px 2px #CED3DE;"><%= stance.position.issue.description %></h4>
+        <span class='text-green' style="font-size: 1.2em;"><%= stance.upvotes.count %></span> <b class='text-blue'  style="font-size: 1em;">upvotes</b><br>
+
         <% if stance.total_donated_amount > 0 %>
-          <h5 class='text-blue'>$ <%= stance.total_donated_amount %> contributed</h5>
+        <span class='text-green' style="font-size: 1.2em;">$<%= stance.total_donated_amount %> </span><b class='text-blue'  style="font-size: 1em;">contributed</b>
         <% else %>
           <h6 class='text-blue'>Be the first to donate</h6>
         <% end %>
-      </div>
-      <div class="large-9 medium-9 small-9 end columns text-right">
-        <span class='text-green' style="font-size: 2em;"><%= stance.legislators.count %> </span><em class='text-blue'  style="font-size: 1.5em;">legislators support</em>
-        <br>
-        <h4 class='text-red'><%= stance.position.description %></h4><br>
-      <%= stance.created_at %> by <%= stance.user.username %>
       </div>
     </div>
   </a>
