@@ -1,6 +1,5 @@
 $(document).ready(function(){
   $('.donations').on("click", getUserDonations);
-  $('.stances').on("click", getUserStances);
 });
 
 function getUserDonations(event) {
