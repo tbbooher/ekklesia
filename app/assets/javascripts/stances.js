@@ -1,30 +1,30 @@
-$(document).ready(function(){
+$(document).ready(function() {
   $('.side-nav').on("click", "a", updateStanceList);
   $('#total_amount').on('keyup', distribute)
   $('.each_amount').on('keyup', updateTotal)
   $('.new_upvote').on('submit', updateVoteCount)
   $('.issue_select').on('click', getPositions)
-  $('.position_select_box').on('click', 'li',highlightPositon)
+  $('.position_select_box').on('click', 'li', highlightPositon)
   $('#load_more_button').on('click', loadMoreStances)
 })
 
-var distribute = function(event){
+var distribute = function(event) {
   var totalAmount = $(event.target).val()
   var amount = totalAmount / $('.each_amount').length
   $('.each_amount').val(amount.toFixed(2))
 };
 
-var updateTotal = function(event){
+var updateTotal = function(event) {
   var total = 0
-  $('.each_amount').each(function(){
-    if(parseInt($(this).val()) > 0){
+  $('.each_amount').each(function() {
+    if (parseInt($(this).val()) > 0) {
       total += parseInt($(this).val())
     }
   })
   $('#total_amount').val(total.toFixed(2))
 };
 
-var updateStanceList = function(event){
+var updateStanceList = function(event) {
   event.preventDefault();
   $target = $(event.target);
   $.ajax({
@@ -34,58 +34,65 @@ var updateStanceList = function(event){
   }).done(function(response){
     $('.stance_detail_list').empty();
     $('.stance_detail_list').append(response);
-    $('span','.stance_index_title').text($target.text());
+    $('span', '.stance_index_title').text($target.text());
   });
 };
 
-var loadMoreStances = function(event){
+var loadMoreStances = function(event) {
   event.preventDefault();
   $target = $(event.target);
   $.ajax({
     url: $target.attr('action'),
     type: $target.attr('method'),
-    data: {i: $('.stance_detail').length, select: $('span','.stance_index_title').text()}
-  }).done(function(response){
+    data: {
+      i: $('.stance_detail').length,
+      select: $('span', '.stance_index_title').text()
+    }
+  }).done(function(response) {
     $('.stance_detail_list').append(response)
   });
 }
 
-var updateVoteCount = function(event){
+var updateVoteCount = function(event) {
   event.preventDefault();
   $target = $(event.target);
   $.ajax({
     url: $target.attr('action'),
     type: $target.attr('method'),
-    data: {stance_id: $target.children('#upvote_stance_id').val()}
-  }).done(function(response){
+    data: {
+      stance_id: $target.children('#upvote_stance_id').val()
+    }
+  }).done(function(response) {
     $('#upvote_count').text(response)
     $('.upvote_button').val("Voted")
   });
 }
 
 
-var getPositions = function(event){
+var getPositions = function(event) {
   event.preventDefault();
   $target = $(event.target);
   $.ajax({
     url: $target.attr('href'),
     type: 'get',
-    data: {issue_id: $target.attr('value')}
-  }).done(function(response){
+    data: {
+      issue_id: $target.attr('value')
+    }
+  }).done(function(response) {
     $('.position_select_box').children('ul').replaceWith(response)
   });
 }
 
-var highlightPositon = function(){
+$(".legislator-select").on("click", function() {
   if ($(this).children('.legislator-checkbox').attr('checked')) {
     $(this).css('outline', 'none');
     $(this).children('.legislator-checkbox').removeAttr('checked');
   } else {
-    $('li', $(this).parent()).each(function(){
+    $('li', $(this).parent()).each(function() {
       $(this).children('.legislator-checkbox').removeAttr('checked');
       $(this).css('outline', 'none');
     })
     $(this).css('outline', '5px solid #A9BC64');
     $(this).children('.legislator-checkbox').attr('checked', 'checked');
   }
-}
+});
