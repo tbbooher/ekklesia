@@ -7,11 +7,12 @@
 }
 
 .stance_detail{
-  margin: 1em 0.5em 2em 1em !important;
-  padding: 0.3em !important;
+  margin: 1em 0.5em 1em 1em !important;
+  padding: 0.3em 1em !important;
   background: white !important;
   -webkit-border-radius: 0.2em !important;
   -moz-border-radius: 0.2em !important;
+  box-shadow: 2px 2px 7px #B59388;
 }
 
 .sidebar{
