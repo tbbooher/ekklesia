@@ -30,7 +30,7 @@ var updateStanceList = function(event){
   $.ajax({
     url: $target.attr('href'),
     type: "GET",
-    data: {select: $target.text(), i: 1}
+    data: {select: $target.text(), i: 0}
   }).done(function(response){
     $('.stance_detail_list').empty();
     $('.stance_detail_list').append(response);

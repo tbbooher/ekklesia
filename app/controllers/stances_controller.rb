@@ -7,10 +7,10 @@ class StancesController < ApplicationController
   end
 
   def load
-    if params[:select]
-      @stances = Stance.search(params[:select])[(params[:i].to_i+1)..(params[:i].to_i+10)]
+    if params[:select] == "All"
+      @stances = Stance.all.order("created_at DESC")[(params[:i].to_i-1)+1..(params[:i].to_i+9)]
     else
-      @stances = Stance.all.order("created_at DESC")[(params[:i].to_i+1)..(params[:i].to_i+10)]
+      @stances = Stance.search(params[:select])[(params[:i].to_i-1)+1..(params[:i].to_i+9)]
     end
     render partial: "stance_list", locals: {stances: @stances}
   end
@@ -57,8 +57,7 @@ class StancesController < ApplicationController
 
   def select
     @issues = Issue.all
-    @stances = Stance.search(params[:select])[(params[:i].to_i+1)..(params[:i].to_i+10)]
-
+    @stances = Stance.search(params[:select])[(params[:i].to_i-1)+1..(params[:i].to_i)+9]
     if request.xhr?
       render partial: "stance_list", locals: {stances: @stances}
     else
