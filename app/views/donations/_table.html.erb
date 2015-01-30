@@ -8,7 +8,7 @@
         <th>Date</th>
       </tr>
     </thead>
-    <% @donations.each do |d| %>
+    <% donations.each do |d| %>
     <tr>
       <td><%= d.amount %></td>
       <td><%= Stance.find(d.stance_id).position.description %></td>
