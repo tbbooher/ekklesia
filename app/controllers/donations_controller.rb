@@ -2,7 +2,11 @@ class DonationsController < ApplicationController
   include AuthsHelper
 
   def show
-    @donations = current_user.donations
+    if request.xhr?
+      render partial: "/donations/table", locals: {donations: current_user.donations}
+    else
+      @donations = current_user.donations
+    end
   end
 
   def create
