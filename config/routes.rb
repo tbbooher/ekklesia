@@ -12,10 +12,11 @@ Rails.application.routes.draw do
 
   get '/stances/load', to: 'stances#load'
   resources :stances do
-    get '/donations', to: 'donations#show'
     get '/donations/new', to: 'donations#new'
     post '/donations', to: 'donations#create'
   end
+
+  resources :donations, only: [:show]
 
   get '/search', to: 'stances#search'
   get '/stances/issues/:select', to: 'stances#select'
