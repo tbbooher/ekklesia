@@ -17,37 +17,19 @@ class Legislator < ActiveRecord::Base
   end
 
   def current_state
-    self.terms.first.state
+    terms.first.state
   end
 
   def current_chamber
-    self.terms.last.chamber.capitalize
+    terms.last.chamber.capitalize
   end
 
   def offical_prefix
-    if self.terms.last.chamber == "house"
-      return "Rep."
-    elsif self.terms.last.chamber == "senate"
-      return "Sen."
-    end
+    (terms.last.chamber == "house") ? "Rep." : "Sen."
   end
 
   def get_issue_score(issue)
-    if self.legislator_issues.for_issue(issue) != []
-      return self.legislator_issues.for_issue(issue).first.issue_score
-    end
-  end
-
-  def get_spectrum_value(score)
-  case score
-      when 0..14 then return "Liberal"
-      when 15..29 then return "Democrat"
-      when 30..44 then return "Progressive"
-      when 45..55 then return "Independent"
-      when 56..70 then return "Moderate"
-      when 71..85 then return "Republican"
-      when 86..100 then return "Conservative"
-    end
+    legislator_issues.for_issue(issue).first.issue_score if !legislator_issues.for_issue(issue).empty?
   end
 
   def self.filter_legislators_by_vote_count(issue_id)

@@ -65,6 +65,7 @@ var updateVoteCount = function(event) {
     }
   }).done(function(response) {
     $('#upvote_count').text(response)
+    $('.upvote_button').prop('disabled', true)
     $('.upvote_button').val("Voted")
   });
 }
