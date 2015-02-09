@@ -50,11 +50,6 @@ class StancesController < ApplicationController
     redirect_to :stances
   end
 
-  def search
-    @issues = Issue.fetch(5)
-    @stances = Stance.search(params[:search][:words]) || Stance.search(params[:search][:words])
-  end
-
   def select
     @issues = Issue.all
     @stances = Stance.search(params[:select])[(params[:i].to_i-1)+1..(params[:i].to_i)+9]
