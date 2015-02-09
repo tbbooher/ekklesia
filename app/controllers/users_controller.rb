@@ -15,15 +15,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit
-    @user = User.find(params[:id])
-    if logged_in?
-      redirect_to :root unless current_admin || current_user.id == @user.id
-    else
-      redirect_to '/login'
-    end
-  end
-
   def create
     redirect_to :show if current_user
     @user = User.new(user_params)
@@ -35,37 +26,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    @user = User.find(params[:id])
-    admin_param_fix
-    redirect_to :root unless current_user.id == @user.id
-    if @user.update(user_params)
-      redirect_to @user
-    else
-      set_error("there was a problem editing the account")
-      render :edit
-    end
-  end
-
-  def destroy
-    @user = User.find(params[:id])
-    redirect_to :root unless current_admin || current_user.id == @user.id
-    @user.update(is_deleted: true, password: 'todo: make this sensible')
-    redirect_to :logout
-  end
-
   private
 
     def user_params
       params.require(:user).permit(:first_name, :last_name, :middle_name, :username, :city, :state, :about, :email,  :password, :is_admin)
     end
-
-    def admin_param_fix
-      params[:user][:is_admin] = param_to_bool(params[:user][:is_admin])
-    end
-
-    def param_to_bool(value)
-      ActiveRecord::Type::Boolean.new.type_cast_from_user(value)
-    end
-
 end
