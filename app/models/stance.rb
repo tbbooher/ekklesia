@@ -16,21 +16,21 @@ class Stance < ActiveRecord::Base
   end
 
   def voted(user_id)
-    self.upvotes.find_by(user_id: user_id) ? true : false
+    upvotes.find_by(user_id: user_id) ? true : false
   end
 
   def delete_upvotes
-    Upvote.where(stance_id: self.id).each{|upvote| upvote.destroy}
+    Upvote.where(stance_id: id).each{|upvote| upvote.destroy}
   end
 
   def total_donated_amount
-    Donation.where(stance_id: self.id).inject(0) { |acc, donation| acc += donation.amount; acc }
+    Donation.where(stance_id: id).inject(0) { |acc, donation| acc += donation.amount; acc }
   end
 
   def self.search(words)
     case words
     when "Popular"
-      Upvote.group(:stance_id).count.sort_by{|_,v|v}.reverse.map{|pair| Stance.find(pair[0])}
+      Upvote.group(:stance_id).count.sort_by{ |_,v| v }.reverse.map{ |pair| Stance.find(pair[0]) }
     when "Recent"
       Stance.all.order("created_at DESC")[0..20]
     else
