@@ -14,7 +14,7 @@ class Donation < ActiveRecord::Base
     amounts = params[:donation]["amounts"].map { |a| a.to_i * 100 }
     legislator_amounts = Hash[legislator_ids.zip(amounts)]
 
-    legislator_amounts.each do |legislator_id,amount|
+    legislator_amounts.each do |legislator_id, amount|
       Donation.create(
         user_id: user_id,
         stance_id: stance_id,
