@@ -145,3 +145,16 @@ button, .button{
 #map{
   margin-left: 2.25em;
 }
+
+#about-footer {
+  margin: auto;
+  width: 30%;
+}
+
+#footer-left {
+  float: left;
+}
+
+#footer-right {
+  float: right;
+}
