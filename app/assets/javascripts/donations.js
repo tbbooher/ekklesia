@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  $('#more-info').on("click", toggleAdditionalLegislators)
+  $('#more-info').on("click", toggleAdditionalLegislators);
+  $('.donation').on("click", denyDonation);
 })
 
 function toggleAdditionalLegislators() {
@@ -15,4 +16,9 @@ function toggleAdditionalLegislators() {
     $('.row.legislator').toggle()
     $arrow.data('toggle', "off");
   }
+}
+
+function denyDonation(event) {
+  event.preventDefault();
+  $('#deny-donation').show();
 }
