@@ -38,10 +38,7 @@
     <!-- End Sidebar -->
 
   <%= form_tag stance_donations_new_path(@stance), method: :get do %>
-    <%= submit_tag "Donate", class: "button radius donation" %>
-    <div id="deny-donation" style="display:none">
-      We're sorry, donations are not live at the moment.
-    </div>
+    <%= submit_tag "Donate", class: "button radius" %>
   <% end %>
 
   </div>
