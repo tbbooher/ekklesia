@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
-
  */
+ @import 'slick';
+
 .container {
   width: 85%;
   margin: 2em auto;
@@ -49,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-font-family: 'Roboto';
+font-family: "Montserrat", sans-serif;
 }
 
 body{
@@ -58,8 +59,13 @@ body{
   background-size: 100vw 100vh;
 }
 
-.card {
+.carousel {
+  overflow: hidden
+}
 
+.carousel-image {
+  margin: auto;
+  max-height: 10rem;
 }
 
 #slogan {
@@ -77,6 +83,18 @@ a:hover {
   color: #B15234;
 }
 
+.button-red {
+  background-color: #B15234 ;
+}
+
+.button-blue {
+  background-color: #2D4372 ;
+}
+
+.button-green {
+  background-color: #A9BC64 ;
+}
+
 .text-red {
   color: #B15234;
 }
@@ -90,18 +108,18 @@ a:hover {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 6rem;
 }
 
 .row {
   max-width: 95rem;
 }
 
-button, .button{
+/*button, .button{
   font-size: 0.9em !important;
   background-color: #2D4372 !important;
   border: 1px solid #23241F !important;
-}
+}*/
 
 .select_list p{
   margin-bottom: -0.1em !important;
@@ -144,4 +162,17 @@ button, .button{
 
 #map{
   margin-left: 2.25em;
+}
+
+#about-footer {
+  margin: auto;
+  width: 20%;
+}
+
+#footer-left {
+  float: left;
+}
+
+#footer-right {
+  float: right;
 }

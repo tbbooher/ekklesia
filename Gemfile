@@ -38,6 +38,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'google-webfonts-rails'
+gem "jquery-slick-rails"
 
 group :development, :test do
 
