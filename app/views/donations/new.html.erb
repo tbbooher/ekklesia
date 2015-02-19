@@ -1,4 +1,3 @@
-<%= render :partial => 'stripe/js' %>
 <div class="panel large-9 large-centered columns">
   <div class="row">
     <h2><%= @stance.position.description.capitalize %>.</h2>
@@ -46,26 +45,26 @@
     </div>
     <div class="row large-8">
       Card Number (no dashes or spaces)
-      <input data-stripe="number" placeholder="card number" class="large-12 columns"/>
+      <input data-stripe="number" placeholder="card number" class="large-12 columns" disabled/>
     </div>
     <div class="row large-8">
       Expiration Month
-      <input data-stripe="exp-month" placeholder="expiration month" class="large-12 columns"/>
+      <input data-stripe="exp-month" placeholder="expiration month" class="large-12 columns" disabled/>
     </div>
     <div class="row large-8">
       Expiration Year
-      <input data-stripe="exp-year" placeholder="expiration year" class="large-12 columns" />
+      <input data-stripe="exp-year" placeholder="expiration year" class="large-12 columns" disabled/>
     </div>
     <div class="row large-8">
       Security Code
-      <input data-stripe="cvc" placeholder="security code" class="large-12 columns" />
+      <input data-stripe="cvc" placeholder="security code" class="large-12 columns" disabled/>
     </div>
     <!-- end cc section -->
     <div class="row large-8">
       <p class="donate-errors" style="color:red"></p>
     </div>
     <div class="row large-8">
-      <%= f.submit "Donate", class: "button tiny large-12 columns"%>
+      <%= f.submit "Donate", class: "button tiny large-12 columns donation"%>
       <% end %>
     </div>
   </div>
