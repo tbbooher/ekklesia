@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :stances do
     get '/donations/new', to: 'donations#new'
     post '/donations', to: 'donations#create'
+    post '/donations/donationemail', to: 'donations#email'
   end
 
   resources :donations, only: [:show]
