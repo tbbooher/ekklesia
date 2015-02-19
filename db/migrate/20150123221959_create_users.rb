@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.string :password_digest, null: false
       t.string :email, null: false
-      t.string :donationemail, default: false
+      t.string :donation_email, default: false
 
       t.timestamps
     end
