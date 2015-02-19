@@ -15,6 +15,7 @@ class DonationsController < ApplicationController
 
   def email
     current_user.update(donationemail: true)
+    render partial: "/donations/email" if request.xhr?
   end
 
   def new
