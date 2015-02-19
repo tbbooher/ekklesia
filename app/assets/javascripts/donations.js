@@ -20,5 +20,4 @@ function toggleAdditionalLegislators() {
 
 function denyDonation(event) {
   event.preventDefault();
-  $('#deny-donation').show();
 }
