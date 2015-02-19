@@ -1,5 +1,7 @@
 $(document).ready(function(){
-  $('#more-info').on("click", toggleAdditionalLegislators)
+  $('#more-info').on("click", toggleAdditionalLegislators);
+  $('.donation').on("click", denyDonation);
+  $('.button_to').on("submit", emailThankYou);
 })
 
 function toggleAdditionalLegislators() {
@@ -15,4 +17,20 @@ function toggleAdditionalLegislators() {
     $('.row.legislator').toggle()
     $arrow.data('toggle', "off");
   }
+}
+
+function denyDonation(event) {
+  event.preventDefault();
+}
+
+function emailThankYou(event){
+  event.preventDefault();
+  var $target = $(event.target);
+
+  $.ajax({
+    url: $target.attr('action'),
+    type: "POST"
+  }).done(function(response){
+    $('.donation-email-panel').replaceWith(response);
+  });
 }
