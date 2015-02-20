@@ -31,7 +31,7 @@
     <h2><span id="upvote_count"><%= @stance.upvotes.count %></span> <small>Upvotes</small></h2>
 
   <% if logged_in? %>
-    <%= render partial: "upvotes/new", locals: {upvote: @upvote} %>
+    <%= render partial: "upvotes/new", locals: {upvote: @upvote, stance: @stance} %>
   <% else %>
     <h4>Sign in to upvote.</h4>
   <% end %>
