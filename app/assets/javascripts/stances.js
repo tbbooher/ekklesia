@@ -56,7 +56,7 @@ var loadMoreStances = function(event) {
 }
 
 var updateVoteCountFromIndex = function(event) {
-  // event.preventDefault();
+  event.preventDefault();
   $target = $(event.target).closest('a');
   $.ajax({
     url: $target.attr('href'),
@@ -66,7 +66,6 @@ var updateVoteCountFromIndex = function(event) {
     }
   }).done(function(response) {
     $target.siblings().children('.upvotecount').text(response)
-    debugger
 
   });
 }
