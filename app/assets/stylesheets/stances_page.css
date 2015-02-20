@@ -15,10 +15,9 @@
 }
 
 .sidebar{
- background: #FAFAFA;
- padding: 32px 20px;
- -webkit-border-radius: 0.2em !important;
- -moz-border-radius: 0.2em !important;
+  padding: 32px 20px;
+  -webkit-border-radius: 0.2em !important;
+  -moz-border-radius: 0.2em !important;
 }
 
 .side-nav li a:not(.button){
