@@ -6,9 +6,8 @@
   margin-left: 1em !important;
 }
 
-.stance_detail{
+.stance_detail_container{
   margin: 1em 0.5em 1em 1em !important;
-  padding: 0.3em 1em !important;
   background: white !important;
   -webkit-border-radius: 0.2em !important;
   -moz-border-radius: 0.2em !important;
@@ -28,12 +27,20 @@
   font-size: 1.1em;
 }
 
-.detail_left{
-  text-align: left !important;
-  /*font-size: 0.2em !important;*/
+.stance_detail_list li{
+  padding: 0 !important;
 }
 
-.stance_detail_container a:hover{
+.stance_detail_container{
+  height: 280px !important;
+}
+
+.stance_detail{
+  padding: 0.3em 1em !important;
+  height: 70%;
+}
+
+.stance_detail:hover{
   background: transparent !important;
 }
 
@@ -61,4 +68,27 @@ ul{
   height: 5em;
   width: 5em;
   box-shadow: 2px 2px 7px #B59388;
+}
+
+.s-detail-footer{
+  width: 100%;
+  color: #FAFAFA;
+  position: relative;
+  opacity: 1;
+  height: 15%;
+  z-index: 500;
+  border-top: 1px solid white;
+  transition: all 0.5s linear;
+  font-size: 1.4em;
+  display: flex;
+}
+.s-detail-footer div{
+  display: inherit;
+  background: #A9BC64;
+  width: 100%;
+  display: inline-block;
+}
+
+.footer-left{
+  border-right: 1px solid white;
 }
