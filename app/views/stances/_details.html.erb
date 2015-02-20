@@ -18,7 +18,8 @@
           <span style="font-size: 1.2em;">$<%= stance.total_donated_amount %></span>
         <% else %>
           <span style="font-size: 1.2em;">$0</span>
-        <% end %>      </div>
+        <% end %>
+      </div>
       <div align="center">
         <%= link_to stance_donations_new_path(stance), method: :get do %>
           <div class="" align="center">
@@ -52,7 +53,11 @@
       </div>
     <% else %>
       <div class="" align="center">
-         <span style="font-size: 1.2em;"><%= stance.upvotes.count %></span> <b class='text-blue'  style="font-size: 1em;">upvotes</b>
+        <% if stance.total_donated_amount > 0 %>
+          <span style="font-size: 1.2em;">$<%= stance.total_donated_amount %> </span><b class='text-blue'  style="font-size: 0.8em;">contributed</b>
+        <% else %>
+          <span style="font-size: 1.2em;">$0 </span><b class='text-blue'  style="font-size: 0.8em;">contributed</b>
+        <% end %>
       </div>
     <% end %>
   </div>
