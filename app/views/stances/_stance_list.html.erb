@@ -1,3 +1,5 @@
+<ul  class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
 <% stances.each do |stance| %>
-  <%= render partial: "stances/details", locals: {stance: stance} %>
+  <li><%= render partial: "stances/details", locals: {stance: stance} %></li>
 <% end %>
+</ul>
