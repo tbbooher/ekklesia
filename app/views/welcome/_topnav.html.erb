@@ -1,0 +1,33 @@
+<section class="top-bar-section" id="top-bar-section">
+  <!-- Left Nav Section -->
+  <ul class="left">
+    <li>
+      <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" data-options="is_hover: true">STANCES</a>
+      <ul id="drop2" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+        <li><%= link_to 'See all', stances_path, method: :get %></li>
+        <li><%= link_to 'Take a Stance', new_stance_path, method: :get %></li>
+      </ul>
+    </li>
+    <li><%= link_to 'LEGISLATORS', legislators_path, method: :get %></li>
+
+  </ul>
+  <ul class="center">
+    <li class="name">
+      <a href='/'><span class='text-blue'>open</span><span class='text-red'>PAC</span></a>
+    </li>
+  </ul>
+  <ul class="right">
+    <% if logged_in? %>
+      <li>
+        <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" data-options="is_hover: true"><%= current_user.username.upcase %></a>
+        <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+          <li><%= link_to "PROFILE", user_path(current_user) %></li>
+          <li><%= link_to 'LOG OUT', logout_path, method: :get %></li>
+        </ul>
+      </li>
+    <% else %>
+      <li><%= link_to 'LOG IN', login_path, method: :get %></li>
+      <li><%= link_to 'SIGN UP', signup_path, method: :get %></li>
+    <% end %>
+  </ul>
+</section>
