@@ -4,9 +4,11 @@ class StancesController < ApplicationController
   def index
     @stances = Stance.all.order("created_at DESC")[0..9]
     @issues = Issue.all
+    @upvote = Upvote.new
   end
 
   def load
+    @upvote = Upvote.new
     if params[:select] == "All"
       @stances = Stance.all.order("created_at DESC")[(params[:i].to_i-1)+1..(params[:i].to_i+9)]
     else
@@ -51,6 +53,7 @@ class StancesController < ApplicationController
   end
 
   def select
+    @upvote = Upvote.new
     @issues = Issue.all
     @stances = Stance.search(params[:select])[(params[:i].to_i-1)+1..(params[:i].to_i)+9]
     if request.xhr?

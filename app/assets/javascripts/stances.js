@@ -3,6 +3,7 @@ $(document).ready(function() {
   $('#total_amount').on('keyup', distribute)
   $('.each_amount').on('keyup', updateTotal)
   $('.new_upvote').on('submit', updateVoteCount)
+  $(".stance_detail_list").on('click', "a[data-method='post']", updateVoteCountFromIndex)
   $('.issue_select').on('click', getPositions)
   $('.position_select_box').on('click', 'li', highlightPositon)
   $(".legislator-select").on("click", selectLegislator)
@@ -54,19 +55,35 @@ var loadMoreStances = function(event) {
   });
 }
 
+var updateVoteCountFromIndex = function(event) {
+  event.preventDefault();
+  $target = $(event.target).closest('a');
+  $.ajax({
+    url: $target.attr('href'),
+    type: $target.attr('data-method'),
+    data: {
+      id: $target.attr('id')
+    }
+  }).done(function(response) {
+    $target.siblings().children('.upvotecount').text(response)
+
+  });
+}
+
 var updateVoteCount = function(event) {
   event.preventDefault();
   $target = $(event.target);
+  var s_id = $target.attr('id');
   $.ajax({
     url: $target.attr('action'),
     type: $target.attr('method'),
     data: {
-      stance_id: $target.children('#upvote_stance_id').val()
+      id: $target.children('#upvote_stance_id').val()
     }
   }).done(function(response) {
     $('#upvote_count').text(response)
-    $('.upvote_button').prop('disabled', true)
-    $('.upvote_button').val("Voted")
+    $("input[type='submit']",'#'+s_id).attr('value', 'Voted')
+    $("input[type='submit']",'#'+s_id).attr('disabled', 'true')
   });
 }
 

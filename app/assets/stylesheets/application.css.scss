@@ -17,7 +17,7 @@
  @import 'slick';
 
 .container {
-  width: 85%;
+  width: 95%;
   margin: 2em auto;
 }
 
@@ -55,7 +55,6 @@ font-family: "Montserrat", sans-serif;
 
 body{
   font-family: 'Montserrat', sans-serif;
-  background-color: #FDF8F2;
   background-size: 100vw 100vh;
 }
 
@@ -115,12 +114,6 @@ h1 {
   max-width: 95rem;
 }
 
-/*button, .button{
-  font-size: 0.9em !important;
-  background-color: #2D4372 !important;
-  border: 1px solid #23241F !important;
-}*/
-
 .select_list p{
   margin-bottom: -0.1em !important;
   font-size: 0.9em !important;
@@ -141,23 +134,51 @@ h1 {
   float: right;
 }
 
-#top-bar-section {
-
-
+.top-bar {
+  background: white !important;
+  border-bottom: 1px solid #696969 !important;
+  text-align: center !important;
+  height: 47px !important;
 }
 
+.top-bar-section ul li {
+  background: white !important;
+}
+
+
 #top-bar-section a {
+  opacity: 1;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.1em;
+  background: white;
+  color: black !important;
+  -webkit-transition: color 0.3s ease-in-out,opacity 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out,opacity 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out,opacity 0.3s ease-in-out;
+}
+
+#top-bar-section:hover a {
+  opacity: .5;
+}
+
+#top-bar-section:hover a:hover {
+  opacity: 1;
+}
+
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.center{
+  text-align:left;
+  margin:0 auto !important;
+  display:inline-block !important;
 }
 
 #site-logo {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1em;
-}
-
-#drop2{
-  background-color: #333333
 }
 
 #map{

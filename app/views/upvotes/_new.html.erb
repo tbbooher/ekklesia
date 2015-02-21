@@ -1,6 +1,6 @@
-<%= form_for upvote, url: '/upvotes/create' do |f| %>
-  <%= f.hidden_field :stance_id, :value => @stance.id %>
-  <% if @stance.voted(current_user.id) %>
+<%= form_for upvote, url: '/upvotes/create',:html => {:id => stance.id} do |f| %>
+  <%= f.hidden_field :stance_id, :value => stance.id %>
+  <% if stance.voted(current_user.id) %>
     <%= f.submit "Voted", class: "button small radius upvote_button", disabled: true %>
   <% else %>
     <%= f.submit "Upvote Stance", class: "button small radius upvote_button" %>
