@@ -3,8 +3,7 @@ class CreateVotes < ActiveRecord::Migration
     create_table :votes do |t|
       t.references :user
       t.references :bill
-      t.decimal :social_score
-      t.decimal :fiscal_score
+      t.string :direction
     end
   end
 end

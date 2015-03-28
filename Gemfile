@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Foundation Gem
 gem 'foundation-rails'
+gem 'simple_form'
 
 #D3
 #gem "d3_rails"

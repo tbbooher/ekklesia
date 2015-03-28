@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#logout'
   get '/signup', to: 'users#new'
 
+  resources :votes
+  # post '/vote', to: 'welcome#create'
+
   resources :legislators, only: [:index, :show]
 
   post '/upvotes/create', to: 'upvotes#create'

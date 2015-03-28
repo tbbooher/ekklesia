@@ -29,3 +29,23 @@
   width: 10em;
   border-radius: 50%;
 }
+
+.bill-panel, .vote-panel {
+  display: inline-block;
+}
+
+.bill-panel {
+  float: left;
+}
+
+.vote-panel {
+  float: right;
+}
+
+.bill-display {
+  border: 1px solid black;
+  height: 50vh;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  padding: 2rem;
+}

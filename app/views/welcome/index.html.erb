@@ -8,3 +8,26 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="large-12 small-12 columns">
+    <div class="large-4 bill-panel">
+      <ul>
+      <% @bills.each do |bill| %>
+        <li>
+          <%= bill.official_title %> [Your Affinity: ]
+        </li><br>
+      <% end %>
+      </ul>
+    </div>
+    <div class="large-8 vote-panel">
+      <div class="bill-display">
+        <h3><%= @bill.official_title %></h3>
+        <%= simple_form_for @vote do |f| %>
+          <%= f.input :bill_id, as: :hidden %>
+          <%= f.submit "yes" %>
+          <%= f.submit "no" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

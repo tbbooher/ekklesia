@@ -13,6 +13,9 @@ class Bill < ActiveRecord::Base
   end
 
   class << self
+    def not_voted_on(user)
+       Bill.all - user.bills
+    end
 
     def rand_n(n, max)
       randoms = Set.new

@@ -9,6 +9,12 @@ class CreateBills < ActiveRecord::Migration
       t.string :summary_short
       t.string :congress_url
       t.references :issue
+
+      t.decimal :fiscal_mean
+      t.decimal :fiscal_var
+
+      t.decimal :social_mean
+      t.decimal :social_var
     end
   end
 end

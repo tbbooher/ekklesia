@@ -7,6 +7,10 @@ FactoryGirl.define do
     congress_url { Faker::Internet.url }
   end
 
+  factory :random_bill, class: Bill do
+    sequence(:official_title) { |n| "goofball #{n}" }
+  end
+
   factory :bill_vote do
     bill_id 1
     legislator_id 1
