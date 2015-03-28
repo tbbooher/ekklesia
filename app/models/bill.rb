@@ -8,10 +8,13 @@ class Bill < ActiveRecord::Base
 
   validates_presence_of :official_title
 
+<<<<<<< Updated upstream
   def vote(user, value)
     Vote.create(user_id: current_user.id, bill_id: params[:bill_id], direction: params[:direction])
   end
 
+=======
+>>>>>>> Stashed changes
   class << self
 
     def rand_n(n, max)

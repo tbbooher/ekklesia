@@ -1,6 +1,8 @@
 class WelcomeController < ApplicationController
+
   def index
-    @issues = Issue.all
+    @bills = Bill.get_10
     render layout: 'welcome'
   end
+
 end

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get '/search', to: 'stances#search'
   get '/stances/issues/:select', to: 'stances#select'
+  get '/about', to: 'welcome#about'
 
   get '/issues/positions', to: 'stances#positions_by_issue'
 
