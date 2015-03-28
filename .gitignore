@@ -12,9 +12,6 @@
 !/log/.keep
 /tmp
 /db/schema.rb
-<<<<<<< Updated upstream
 .idea/
-=======
 .ruby-gemset
 .ruby-version
->>>>>>> Stashed changes
