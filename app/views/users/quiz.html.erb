@@ -1,0 +1,29 @@
+<p>Welcome to the quiz, <%=@user.first_name %></p>
+
+
+  <%= simple_form_for :record_quiz, {url: process_form_path } do |f| %>
+
+    <p>Government should not censor speech, press, media, or internet.
+      <%= f.collection_radio_buttons :social1, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+    <p>Military service should be voluntary. There should be no draft.
+      <%= f.collection_radio_buttons :social2, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+    <p>There should be no laws regarding sex for consenting adults.
+      <%= f.collection_radio_buttons :social3, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+    <p>Repeal laws prohibiting adult possession and use of drugs.
+      <%= f.collection_radio_buttons :social4, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+    <p>There should be no National ID card.
+      <%= f.collection_radio_buttons :social5, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+
+
+    <p>End "corporate welfare." No government handouts to business.
+      <%= f.collection_radio_buttons :fiscal1, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+    <p>End government barriers to international free trade.
+      <%= f.collection_radio_buttons :fiscal2, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+    <p>Let people control their own retirement; privatize Social Security.
+      <%= f.collection_radio_buttons :fiscal3, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+    <p>Replace government welfare with private charity.
+      <%= f.collection_radio_buttons :fiscal4, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+    <p>Cut taxes and government spending by 50% or more.
+      <%= f.collection_radio_buttons :fiscal5, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+
+  <% end %>

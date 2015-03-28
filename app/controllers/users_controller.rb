@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
   include AuthsHelper
 
+  def quiz
+    @user = User.find(params[:id])
+  end
+
+  def process_form
+
+  end
+
   def index
     redirect_to :root unless current_admin
     @users = User.all
