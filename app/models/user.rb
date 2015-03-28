@@ -2,9 +2,8 @@ class User < ActiveRecord::Base
   email_format = /\b[A-Z0-9._%-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,4}\b/i
   has_secure_password
 
-  has_many :stances
-  has_many :upvotes
-  has_many :donations
+  has_many :votes
+  has_many :bills, through: :votes
 
   validates_uniqueness_of :username
   validates_presence_of :first_name, :last_name
