@@ -7,11 +7,11 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username, null: false
       t.string :city
       t.text :about
-      t.decimal :fiscal_mean
-      t.decimal :fiscal_var
+      t.decimal :fiscal_mean, default: 0
+      t.decimal :fiscal_var, default: 0.1
 
-      t.decimal :social_mean
-      t.decimal :social_var
+      t.decimal :social_mean, default: 0
+      t.decimal :social_var, default: 0.1
 
       t.string :password_digest, null: false
       t.string :email, null: false
