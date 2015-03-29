@@ -1,0 +1,4 @@
+@tbbooher Turn on issues, please!
+
+@don - I'm getting a NoMethod error and user is nil in the WelcomeController (line 17), regarding user.bill
+Full error subject: undefined method `bills' for nil:NilClass
