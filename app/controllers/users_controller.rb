@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def process_form
-    current_user.update(fiscal_mean: params[:user][:fiscal_mean].to_f, social_mean: params[:user][:social_mean].to_f)
+    current_user.update(fiscal_initial: params[:user][:fiscal_mean].to_f, social_initial: params[:user][:social_mean].to_f)
+    current_user.rescore
     redirect_to :root
   end
 
