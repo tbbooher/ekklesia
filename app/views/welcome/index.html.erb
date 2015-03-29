@@ -43,10 +43,13 @@
   <div class="large-6 columns bill-panel">
     <center><h4>Relevant Bills</h4></center>
     <ul>
+    <% if logged_in? %>
     <% @bills.each do |bill| %>
       <li>
         <a href="<%= bill.congress_url %>"><%= truncate(bill.official_title, length: 80) %></a>
+        <p>Affinity: <%= (Analytic.score(current_user, bill).round(3)*100) %></p>
       </li><br>
+    <% end %>
     <% end %>
     </ul>
   </div>

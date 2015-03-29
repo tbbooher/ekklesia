@@ -7,7 +7,7 @@ class CreateBills < ActiveRecord::Migration
       t.string :short_title
       t.string :summary
       t.string :summary_short
-      t.string :congress_url
+      t.string :congress_url, default: ''
       t.references :issue
 
       t.float :fiscal_initial, default: 0

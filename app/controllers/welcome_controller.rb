@@ -9,5 +9,8 @@ class WelcomeController < ApplicationController
     @voted_bills = current_user.bills if logged_in?
     @vote = Vote.new(bill: @bill)
     render layout: 'welcome'
+    if request.xhr?
+      @user = current_user.to_json
+    end
   end
 end
