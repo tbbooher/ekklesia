@@ -7,6 +7,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username, null: false
       t.string :city
       t.text :about
+
+      t.float :fiscal_initial, default: 0
+      t.float :social_initial, default: 0
+
       t.float :fiscal_mean, default: 0
       t.float :fiscal_var, default: 0.1
 
