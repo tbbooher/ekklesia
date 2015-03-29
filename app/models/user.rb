@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   has_many :bills, through: :votes
 
   validates_uniqueness_of :username
-  validates_presence_of :first_name, :last_name
-  validates :email, presence: true, uniqueness: true, format: email_format
 
   def rescore
     if bills.empty?
