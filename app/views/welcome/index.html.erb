@@ -46,13 +46,14 @@
     </ul>
   </div>
   <div class="large-6 columns voted-panel">
+    <% if logged_in? && @voted_bills %>
     <center><h4><%= @voted_bills.count %> Bills voted on</h4></center>
     <ul>
-    <% if logged_in? %>
-      <% @voted_bills.each do |bill| %>
+      <% @voted_bills.order('updated_at DESC').each do |bill| %>
         <li>
           <a href="<%= bill.congress_url %>"><%= truncate(bill.official_title, length: 80) %></a>
-          <p>Affinity: , Fiscal: <%= bill.fiscal_mean %>, Social: <%= bill.social_mean %></p>
+          <p>Fiscal: <%= bill.fiscal_mean %>, Social: <%= bill.social_mean %></p>
+          <p>Affinity: </p>
         </li><br>
       <% end %>
     <% else %>
