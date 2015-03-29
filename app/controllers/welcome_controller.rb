@@ -12,10 +12,11 @@ class WelcomeController < ApplicationController
   end
 
   def ajax
-    @bills = logged_in? ? Bill.not_voted_on(current_user) : Bill.all
+    # @bills = logged_in? ? Bill.not_voted_on(current_user) : Bill.all
+    @bills = Bill.all
     user = current_user.to_json
     bill = @bills[0].to_json
-    bill_voters = bill.users.to_json
+    bill_voters = @bills[0].users.to_json
     render json: {user: user, bill: bill, bill_voters: bill_voters}
   end
 end

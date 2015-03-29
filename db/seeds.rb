@@ -29,7 +29,6 @@ fs_scores = [
 counter = 1
 
 fs_scores.each do |score|
-  p "counter is #{counter}"
   User.find(counter).update(fiscal_mean: fs_scores[counter-1][0][0])
   counter +=1
 end
@@ -44,3 +43,9 @@ Bill.create!([
   {id: 7, official_title: "No federal funds shall be appropriated or used to implement or enforce immigration amnesty ", fiscal_initial: 0.7, social_initial: -0.4, congress_url: "https://www.govtrack.us/congress/bills/114/hr155"},
   {id: 8, official_title: "Unemployment benefits should extend to 99 weeks of unemployment instead of being shortened ", fiscal_initial: -0.6, social_initial: 0.1, congress_url: "https://www.govtrack.us/congress/bills/111/hr4213"}
 ])
+
+User.all.each do |user|
+  Bill.all.each do |bill|
+    Vote.create(user_id: user.id, bill_id: bill.id)
+  end
+end

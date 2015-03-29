@@ -1,7 +1,11 @@
 #chart {
-  width: 20rem;
-  height: 20rem;
+  width: 40rem;
+  height: 40rem;
   margin: auto;
+}
+
+#c3-shapes-Bills.circle {
+  r: 5;
 }
 
 .quiz-container {

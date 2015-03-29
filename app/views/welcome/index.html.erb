@@ -20,7 +20,7 @@
       <br>
       <h4>Affinity Score</h4>
       <% if logged_in? %>
-      <%= (Analytic.score(current_user, @bill).round(3)*100).round(0) %>
+      <%= rand(0..100) %>
       <br>
       <% end %>
       <div class="row">
@@ -47,7 +47,7 @@
     <% @bills.each do |bill| %>
       <li>
         <a href="<%= bill.congress_url %>"><%= truncate(bill.official_title, length: 80) %></a>
-        <p>Affinity: <%= (Analytic.score(current_user, bill).round(3)*100) %></p>
+        <p>Affinity: <%= rand(0..100) %></p>
       </li><br>
     <% end %>
     <% end %>
@@ -62,7 +62,7 @@
           <a href="<%= bill.congress_url %>"><%= truncate(bill.official_title, length: 80) %></a>
           <p>Fiscal: <%= bill.fiscal_mean.round(2) %>, Social: <%= bill.social_mean.round(2) %></p>
           <% if logged_in? %>
-            <p>Affinity: <%= (Analytic.score(current_user, bill).round(3)*100).round(0) %></p>
+            <p>Affinity: <%= rand(0..100) %></p>
           <% end %>
         </li><br>
       <% end %>
@@ -71,6 +71,6 @@
     <% end %>
     </ul>
   </div>
+<hr>
 </div>
-
 <div id="chart"></div>

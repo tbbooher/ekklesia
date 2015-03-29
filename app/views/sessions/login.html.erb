@@ -6,7 +6,7 @@
 <%= form_for :user, url: '/login'  do |f| %>
 <div class="row">
   <div class="large-5 large-centered columns">
-    <p><%= f.email_field :email, placeholder: "Email" %></p>
+    <p><%= f.email_field :email, placeholder: "Email", value:'user@domain.com' %></p>
   </div>
 </div>
 <div class="row">
