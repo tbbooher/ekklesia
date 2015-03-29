@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
       social_vote_score = 0
     else
       fiscal_vote_score = bills.map {|b| b.fiscal_mean}.inject(:+)
-      social_vote_score = bills.map {|v| v.social_mean}.inject(:+)
+      social_vote_score = bills.map {|b| b.social_mean}.inject(:+)
     end
 
     fiscal_rescore = (fiscal_initial + fiscal_vote_score) / (1 + bills.count)
@@ -23,16 +23,5 @@ class User < ActiveRecord::Base
     update(social_mean: social_rescore)
   end
 
-
-
-  # TODO: implement when survey provided
-  # def calc_score(type,a)
-  #   1.upto(5).map{|k| a["#{type}#{k}"].to_i}.sum
-  # end
-
-  # def update_score(p)
-  #   social, fiscal = [calc_score('fiscal', p), calc_score('social', p)]
-  #   self.update_attributes!(social_score: social, fiscal_score: fiscal)
-  #   [social, fiscal]
-  # end
+  # TODO: method to calculate fiscal/social variance?
 end
