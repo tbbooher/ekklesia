@@ -56,8 +56,8 @@ group :development, :test do
   gem 'guard-livereload', '~> 2.4', require: false
 end
 
+gem 'faker'
 group :test do
-  gem 'faker'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
@@ -65,5 +65,3 @@ group :test do
 end
 
 gem 'dotenv-rails', :groups => [:development, :test]
-
-gem 'stripe-rails'
