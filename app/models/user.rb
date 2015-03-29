@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username
 
-  def rescore
+  def rescore #TODO: account for nay votes
     if bills.empty?
       fiscal_vote_score = 0
       social_vote_score = 0

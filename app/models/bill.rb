@@ -8,7 +8,7 @@ class Bill < ActiveRecord::Base
     Vote.create(user_id: current_user.id, bill_id: params[:bill_id], direction: params[:direction])
   end
 
-  def rescore
+  def rescore #TODO: account for nay votes
     if users.empty?
       fiscal_vote_score = 0
       social_vote_score = 0
