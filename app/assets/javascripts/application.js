@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require foundation
+//= require c3.min
+//= require d3.min
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

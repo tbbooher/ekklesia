@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/quiz', to: 'users#quiz'
   post '/process_form', to: 'users#process_form'
+  get '/ajax', to: 'welcome#ajax'
 
   resources :votes
   resources :users

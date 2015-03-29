@@ -9,8 +9,13 @@ class WelcomeController < ApplicationController
     @voted_bills = current_user.bills if logged_in?
     @vote = Vote.new(bill: @bill)
     render layout: 'welcome'
-    if request.xhr?
-      @user = current_user.to_json
-    end
+  end
+
+  def ajax
+    @bills = logged_in? ? Bill.not_voted_on(current_user) : Bill.all
+    user = current_user.to_json
+    bill = @bills[0].to_json
+    bill_voters = bill.users.to_json
+    render json: {user: user, bill: bill, bill_voters: bill_voters}
   end
 end

@@ -1,3 +1,9 @@
+#chart {
+  width: 20rem;
+  height: 20rem;
+  margin: auto;
+}
+
 .quiz-container {
   margin: auto;
   width: 80%;
