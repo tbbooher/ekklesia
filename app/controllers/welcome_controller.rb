@@ -8,6 +8,7 @@ class WelcomeController < ApplicationController
     render layout: 'welcome'
   end
 
-  def create
-  end
+  # def create
+  #
+  # end
 end
