@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   include AuthsHelper
 
   def index
-    @bills = Bill.not_voted_on(current_user)
+    @bills = logged_in? ? Bill.not_voted_on(current_user) : Bill.all
     @bill = @bills[0]
     @vote = Vote.new(bill: @bill)
     render layout: 'welcome'
