@@ -1,9 +1,30 @@
 class Bill < ActiveRecord::Base
   require 'set'
 
+  has_many :votes
+  has_many :users, through: :votes
+
   def vote(user, value)
     Vote.create(user_id: current_user.id, bill_id: params[:bill_id], direction: params[:direction])
   end
+
+  def rescore
+    if users.empty?
+      fiscal_vote_score = 0
+      social_vote_score = 0
+    else
+      fiscal_vote_score = users.map {|u| u.fiscal_mean}.inject(:+)
+      social_vote_score = users.map {|u| u.social_mean}.inject(:+)
+    end
+
+    fiscal_rescore = fiscal_vote_score / users.count
+    social_rescore = social_vote_score / users.count
+
+    update(fiscal_mean: fiscal_rescore)
+    update(social_mean: social_rescore)
+  end
+
+  # TODO: method to calculate fiscal/social variance?
 
   class << self
     def not_voted_on(user)
