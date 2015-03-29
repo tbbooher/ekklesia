@@ -10,11 +10,11 @@ class CreateBills < ActiveRecord::Migration
       t.string :congress_url
       t.references :issue
 
-      t.decimal :fiscal_mean
-      t.decimal :fiscal_var
+      t.float :fiscal_mean
+      t.float :fiscal_var
 
-      t.decimal :social_mean
-      t.decimal :social_var
+      t.float :social_mean
+      t.float :social_var
     end
   end
 end
