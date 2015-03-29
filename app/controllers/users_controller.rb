@@ -2,11 +2,12 @@ class UsersController < ApplicationController
   include AuthsHelper
 
   def quiz
-    @user = User.find(params[:id])
+    redirect_to :root unless logged_in?
+    @user = current_user
   end
 
   def process_form
-
+    redirect_to :root
   end
 
   def index
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:id] = @user.id
-      redirect_to :root
+      redirect_to :quiz
     else
       render :new
     end
