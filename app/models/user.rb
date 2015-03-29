@@ -8,4 +8,15 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_presence_of :first_name, :last_name
   validates :email, presence: true, uniqueness: true, format: email_format
+
+  def calc_score(type,a)
+    1.upto(5).map{|k| a["#{type}#{k}"].to_i}.sum
+  end
+
+  def update_score(p)
+    social, fiscal = [calc_score('fiscal', p), calc_score('social', p)]
+    self.update_attributes!(social_score: social, fiscal_score: fiscal)
+    [social, fiscal]
+  end
+
 end

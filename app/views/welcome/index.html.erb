@@ -1,7 +1,6 @@
 <div class="row">
   <div class="large-12 small-12 columns text-center">
     <div class="large-8 small-8 small-centered large-centered columns">
-      <h1><%= image_tag "ekklesia_logo.jpg", size: '700x100' %></h1>
       <hr>
       <h3>Find out the bills you like!</h3>
       <p>See which Bills are relevant to you.</p>
@@ -24,8 +23,8 @@
         <h3><%= @bill.official_title %></h3>
         <%= simple_form_for @vote do |f| %>
           <%= f.input :bill_id, as: :hidden %>
-          <%= f.submit "yes" %>
-          <%= f.submit "no" %>
+          <%= f.submit "yes", class: 'button' %>
+          <%= f.submit "no", class: 'alert button' %>
         <% end %>
       </div>
     </div>

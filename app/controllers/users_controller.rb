@@ -2,11 +2,18 @@ class UsersController < ApplicationController
   include AuthsHelper
 
   def quiz
-    @user = User.find(params[:id])
+    user = current_user
+    redirect_to :root unless user
+    @user = user
   end
 
   def process_form
+    user = current_user # should set up a filter
+    redirect_to :root unless user
+    fiscal, social = user.update_score(params["record_quiz"])
 
+    @fiscal_score = fiscal
+    @social_score = social
   end
 
   def index

@@ -26,4 +26,6 @@
     <p>Cut taxes and government spending by 50% or more.
       <%= f.collection_radio_buttons :fiscal5, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
 
+    <%= f.submit 'Submit', class: 'button' %>
+
   <% end %>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#logout'
   get '/signup', to: 'users#new'
-  get '/quiz/:id', to: 'users#quiz'
+  get '/quiz/', to: 'users#quiz'
   post '/process_form', to: 'users#process_form'
 
   resources :votes
