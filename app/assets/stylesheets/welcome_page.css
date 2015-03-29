@@ -1,3 +1,8 @@
+.quiz-container {
+  margin: auto;
+  width: 80%;
+}
+
 .error {
   color: red;
 }
@@ -77,5 +82,5 @@ h1 {
 }
 
 .bill-text {
-  text-align: justify;
+  text-align: center;
 }

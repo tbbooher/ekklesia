@@ -10,6 +10,7 @@
 <div class="row">
   <div class="large-8 small-12 small-centered large-centered columns text-center">
     <div class="bill-display">
+      <% if @bill %>
       <p class="error"><%= display_error %></p>
       <h4>Official Title</h4>
       <p class="bill-text"><%= truncate(@bill.official_title, length: 300) %></p>
@@ -30,6 +31,7 @@
           <% end %>
         </div>
       </div>
+      <% end %>
     </div>
     <hr>
   </div>

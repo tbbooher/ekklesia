@@ -17,8 +17,8 @@ class Bill < ActiveRecord::Base
       social_vote_score = users.map {|u| u.social_mean}.inject(:+)
     end
 
-    fiscal_rescore = fiscal_vote_score / users.count
-    social_rescore = social_vote_score / users.count
+    fiscal_rescore = (fiscal_initial + fiscal_vote_score) / (1 + users.count)
+    social_rescore = (social_initial + social_vote_score) / (1 + users.count)
 
     update(fiscal_mean: fiscal_rescore)
     update(social_mean: social_rescore)

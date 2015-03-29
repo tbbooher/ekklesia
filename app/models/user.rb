@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username
   validates_presence_of :first_name, :last_name
-  validates :email, presence: true, uniqueness: true, format: email_format
 
   def rescore #TODO: account for nay votes
     if bills.empty?
@@ -26,15 +25,14 @@ class User < ActiveRecord::Base
   end
 
   def calc_score(type,a)
-    1.upto(5).map{|k| a["#{type}#{k}"].to_i}.sum
+    1.upto(5).map{|k| a["#{type}#{k}"].to_f}.sum/5
   end
 
   def update_score(p)
     social, fiscal = [calc_score('fiscal', p), calc_score('social', p)]
-    self.update_attributes!(social_score: social, fiscal_score: fiscal)
+    self.update_attributes!(social_mean: social, fiscal_mean: fiscal)
     [social, fiscal]
   end
-
 
   # TODO: method to calculate fiscal/social variance?
 end

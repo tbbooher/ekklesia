@@ -10,6 +10,9 @@ class CreateBills < ActiveRecord::Migration
       t.string :congress_url
       t.references :issue
 
+      t.float :fiscal_initial, default: 0
+      t.float :social_initial, default: 0
+
       t.float :fiscal_mean, default: 0
       t.float :fiscal_var, default: 0.1
 
