@@ -4,15 +4,15 @@
   <%= simple_form_for :record_quiz, {url: process_form_path } do |f| %>
 
     <p>Government should not censor speech, press, media, or internet.
-      <%= f.collection_radio_buttons :social1, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+      <%= f.collection_radio_buttons :social1, [[20, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
     <p>Military service should be voluntary. There should be no draft.
-      <%= f.collection_radio_buttons :social2, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+      <%= f.collection_radio_buttons :social2, [[20, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
     <p>There should be no laws regarding sex for consenting adults.
-      <%= f.collection_radio_buttons :social3, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+      <%= f.collection_radio_buttons :social3, [[20, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
     <p>Repeal laws prohibiting adult possession and use of drugs.
-      <%= f.collection_radio_buttons :social4, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+      <%= f.collection_radio_buttons :social4, [[20], 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
     <p>There should be no National ID card.
-      <%= f.collection_radio_buttons :social5, [[1, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
+      <%= f.collection_radio_buttons :social5, [[20, 'Agree'] ,[0, 'Maybe'], [-1,'Disagree']], :first, :last %></p>
 
 
     <p>End "corporate welfare." No government handouts to business.
