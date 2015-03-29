@@ -34,5 +34,13 @@ class User < ActiveRecord::Base
     [social, fiscal]
   end
 
+  def calc_affinity(bill)
+    # fallback:
+    # return Math.sqrt(score1**2 + score2**2)
+
+
+
+  end
+
   # TODO: method to calculate fiscal/social variance?
 end
