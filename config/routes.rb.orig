@@ -1,0 +1,16 @@
+Rails.application.routes.draw do
+  root 'welcome#index'
+  get '/login', to: 'sessions#login'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#logout'
+  get '/signup', to: 'users#new'
+<<<<<<< HEAD
+  get '/quiz/', to: 'users#quiz'
+=======
+  get '/quiz', to: 'users#quiz'
+>>>>>>> 61bcf510bac8802c8afd8959a837e2219cb4710b
+  post '/process_form', to: 'users#process_form'
+
+  resources :votes
+  resources :users
+end
