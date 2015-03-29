@@ -2,7 +2,7 @@
   <ul class="right">
     <% if logged_in? %>
       <li>
-        <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" data-options="is_hover: true"><%= current_user.username.upcase %></a>
+        <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" data-options="is_hover: true"><%= current_user.username.upcase %> (Fiscal: <%= current_user.fiscal_mean %>, Social: <%= current_user.social_mean %>)</a>
         <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
           <li><%= link_to "PROFILE", user_path(current_user) %></li>
           <li><%= link_to 'LOG OUT', logout_path, method: :get %></li>
