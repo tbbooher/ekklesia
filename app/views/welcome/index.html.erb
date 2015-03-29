@@ -8,26 +8,46 @@
   </div>
 </div>
 <div class="row">
-  <div class="large-12 small-12 columns large-centered">
-    <div class="large-8">
-      <div class="bill-display">
-        <h4>Official Title:</h4>
-        <%= truncate(@bill.official_title, length: 300) %>
-        <a href="<%= @bill.congress_url %>">See full bill</a>
-        <br>
-        <br>
-        <h4>Affinity Score: </h4>
-        <br>
-        <div class="row">
-          <div class="large-4 large-centered columns">
-            <%= simple_form_for @vote do |f| %>
-              <%= f.input :bill_id, as: :hidden %>
-              <%= f.submit "Yea", class: "button radius large" %>
-              <%= f.submit "Nay", class: "button radius large" %>
-            <% end %>
-          </div>
+  <div class="large-8 small-12 small-centered large-centered columns text-center">
+    <div class="bill-display">
+      <h4>Official Title</h4>
+      <%= truncate(@bill.official_title, length: 300) %>
+      <br>
+      <a href="<%= @bill.congress_url %>">See full bill</a>
+      <br>
+      <br>
+      <h4>Affinity Score</h4>
+      <br>
+      <div class="row">
+
+        <div class="large-6 large-centered columns text-center">
+          <h5>Vote</h5>
+          <%= simple_form_for @vote do |f| %>
+            <%= f.input :bill_id, as: :hidden %>
+            <%= f.submit "Yea", class: "button radius large" %>
+            <%= f.submit "Nay", class: "button radius large" %>
+          <% end %>
         </div>
       </div>
     </div>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="large-6 columns bill-panel">
+    <center><h4>Relevant Bills</h4></center>
+    <ul>
+    <% @bills.each do |bill| %>
+      <li>
+        <a href="<%= bill.congress_url %>"><%= truncate(bill.official_title, length: 80) %></a> [Your Affinity: ]
+      </li><br>
+    <% end %>
+    </ul>
+  </div>
+  <div class="large-6 columns voted-panel">
+    <center><h4>Bills voted on</h4></center>
+    <ul>
+      <li>TEST</li>
+    </ul>
   </div>
 </div>

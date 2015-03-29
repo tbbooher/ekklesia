@@ -1,3 +1,6 @@
+.row {
+  margin-top: 2rem;
+}
 p {
   font-family: 'Montserrat', sans-serif;
 }
@@ -11,6 +14,10 @@ h2, h3, h4, h5, h6 {
 
 body {
   font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+  list-style-type: none;
 }
 
 h1 {
@@ -59,4 +66,9 @@ h1 {
 
 #footer-right {
   float: right;
+}
+
+.bill-panel, .voted-panel {
+  width: 45%;
+  margin: .5rem;
 }
