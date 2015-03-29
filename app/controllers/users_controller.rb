@@ -2,9 +2,8 @@ class UsersController < ApplicationController
   include AuthsHelper
 
   def quiz
-    user = current_user
-    redirect_to :root unless user
-    @user = user
+    redirect_to :root unless logged_in?
+    @user = current_user
   end
 
   def process_form
@@ -35,7 +34,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:id] = @user.id
-      redirect_to :root
+      redirect_to :quiz
     else
       render :new
     end

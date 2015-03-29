@@ -41,7 +41,6 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'google-webfonts-rails'
-gem "jquery-slick-rails"
 
 group :development, :test do
 
@@ -58,8 +57,8 @@ group :development, :test do
   gem 'guard-livereload', '~> 2.4', require: false
 end
 
+gem 'faker'
 group :test do
-  gem 'faker'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
@@ -67,5 +66,3 @@ group :test do
 end
 
 gem 'dotenv-rails', :groups => [:development, :test]
-
-gem 'stripe-rails'

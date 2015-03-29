@@ -1,15 +1,81 @@
-.center-text {
-  text-align: center;
+.error {
+  color: red;
 }
 
-#homepage-search {
-  margin: 0 auto;
+p {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+h1 {
+  font-size: 6rem;
+  font-weight: bold;
+}
+
+.top-bar {
+  background: white !important;
+  border-bottom: 1px solid #696969 !important;
+  text-align: center !important;
+  height: 47px !important;
+}
+
+.top-bar-section ul li {
+  background: white !important;
+}
+
+
+#top-bar-section a {
+  opacity: 1;
+  font-family: 'Montserrat', sans-serif;
+  background: white;
+  color: black !important;
+  -webkit-transition: color 0.3s ease-in-out,opacity 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out,opacity 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out,opacity 0.3s ease-in-out;
+}
+
+#top-bar-section:hover a {
+  opacity: .75;
+}
+
+#top-bar-section:hover a:hover {
+  opacity: .25;
 }
 
 #about-footer {
-  text-align: center;
+  margin: auto;
+  width: 20%;
 }
 
-#drop3 {
-  background-color: #333333;
+#footer-left {
+  float: left;
+}
+
+#footer-right {
+  float: right;
+}
+
+.bill-panel, .voted-panel {
+  width: 45%;
+  margin: .5rem;
+}
+
+.bill-text {
+  text-align: justify;
 }

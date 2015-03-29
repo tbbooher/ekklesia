@@ -1,16 +1,5 @@
 <div class="panel large-9 large-centered columns">
-  user
-</div>
-<div class="row">
-  <div class="small-3 small-centered columns">
-    <dl class="sub-nav">
-      <dd class="donations"><a href="/donations/show">Donations</a></dd>
-      <dd class="stances"><a href="#">Stances</a></dd>
-    </dl>
-  </div>
-</div>
-<div class="user-table panel large-9 large-centered columns">
-  <%= render partial: "donations/table", locals: {donations: @user.donations} %>
+  <%= @user.first_name %>'s profile
 </div>
 
 

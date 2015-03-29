@@ -4,6 +4,7 @@ class CreateVotes < ActiveRecord::Migration
       t.references :user
       t.references :bill
       t.string :direction
+      t.timestamps
     end
   end
 end

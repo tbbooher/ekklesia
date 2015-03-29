@@ -9,6 +9,22 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
   validates :email, presence: true, uniqueness: true, format: email_format
 
+  def rescore #TODO: account for nay votes
+    if bills.empty?
+      fiscal_vote_score = 0
+      social_vote_score = 0
+    else
+      fiscal_vote_score = bills.map {|b| b.fiscal_mean}.inject(:+)
+      social_vote_score = bills.map {|b| b.social_mean}.inject(:+)
+    end
+
+    fiscal_rescore = (fiscal_initial + fiscal_vote_score) / (1 + bills.count)
+    social_rescore = (social_initial + social_vote_score) / (1 + bills.count)
+
+    update(fiscal_mean: fiscal_rescore)
+    update(social_mean: social_rescore)
+  end
+
   def calc_score(type,a)
     1.upto(5).map{|k| a["#{type}#{k}"].to_i}.sum
   end
@@ -19,4 +35,6 @@ class User < ActiveRecord::Base
     [social, fiscal]
   end
 
+
+  # TODO: method to calculate fiscal/social variance?
 end

@@ -1,0 +1,16 @@
+show 10 on left
+
+set up voting form [DONE]
+- yea and nay
+- submits values to vote route
+- vote route creates vote record
+
+finish off form [done, waiting for real form]
+
+build process_form method to score user upon quiz submission [DONE]
+
+TODO: seed bills from survey results
+
+build update_sf method to score bill upon user vote
+
+import calc_affinity(user, bill) method to return an affinity given two scores
