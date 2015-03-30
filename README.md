@@ -24,5 +24,6 @@ Team Members:
 * Kris Gosselin
 
 Team Resources:
-CandS@googlegroups.com
-https://drive.google.com/folderview?id=0Bwu8eTDdx4G5fmtlcDI2MGJySHZzVzduOXRsRjNCeHgxbnNVWVU2QlBCaUd6OGFuT2QxbEU&usp=sharing
+
+* CandS@googlegroups.com
+* [google drive presentation](https://drive.google.com/folderview?id=0Bwu8eTDdx4G5fmtlcDI2MGJySHZzVzduOXRsRjNCeHgxbnNVWVU2QlBCaUd6OGFuT2QxbEU&usp=sharing)
