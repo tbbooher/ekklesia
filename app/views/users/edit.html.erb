@@ -1,63 +1,64 @@
 <div class="panel large-4 large-centered columns">
-	<%= form_for @user, method: :patch do |f| %>
-		<div class="row">
-	    <div class="large-6 columns">
-	      <label>City
-	        <%= f.text_field :city, placeholder: "City"%>
-	      </label>
-	    </div>
+  <%= form_for @user, method: :patch do |f| %>
+      <div class="row">
+        <div class="large-6 columns">
+          <label>City
+            <%= f.text_field :city, placeholder: "City" %>
+          </label>
+        </div>
 
-	    <div class="large-6 columns">
-	      <label>State
-	        <%= f.text_field :state, placeholder: "State"%>
-	      </label>
-	    </div>
-  	</div>
+        <div class="large-6 columns">
+          <label>State
+            <%= f.text_field :state, placeholder: "State" %>
+          </label>
+        </div>
+      </div>
 
-  	<div class="row">
-  		<div class="large-6 columns">
-	      <label>Email
-	        <%= f.email_field :email, placeholder: "johndoe@email.com" %>
-	      </label>
-	    </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <label>Email
+            <%= f.email_field :email, placeholder: "johndoe@email.com" %>
+          </label>
+        </div>
 
-	    <div class="large-6 columns">
-	      <label>Username
-	      	<%= f.text_field :username, placeholder: "johndoe44" %>
-	      </label>
-	    </div>
-  	</div>
+        <div class="large-6 columns">
+          <label>Username
+            <%= f.text_field :username, placeholder: "johndoe44" %>
+          </label>
+        </div>
+      </div>
 
-  	<div class="row">
-  		<div class="large-12 columns">
-	  		<label>About
-	  			<%= f.text_area :about, placeholder: "Say something about you." %>
-	  		</label>
-  		</div>
-  	</div>
+      <div class="row">
+        <div class="large-12 columns">
+          <label>About
+            <%= f.text_area :about, placeholder: "Say something about you." %>
+          </label>
+        </div>
+      </div>
 
 
-  	<div class="row">
-			<div class="large-6 columns">
-	      <label>Password
-	        <%= f.password_field :password, placeholder: "Password" %>
-	      </label>
-    	</div>
-    
-			<div class="large-6 columns">
-	      <label>Confirm Password
-	        <%= f.password_field :password, placeholder: "Confirm Password" %>
-	      </label>
-    	</div>
-  	</div>
-  </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <label>Password
+            <%= f.password_field :password, placeholder: "Password" %>
+          </label>
+        </div>
 
-		<div class="row center-text">
-  		<div class="large-5 small-centered columns">
-    		<%= f.submit "Update Info", class: "button small radius" %>
-  		</div>
-		</div>
-	<% end %>
+        <div class="large-6 columns">
+          <label>Confirm Password
+            <%= f.password_field :password, placeholder: "Confirm Password" %>
+          </label>
+        </div>
+      </div>
+
+      <div class="row center-text">
+        <div class="large-5 small-centered columns">
+          <%= f.submit "Update Info", class: "button small radius" %>
+        </div>
+      </div>
+  <% end %>
+
+</div>
 
 
 

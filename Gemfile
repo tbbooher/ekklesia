@@ -13,7 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'thin' # faster server
 
-# gem 'integration', '~> 0.1.1'
+gem 'integration'
 # gem 'gsl', :git => 'git://github.com/whistlerbrk/rb-gsl.git'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
