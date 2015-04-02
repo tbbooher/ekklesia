@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "1.9.3"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
@@ -14,7 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'thin' # faster server
 
 gem 'integration'
-gem 'distribution'
+#gem 'distribution'
 # gem 'gsl', :git => 'git://github.com/whistlerbrk/rb-gsl.git'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
