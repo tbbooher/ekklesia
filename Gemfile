@@ -15,7 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'thin' # faster server
 
-gem 'integration'
+#gem 'integration'
+gem 'integrator'
 #gem 'distribution'
 # gem 'gsl', :git => 'git://github.com/whistlerbrk/rb-gsl.git'
 
