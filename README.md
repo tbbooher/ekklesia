@@ -23,6 +23,14 @@ Team Members:
 * Betty Lo
 * Kris Gosselin
 
+Nick's thoughts:
+
+if we knew a user's political ideology (f & s score exactly - a trivia distribution) and a bill's location exactly then any ordered metric such as the euclidean metric would be fine, but since these estimates are necessarily noisy to start and we thus have distributions this mutual information is good probability/risk adjusted measure.
+if the distributions are identical and collocated the affinity measure returns 1.
+if they are independent the measure returns 0.
+thus bills highest in the queue are the furthest from .5, and the ones to the bottom are nearest .5.
+if multiple bills have the same affinity score (eg multiple bills are independent from the user's distribution and all return 0), then a tie breaker could simply be the euclidean distance of the distribution centroids.
+
 Team Resources:
 
 * CandS@googlegroups.com

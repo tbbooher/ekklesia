@@ -20,7 +20,7 @@
       <br>
       <h4>Affinity Score</h4>
       <% if logged_in? %>
-      <%= rand(0..100) %>
+      <%= rand(0..100) %><!-- ha! what I thought !!! -->
       <br>
       <% end %>
       <div class="row">
@@ -47,7 +47,7 @@
     <% @bills.each do |bill| %>
       <li>
         <a href="<%= bill.congress_url %>"><%= truncate(bill.official_title, length: 80) %></a>
-        <p>Affinity: <%= rand(0..100) %></p>
+        <p>Affinity: <%= rand(0..100) %></p><!-- ha! what I thought !!! -->
       </li><br>
     <% end %>
     <% end %>
@@ -62,7 +62,7 @@
           <a href="<%= bill.congress_url %>"><%= truncate(bill.official_title, length: 80) %></a>
           <p>Fiscal: <%= bill.fiscal_mean.round(2) %>, Social: <%= bill.social_mean.round(2) %></p>
           <% if logged_in? %>
-            <p>Affinity: <%= rand(0..100) %></p>
+            <p>Affinity: <%= rand(0..100) %></p><!-- ha! what I thought !!! -->
           <% end %>
         </li><br>
       <% end %>

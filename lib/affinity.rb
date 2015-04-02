@@ -80,7 +80,7 @@ module Affinity
     # end
 
     def distance(xf, xs, yf, ys)
-      Math.sqrt((xf[0] - yf[0])**2 + (xs[0] - ys[0])**2)/Math.sqrt(8)
+      Math.sqrt((xf[0] - yf[0])**2 + (xs[0] - ys[0])**2)
     end
 
     def score(user, bill)
